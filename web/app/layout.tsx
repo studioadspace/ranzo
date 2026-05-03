@@ -18,8 +18,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Ranzospace - Luxury Design Studio, Mumbai",
-  description: "Architecture, interior design, and modular furniture. Mumbai's most trusted luxury design studio.",
+  title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
+  description: "Honest interior design and architecture in Mumbai. Custom homes, offices, and modular furniture designed for how you actually live.",
   icons: {
     icon: "/favicon.png",
   },
