@@ -20,6 +20,9 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Ranzospace - Luxury Design Studio, Mumbai",
   description: "Architecture, interior design, and modular furniture. Mumbai's most trusted luxury design studio.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
