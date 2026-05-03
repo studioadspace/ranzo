@@ -12,14 +12,20 @@ const PAD = "48px";
 const categories = ["All", "Residential", "Commercial", "Kitchen", "Bedroom"];
 
 const projects = [
-  { src: "/img18.jpeg", alt: "Living room - Bandra", label: "Living Room", location: "Bandra, Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
-  { src: "/img14.jpeg", alt: "TV unit living room - Andheri", label: "Living Room & TV Unit", location: "Andheri, Mumbai", category: "Residential", area: "2,100 sq ft", span: "" },
-  { src: "/img11.jpeg", alt: "Dining room - Powai", label: "Dining Room", location: "Powai, Mumbai", category: "Residential", area: "950 sq ft", span: "" },
-  { src: "/img9.jpeg", alt: "Modular kitchen - Mumbai", label: "Modular Kitchen", location: "Mumbai", category: "Kitchen", area: "320 sq ft", span: "" },
-  { src: "/img16.jpeg", alt: "Kitchen - Mulund", label: "Kitchen & Dining", location: "Mulund, Mumbai", category: "Kitchen", area: "410 sq ft", span: "" },
-  { src: "/img13.jpeg", alt: "Master bedroom - Ghatkopar", label: "Master Bedroom", location: "Ghatkopar, Mumbai", category: "Bedroom", area: "480 sq ft", span: "col-span-2" },
-  { src: "/img15.jpeg", alt: "Kids bedroom - Mumbai", label: "Kids Bedroom", location: "Mumbai", category: "Bedroom", area: "280 sq ft", span: "" },
-  { src: "/img17.jpeg", alt: "Kitchen - Thane", label: "Open Kitchen", location: "Thane", category: "Kitchen", area: "360 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-01.jpg", alt: "Luxury living room - Bandra", label: "Living Room", location: "Bandra, Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
+  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Living room with dining - Andheri", label: "Living & Dining", location: "Andheri, Mumbai", category: "Residential", area: "2,100 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Dining space - Powai", label: "Dining Room", location: "Powai, Mumbai", category: "Residential", area: "950 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-04.jpg", alt: "Kitchen and living - Mulund", label: "Kitchen & Living", location: "Mulund, Mumbai", category: "Kitchen", area: "410 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-05.jpg", alt: "Modern kitchen - Ghatkopar", label: "Modern Kitchen", location: "Ghatkopar, Mumbai", category: "Kitchen", area: "480 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-06.jpg", alt: "Open plan living - Thane", label: "Open Plan Living", location: "Thane", category: "Residential", area: "1,200 sq ft", span: "col-span-2" },
+  { src: "/projects-photos/pramod-01.jpg", alt: "Residential interior - Bandra", label: "Residential Interior", location: "Bandra, Mumbai", category: "Residential", area: "1,500 sq ft", span: "" },
+  { src: "/projects-photos/pramod-02.jpg", alt: "Commercial space - Worli", label: "Commercial Space", location: "Worli, Mumbai", category: "Commercial", area: "2,500 sq ft", span: "" },
+  { src: "/projects-photos/pramod-03.jpg", alt: "Bedroom design - Dadar", label: "Bedroom Design", location: "Dadar, Mumbai", category: "Bedroom", area: "400 sq ft", span: "" },
+  { src: "/projects-photos/pramod-04.jpg", alt: "Kitchen renovation - Colaba", label: "Kitchen Renovation", location: "Colaba, Mumbai", category: "Kitchen", area: "320 sq ft", span: "" },
+  { src: "/projects-photos/rishi-photo-01.jpg", alt: "Master suite - Powai", label: "Master Suite", location: "Powai, Mumbai", category: "Bedroom", area: "600 sq ft", span: "" },
+  { src: "/projects-photos/rishi-photo-02.jpg", alt: "Contemporary living - Bandra", label: "Contemporary Living", location: "Bandra, Mumbai", category: "Residential", area: "2,200 sq ft", span: "col-span-2" },
+  { src: "/projects-photos/rishi-photo-03.jpg", alt: "Dining space - Andheri", label: "Dining Experience", location: "Andheri, Mumbai", category: "Residential", area: "1,100 sq ft", span: "" },
+  { src: "/projects-photos/rishi-photo-04.jpg", alt: "Studio apartment - Mumbai", label: "Studio Apartment", location: "Mumbai Central", category: "Residential", area: "500 sq ft", span: "" },
 ];
 
 function ProjectCard({ p, index }: { p: typeof projects[0]; index: number }) {
