@@ -84,7 +84,7 @@ export default function ContactPage() {
         <section style={{ padding: `0 ${PAD} 100px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px" }}>
 
-            {/* Left — contact info */}
+            {/* Left - contact info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
@@ -123,7 +123,7 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Right — form */}
+            {/* Right - form */}
             <motion.div
               ref={formRef}
               initial={{ opacity: 0, y: 24 }} animate={formInView ? { opacity: 1, y: 0 } : {}}

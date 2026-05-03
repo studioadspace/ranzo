@@ -11,15 +11,15 @@ const MAX_W = "1440px";
 const PAD = "48px";
 
 const values = [
-  { num: "01", title: "Honesty over agreement", body: "We tell clients what their space needs — not what they want to hear. Honest conversations early save costly revisions later." },
-  { num: "02", title: "Substance before style", body: "Every material, every detail earns its place. We start with function and let beauty follow — never the reverse." },
+  { num: "01", title: "Honesty over agreement", body: "We tell clients what their space needs - not what they want to hear. Honest conversations early save costly revisions later." },
+  { num: "02", title: "Substance before style", body: "Every material, every detail earns its place. We start with function and let beauty follow - never the reverse." },
   { num: "03", title: "Accountability by default", body: "We own our timelines, our costs, and our outcomes. 140 quality checks per project. No excuses, no surprises." },
   { num: "04", title: "Design that compounds", body: "The spaces we create should feel better with every passing year. We make decisions for the long run, not for the photograph." },
 ];
 
 const timeline = [
   { year: "2018", event: "Ranzospace founded in Mumbai by Ar. Manas Makwana" },
-  { year: "2020", event: "First commercial project — a 4,500 sq ft workspace in Lower Parel" },
+  { year: "2020", event: "First commercial project - a 4,500 sq ft workspace in Lower Parel" },
   { year: "2022", event: "Launched India's first AI-powered interior simulation offering" },
   { year: "2024", event: "100+ completed projects across Mumbai" },
   { year: "2025", event: "Expanded to architecture and structural services" },
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 style={{ paddingBottom: "8px" }}
               >
                 <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85 }}>
-                  Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who are done with average — people who want spaces that genuinely reflect how they live, not just how spaces look on Instagram.
+                  Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who are done with average - people who want spaces that genuinely reflect how they live, not just how spaces look on Instagram.
                 </p>
                 <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85, marginTop: "20px" }}>
                   Founded in 2018. 100+ projects. One north star: design that lasts.

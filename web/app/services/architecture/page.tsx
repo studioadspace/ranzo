@@ -13,7 +13,7 @@ const PAD = "48px";
 const process = [
   { step: "01", title: "Brief & Site Study", body: "Understanding your program, context, zoning regulations, and the qualities you want the space to have before any design begins." },
   { step: "02", title: "Concept Design", body: "Schematic volumes, massing studies, and spatial sequences that answer the brief before refining any detail." },
-  { step: "03", title: "Design Development", body: "Detailed design with material strategies, structural coordination, and system integration — resolved before documentation." },
+  { step: "03", title: "Design Development", body: "Detailed design with material strategies, structural coordination, and system integration - resolved before documentation." },
   { step: "04", title: "Construction Documents", body: "Complete drawings and specifications for contractor tendering and building permit applications." },
   { step: "05", title: "Site Supervision", body: "Regular site visits and coordination to ensure the built result matches the design intent." },
 ];
@@ -64,7 +64,7 @@ export default function ArchitecturePage() {
               initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
             >
-              From concept to built form. We shape volumes, light, and circulation — making spatial decisions that determine how a building feels to inhabit for decades.
+              From concept to built form. We shape volumes, light, and circulation - making spatial decisions that determine how a building feels to inhabit for decades.
             </motion.p>
           </div>
         </section>

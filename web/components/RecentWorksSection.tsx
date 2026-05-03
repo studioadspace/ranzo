@@ -7,10 +7,10 @@ const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
 const projects = [
-  { src: "/img9.jpeg",  alt: "Modular kitchen — Mumbai",   ratio: "1 / 1",  label: "Modular Kitchen · Mumbai" },
-  { src: "/img13.jpeg", alt: "Master bedroom — Ghatkopar", ratio: "4 / 3",  label: "Master Bedroom · Ghatkopar" },
-  { src: "/img16.jpeg", alt: "Kitchen — Mulund",           ratio: "4 / 3",  label: "Kitchen · Mulund" },
-  { src: "/img15.jpeg", alt: "Kids bedroom — Mumbai",       ratio: "4 / 3",  label: "Kids Bedroom · Mumbai" },
+  { src: "/img9.jpeg",  alt: "Modular kitchen - Mumbai",   ratio: "1 / 1",  label: "Modular Kitchen · Mumbai" },
+  { src: "/img13.jpeg", alt: "Master bedroom - Ghatkopar", ratio: "4 / 3",  label: "Master Bedroom · Ghatkopar" },
+  { src: "/img16.jpeg", alt: "Kitchen - Mulund",           ratio: "4 / 3",  label: "Kitchen · Mulund" },
+  { src: "/img15.jpeg", alt: "Kids bedroom - Mumbai",       ratio: "4 / 3",  label: "Kids Bedroom · Mumbai" },
 ];
 
 function Card({ p, index }: { p: (typeof projects)[0]; index: number }) {

@@ -12,14 +12,14 @@ const PAD = "48px";
 const categories = ["All", "Residential", "Commercial", "Kitchen", "Bedroom"];
 
 const projects = [
-  { src: "/img18.jpeg", alt: "Living room — Bandra", label: "Living Room", location: "Bandra, Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
-  { src: "/img14.jpeg", alt: "TV unit living room — Andheri", label: "Living Room & TV Unit", location: "Andheri, Mumbai", category: "Residential", area: "2,100 sq ft", span: "" },
-  { src: "/img11.jpeg", alt: "Dining room — Powai", label: "Dining Room", location: "Powai, Mumbai", category: "Residential", area: "950 sq ft", span: "" },
-  { src: "/img9.jpeg", alt: "Modular kitchen — Mumbai", label: "Modular Kitchen", location: "Mumbai", category: "Kitchen", area: "320 sq ft", span: "" },
-  { src: "/img16.jpeg", alt: "Kitchen — Mulund", label: "Kitchen & Dining", location: "Mulund, Mumbai", category: "Kitchen", area: "410 sq ft", span: "" },
-  { src: "/img13.jpeg", alt: "Master bedroom — Ghatkopar", label: "Master Bedroom", location: "Ghatkopar, Mumbai", category: "Bedroom", area: "480 sq ft", span: "col-span-2" },
-  { src: "/img15.jpeg", alt: "Kids bedroom — Mumbai", label: "Kids Bedroom", location: "Mumbai", category: "Bedroom", area: "280 sq ft", span: "" },
-  { src: "/img17.jpeg", alt: "Kitchen — Thane", label: "Open Kitchen", location: "Thane", category: "Kitchen", area: "360 sq ft", span: "" },
+  { src: "/img18.jpeg", alt: "Living room - Bandra", label: "Living Room", location: "Bandra, Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
+  { src: "/img14.jpeg", alt: "TV unit living room - Andheri", label: "Living Room & TV Unit", location: "Andheri, Mumbai", category: "Residential", area: "2,100 sq ft", span: "" },
+  { src: "/img11.jpeg", alt: "Dining room - Powai", label: "Dining Room", location: "Powai, Mumbai", category: "Residential", area: "950 sq ft", span: "" },
+  { src: "/img9.jpeg", alt: "Modular kitchen - Mumbai", label: "Modular Kitchen", location: "Mumbai", category: "Kitchen", area: "320 sq ft", span: "" },
+  { src: "/img16.jpeg", alt: "Kitchen - Mulund", label: "Kitchen & Dining", location: "Mulund, Mumbai", category: "Kitchen", area: "410 sq ft", span: "" },
+  { src: "/img13.jpeg", alt: "Master bedroom - Ghatkopar", label: "Master Bedroom", location: "Ghatkopar, Mumbai", category: "Bedroom", area: "480 sq ft", span: "col-span-2" },
+  { src: "/img15.jpeg", alt: "Kids bedroom - Mumbai", label: "Kids Bedroom", location: "Mumbai", category: "Bedroom", area: "280 sq ft", span: "" },
+  { src: "/img17.jpeg", alt: "Kitchen - Thane", label: "Open Kitchen", location: "Thane", category: "Kitchen", area: "360 sq ft", span: "" },
 ];
 
 function ProjectCard({ p, index }: { p: typeof projects[0]; index: number }) {
@@ -110,7 +110,7 @@ export default function WorkPage() {
                 initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.2 }}
               >
-                100+ completed projects across Mumbai. Every space designed from life — not from a catalogue.
+                100+ completed projects across Mumbai. Every space designed from life - not from a catalogue.
               </motion.p>
             </div>
           </div>

@@ -16,7 +16,7 @@ const services = [
     title: "Interior Design",
     slug: "interior-design",
     tagline: "Full-home & commercial interiors",
-    body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage — designed as a unified whole.",
+    body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage - designed as a unified whole.",
     img: "/img18.jpeg",
     tags: ["Residential", "Commercial", "Full-Home"],
   },
@@ -34,7 +34,7 @@ const services = [
     title: "Furniture & Decor",
     slug: "furniture",
     tagline: "Modular furniture & curated décor",
-    body: "Curated furniture selection and smart décor solutions — sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
+    body: "Curated furniture selection and smart décor solutions - sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
     img: "/img11.jpeg",
     tags: ["Modular", "Custom", "Sourcing"],
   },
@@ -165,7 +165,7 @@ export default function ServicesPage() {
                 Full on-site execution included.
               </h3>
               <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85, maxWidth: "600px", marginBottom: "36px" }}>
-                Civil work, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting — all managed by our team. We hand over one project, not a coordination problem.
+                Civil work, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting - all managed by our team. We hand over one project, not a coordination problem.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "40px" }}>
                 {[["140+", "Quality checks"], ["100+", "Completed projects"], ["7", "Years experience"], ["9+", "Years avg team tenure"]].map(([num, label]) => (

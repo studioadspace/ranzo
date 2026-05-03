@@ -56,7 +56,7 @@ export default function TheCraftSection() {
               transition={{ duration: 0.65, delay: 0.28 }}
             >
               At Ranzospace, we design beyond what is seen. We shape environments that influence how you
-              live, move, and feel every day. Our work is not about surfaces alone — it is about creating
+              live, move, and feel every day. Our work is not about surfaces alone - it is about creating
               spaces with depth, balance, and intention.
             </motion.p>
 

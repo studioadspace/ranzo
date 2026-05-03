@@ -11,11 +11,11 @@ const MAX_W = "1440px";
 const PAD = "48px";
 
 const process = [
-  { step: "01", title: "Discovery Call", body: "We begin by listening — your lifestyle, preferences, timeline, and budget. No assumptions, no templates." },
+  { step: "01", title: "Discovery Call", body: "We begin by listening - your lifestyle, preferences, timeline, and budget. No assumptions, no templates." },
   { step: "02", title: "Site Analysis", body: "Detailed measurement and documentation of your space. We study natural light, flow, structural constraints, and existing conditions." },
   { step: "03", title: "Concept Development", body: "AI-powered 3D simulations so you see your space before a single tile is laid. Revise until it's exactly right." },
-  { step: "04", title: "Material Selection", body: "Curated material presentations — finishes, fabrics, hardware, and lighting selected as a cohesive whole." },
-  { step: "05", title: "Execution", body: "Our team manages civil, carpentry, electrical, plumbing, and finishing — all 140 quality checks completed before handover." },
+  { step: "04", title: "Material Selection", body: "Curated material presentations - finishes, fabrics, hardware, and lighting selected as a cohesive whole." },
+  { step: "05", title: "Execution", body: "Our team manages civil, carpentry, electrical, plumbing, and finishing - all 140 quality checks completed before handover." },
   { step: "06", title: "Handover", body: "A complete walkthrough. Every detail reviewed. We don't leave until you're entirely satisfied." },
 ];
 
@@ -68,7 +68,7 @@ export default function InteriorDesignPage() {
               initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
             >
-              Full-home and commercial interiors — designed around how you actually live. Every room considered as part of a unified whole, from the first conversation to the final handover.
+              Full-home and commercial interiors - designed around how you actually live. Every room considered as part of a unified whole, from the first conversation to the final handover.
             </motion.p>
           </div>
         </section>

@@ -17,7 +17,7 @@ export default function FooterSection() {
 
   return (
     <footer style={{ background: "#0e0e0c" }}>
-      {/* Closing — real image + ghost type + tagline */}
+      {/* Closing - real image + ghost type + tagline */}
       <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: "clamp(320px, 40vw, 580px)" }}>
         <motion.div style={{ y: imgY, position: "absolute", inset: 0 }}>
           <Image src="/img17.jpeg" alt="Ranzospace designed spaces" fill style={{ objectFit: "cover", objectPosition: "center 40%" }} sizes="100vw" />

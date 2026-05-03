@@ -111,7 +111,7 @@ export default function FurniturePage() {
                   No catalogue browsing.<br />A curated edit.
                 </h2>
                 <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85 }}>
-                  We don't hand you a catalogue and wish you luck. Our team builds a curated selection based on your space, your lifestyle, and your budget. Every piece is chosen because it works — proportionally, functionally, and aesthetically — within the overall design.
+                  We don't hand you a catalogue and wish you luck. Our team builds a curated selection based on your space, your lifestyle, and your budget. Every piece is chosen because it works - proportionally, functionally, and aesthetically - within the overall design.
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
