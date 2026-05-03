@@ -96,8 +96,8 @@ export default function ContactPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
                 <div>
                   <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Email</p>
-                  <a href="mailto:ranzospace@gmail.com" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#f0ece4", fontWeight: 400, textDecoration: "none" }}>
-                    ranzospace@gmail.com
+                  <a href="mailto:info@ranzospace.in" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#f0ece4", fontWeight: 400, textDecoration: "none" }}>
+                    info@ranzospace.in
                   </a>
                 </div>
                 <div>

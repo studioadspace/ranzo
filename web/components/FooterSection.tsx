@@ -94,7 +94,7 @@ export default function FooterSection() {
             transition={{ duration: 0.65, delay: 0.18 }}
           >
             <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
-            <p style={{ fontSize: "15px", color: "rgba(240,236,228,0.75)", fontWeight: 300, marginBottom: "10px" }}>ranzospace@gmail.com</p>
+            <p style={{ fontSize: "15px", color: "rgba(240,236,228,0.75)", fontWeight: 300, marginBottom: "10px" }}>info@ranzospace.in</p>
             <p style={{ fontSize: "15px", color: "rgba(240,236,228,0.75)", fontWeight: 300, marginBottom: "10px" }}>+91 96991 47145</p>
             <p style={{ fontSize: "13px", color: "rgba(240,236,228,0.75)", fontWeight: 300, marginTop: "20px", lineHeight: 1.6 }}>Mumbai, India</p>
           </motion.div>
