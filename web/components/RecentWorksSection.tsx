@@ -7,10 +7,10 @@ const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
 const projects = [
-  { src: "/projects-photos/IMG-20250426-WA0023.jpg",  alt: "Living space design - Mumbai",   ratio: "1 / 1",  label: "Living Space · Mumbai" },
-  { src: "/projects-photos/IMG-20250103-WA0004.jpg", alt: "Residential interior - Mumbai", ratio: "4 / 3",  label: "Residential Interior · Mumbai" },
-  { src: "/projects-photos/IMG-20260407-WA0242.jpg", alt: "Kitchen and dining - Mumbai",           ratio: "4 / 3",  label: "Kitchen & Dining · Mumbai" },
-  { src: "/projects-photos/IMG-20260407-WA0243.jpg", alt: "Bedroom design - Mumbai",       ratio: "4 / 3",  label: "Bedroom Design · Mumbai" },
+  { src: "/projects-photos/rishi-staging-03.jpg",  alt: "Living space design - Mumbai",   ratio: "1 / 1",  label: "Living Space · Mumbai" },
+  { src: "/projects-photos/rishi-staging-04.jpg", alt: "Residential interior - Mumbai", ratio: "4 / 3",  label: "Residential Interior · Mumbai" },
+  { src: "/projects-photos/pramod-02.jpg", alt: "Kitchen and dining - Mumbai",           ratio: "4 / 3",  label: "Kitchen & Dining · Mumbai" },
+  { src: "/projects-photos/pramod-03.jpg", alt: "Bedroom design - Mumbai",       ratio: "4 / 3",  label: "Bedroom Design · Mumbai" },
 ];
 
 function Card({ p, index }: { p: (typeof projects)[0]; index: number }) {

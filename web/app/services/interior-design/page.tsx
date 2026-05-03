@@ -76,7 +76,7 @@ export default function InteriorDesignPage() {
         {/* Hero image */}
         <div style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", position: "relative", height: "clamp(300px, 42vw, 600px)", overflow: "hidden", borderRadius: "10px" }}>
-            <Image src="/projects-photos/IMG-20250426-WA0024.jpg" alt="Interior design by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
+            <Image src="/projects-photos/rishi-staging-01.jpg" alt="Interior design by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
           </div>
         </div>
 
@@ -129,7 +129,7 @@ export default function InteriorDesignPage() {
         {/* Gallery */}
         <section style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-            {["/projects-photos/IMG-20250103-WA0006.jpg", "/projects-photos/IMG-20250426-WA0023.jpg", "/projects-photos/IMG-20260407-WA0242.jpg", "/projects-photos/IMG-20260407-WA0243.jpg"].map((src, i) => (
+            {["/projects-photos/rishi-staging-02.jpg", "/projects-photos/rishi-staging-03.jpg", "/projects-photos/pramod-02.jpg", "/projects-photos/pramod-03.jpg"].map((src, i) => (
               <div key={i} style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: "8px" }}>
                 <Image src={src} alt={`Interior design project ${i + 1}`} fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>

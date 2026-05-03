@@ -71,7 +71,7 @@ export default function ArchitecturePage() {
 
         <div style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", position: "relative", height: "clamp(300px, 42vw, 600px)", overflow: "hidden", borderRadius: "10px" }}>
-            <Image src="/projects-photos/IMG-20250103-WA0006.jpg" alt="Architecture by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
+            <Image src="/projects-photos/pramod-01.jpg" alt="Architecture by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
           </div>
         </div>
 

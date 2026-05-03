@@ -33,7 +33,7 @@ export default function TheCraftSection() {
 
           {/* LEFT */}
           <div>
-            <RevealImg src="/projects-photos/IMG-20250426-WA0024.jpg" alt="Luxury dining room" h="clamp(400px, 52vw, 720px)" delay={0} />
+            <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Luxury dining room" h="clamp(400px, 52vw, 720px)" delay={0} />
             <p style={{ fontSize: "14px", color: "rgba(240,236,228,0.7)", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "360px" }}>
               Creating structures that breathe. Our practice focuses on the core principles: light, air, and space.
               We aim to bring in the humane functionality together.
@@ -60,7 +60,7 @@ export default function TheCraftSection() {
               spaces with depth, balance, and intention.
             </motion.p>
 
-            <RevealImg src="/projects-photos/IMG-20250103-WA0006.jpg" alt="Contemporary living room" h="clamp(280px, 36vw, 520px)" delay={0.2} />
+            <RevealImg src="/projects-photos/rishi-staging-02.jpg" alt="Contemporary living room" h="clamp(280px, 36vw, 520px)" delay={0.2} />
 
             <p style={{ fontSize: "14px", color: "rgba(240,236,228,0.7)", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "400px" }}>
               Materiality is the primary language of Ranzospace. We source materials that are unique to
