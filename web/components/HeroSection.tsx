@@ -42,7 +42,7 @@ export default function HeroSection() {
           fontSize: "clamp(46px, 4.8vw, 76px)",
           fontWeight: 800, lineHeight: 1.08,
           letterSpacing: "-0.03em", color: "#fefefe",
-          maxWidth: "75%",
+          maxWidth: "clamp(280px, 100%, 85%)",
         }}>
           <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>
           <div>{LINE2.map(w => <Word key={w} word={w} />)}</div>
