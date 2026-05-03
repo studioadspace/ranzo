@@ -40,7 +40,7 @@ function ValueCard({ v, index }: { v: typeof values[0]; index: number }) {
       }}
     >
       <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "14px" }}>{v.num}</p>
-      <p style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, color: "#f0ece4", marginBottom: "12px", letterSpacing: "-0.02em" }}>{v.title}</p>
+      <p style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, color: "#fefefe", marginBottom: "12px", letterSpacing: "-0.02em" }}>{v.title}</p>
       <p style={{ fontSize: "clamp(14px, 1.05vw, 16px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.75 }}>{v.body}</p>
     </motion.div>
   );
@@ -76,7 +76,7 @@ export default function AboutPage() {
                   About Ranzospace
                 </motion.p>
                 <motion.h1
-                  style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+                  style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
                   initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -112,7 +112,7 @@ export default function AboutPage() {
               <div>
                 <motion.h2
                   ref={storyRef}
-                  style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#f0ece4", lineHeight: 1.12 }}
+                  style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
                   initial={{ opacity: 0, y: 20 }} animate={storyInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -188,7 +188,7 @@ export default function AboutPage() {
         {/* CTA */}
         <section style={{ padding: `0 ${PAD} 100px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontSize: "clamp(28px, 3vw, 52px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.025em", marginBottom: "24px" }}>
+            <p style={{ fontSize: "clamp(28px, 3vw, 52px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
               Ready to start something?
             </p>
             <Link href="/contact" style={{

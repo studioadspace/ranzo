@@ -39,7 +39,7 @@ export default function FurniturePage() {
               Services / Furniture & Décor
             </motion.p>
             <motion.h1
-              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "28px" }}
+              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "28px" }}
               initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -87,7 +87,7 @@ export default function FurniturePage() {
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   style={{ padding: "40px", border: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}
                 >
-                  <p style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, color: "#f0ece4", marginBottom: "20px", letterSpacing: "-0.01em" }}>{cat.title}</p>
+                  <p style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, color: "#fefefe", marginBottom: "20px", letterSpacing: "-0.01em" }}>{cat.title}</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                     {cat.items.map(item => (
                       <p key={item} style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, display: "flex", alignItems: "center", gap: "10px" }}>
@@ -107,7 +107,7 @@ export default function FurniturePage() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
               <div>
                 <p style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "20px" }}>Our Approach</p>
-                <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "24px" }}>
+                <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "24px" }}>
                   No catalogue browsing.<br />A curated edit.
                 </h2>
                 <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85 }}>
@@ -127,7 +127,7 @@ export default function FurniturePage() {
         </section>
 
         <section style={{ padding: `0 ${PAD} 100px`, textAlign: "center" }}>
-          <p style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.025em", marginBottom: "24px" }}>
+          <p style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
             Furnish your space right.
           </p>
           <Link href="/contact" style={{

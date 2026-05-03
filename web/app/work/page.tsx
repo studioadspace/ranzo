@@ -54,7 +54,7 @@ function ProjectCard({ p, index }: { p: typeof projects[0]; index: number }) {
           display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "28px",
         }}
       >
-        <p style={{ fontSize: "18px", fontWeight: 600, color: "#f0ece4", letterSpacing: "-0.01em", marginBottom: "4px" }}>{p.label}</p>
+        <p style={{ fontSize: "18px", fontWeight: 600, color: "#fefefe", letterSpacing: "-0.01em", marginBottom: "4px" }}>{p.label}</p>
         <p style={{ fontSize: "13px", color: "rgba(240,236,228,0.75)", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 400 }}>
           {p.location} · {p.area}
         </p>
@@ -99,7 +99,7 @@ export default function WorkPage() {
             </motion.p>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "40px" }}>
               <motion.h1
-                style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+                style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
                 initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               >

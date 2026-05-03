@@ -43,7 +43,7 @@ export default function TheCraftSection() {
           {/* RIGHT */}
           <div style={{ paddingTop: "56px" }}>
             <motion.h2
-              style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#f0ece4", marginBottom: "20px" }}
+              style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: "20px" }}
               initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >

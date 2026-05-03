@@ -15,7 +15,7 @@ const inputStyle = {
   borderRadius: "6px",
   padding: "14px 18px",
   fontSize: "15px",
-  color: "#f0ece4",
+  color: "#fefefe",
   fontFamily: "inherit",
   fontWeight: 300,
   outline: "none",
@@ -71,7 +71,7 @@ export default function ContactPage() {
               Let's Talk
             </motion.p>
             <motion.h1
-              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
               initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -96,13 +96,13 @@ export default function ContactPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
                 <div>
                   <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Email</p>
-                  <a href="mailto:info@ranzospace.in" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#f0ece4", fontWeight: 400, textDecoration: "none" }}>
+                  <a href="mailto:info@ranzospace.in" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     info@ranzospace.in
                   </a>
                 </div>
                 <div>
                   <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Phone</p>
-                  <a href="tel:+919699147145" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#f0ece4", fontWeight: 400, textDecoration: "none" }}>
+                  <a href="tel:+919699147145" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     +91 96991 47145
                   </a>
                 </div>
@@ -137,7 +137,7 @@ export default function ContactPage() {
                     transition={{ duration: 0.6 }}
                   >
                     <p style={{ fontSize: "48px", marginBottom: "24px" }}>✓</p>
-                    <h2 style={{ fontSize: "clamp(28px, 2.5vw, 40px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.02em", marginBottom: "16px" }}>
+                    <h2 style={{ fontSize: "clamp(28px, 2.5vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", marginBottom: "16px" }}>
                       Message received.
                     </h2>
                     <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.75 }}>

@@ -78,7 +78,7 @@ function ServiceRow({ s, index }: { s: typeof services[0]; index: number }) {
         padding: "60px", background: "#0e0e0c",
       }}>
         <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "16px" }}>{s.num}</p>
-        <h2 style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
+        <h2 style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
           {s.title}
         </h2>
         <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.7)", fontWeight: 400, fontStyle: "italic", marginBottom: "20px", letterSpacing: "0.01em" }}>
@@ -132,7 +132,7 @@ export default function ServicesPage() {
             </motion.p>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "40px" }}>
               <motion.h1
-                style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+                style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
                 initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
@@ -161,7 +161,7 @@ export default function ServicesPage() {
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "14px", padding: "60px" }}>
               <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "20px", textTransform: "uppercase" }}>Across All Services</p>
-              <h3 style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.02em", marginBottom: "20px", lineHeight: 1.2 }}>
+              <h3 style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", marginBottom: "20px", lineHeight: 1.2 }}>
                 Full on-site execution included.
               </h3>
               <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85, maxWidth: "600px", marginBottom: "36px" }}>
@@ -181,7 +181,7 @@ export default function ServicesPage() {
 
         {/* CTA */}
         <section style={{ padding: `0 ${PAD} 100px`, textAlign: "center" }}>
-          <p style={{ fontSize: "clamp(26px, 2.8vw, 48px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.025em", marginBottom: "24px" }}>
+          <p style={{ fontSize: "clamp(26px, 2.8vw, 48px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
             Have a project in mind?
           </p>
           <Link href="/contact" style={{

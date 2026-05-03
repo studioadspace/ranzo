@@ -61,7 +61,7 @@ export default function RecentWorksSection() {
     <section style={{ background: "#0e0e0c", padding: `0 ${PAD} 88px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
-          style={{ fontSize: "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#f0ece4", marginBottom: "24px", textAlign: "right" }}
+          style={{ fontSize: "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: "24px", textAlign: "right" }}
           initial={{ opacity: 0, x: 20 }} animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >

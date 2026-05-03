@@ -41,7 +41,7 @@ export default function HeroSection() {
         <h1 style={{
           fontSize: "clamp(46px, 4.8vw, 76px)",
           fontWeight: 800, lineHeight: 1.08,
-          letterSpacing: "-0.03em", color: "#f0ece4",
+          letterSpacing: "-0.03em", color: "#fefefe",
           maxWidth: "75%",
         }}>
           <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>

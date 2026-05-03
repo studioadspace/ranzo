@@ -57,7 +57,7 @@ export default function InteriorDesignPage() {
               Services / Interior Design
             </motion.p>
             <motion.h1
-              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#f0ece4", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "28px" }}
+              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "28px" }}
               initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -86,7 +86,7 @@ export default function InteriorDesignPage() {
             <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: "80px" }}>
               <div>
                 <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>What's included</p>
-                <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+                <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                   Everything.<br />End to end.
                 </h2>
               </div>
@@ -118,7 +118,7 @@ export default function InteriorDesignPage() {
                   style={{ padding: "28px 0", borderTop: "1px solid rgba(255,255,255,0.07)", paddingRight: "40px" }}
                 >
                   <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "14px" }}>{p.step}</p>
-                  <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", fontWeight: 600, color: "#f0ece4", marginBottom: "10px", letterSpacing: "-0.01em" }}>{p.title}</p>
+                  <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", fontWeight: 600, color: "#fefefe", marginBottom: "10px", letterSpacing: "-0.01em" }}>{p.title}</p>
                   <p style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.75 }}>{p.body}</p>
                 </motion.div>
               ))}
@@ -139,7 +139,7 @@ export default function InteriorDesignPage() {
 
         {/* CTA */}
         <section style={{ padding: `0 ${PAD} 100px`, textAlign: "center" }}>
-          <p style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#f0ece4", letterSpacing: "-0.025em", marginBottom: "24px" }}>
+          <p style={{ fontSize: "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
             Ready to redesign your space?
           </p>
           <Link href="/contact" style={{

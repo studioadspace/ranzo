@@ -74,7 +74,7 @@ export default function WhatWeDoSection() {
     <section style={{ background: "#0e0e0c", padding: `80px ${PAD}` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
-          style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#f0ece4", marginBottom: "8px" }}
+          style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: "8px" }}
           initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >

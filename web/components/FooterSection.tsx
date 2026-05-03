@@ -57,7 +57,7 @@ export default function FooterSection() {
           <div>
             <Image src="/logo.svg" alt="Ranzospace" width={100} height={25} style={{ marginBottom: "28px" }} />
             <motion.p
-              style={{ fontSize: "clamp(22px, 2vw, 32px)", fontWeight: 700, color: "#f0ece4", lineHeight: 1.25, marginBottom: "16px", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(22px, 2vw, 32px)", fontWeight: 700, color: "#fefefe", lineHeight: 1.25, marginBottom: "16px", letterSpacing: "-0.02em" }}
               initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65 }}
             >
