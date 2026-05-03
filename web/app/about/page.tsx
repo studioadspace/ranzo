@@ -101,7 +101,7 @@ export default function AboutPage() {
 
         {/* Full-width image */}
         <div style={{ position: "relative", height: "clamp(260px, 36vw, 520px)", overflow: "hidden" }}>
-          <Image src="/img14.jpeg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
+          <Image src="/projects-photos/IMG-20250103-WA0006.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.35)" }} />
         </div>
 

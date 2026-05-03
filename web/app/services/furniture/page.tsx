@@ -59,14 +59,14 @@ export default function FurniturePage() {
         <div style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
             <div style={{ position: "relative", height: "clamp(260px, 34vw, 500px)", overflow: "hidden", borderRadius: "10px" }}>
-              <Image src="/img11.jpeg" alt="Dining room furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
+              <Image src="/projects-photos/IMG-20250426-WA0024.jpg" alt="Dining room furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
             </div>
             <div style={{ display: "grid", gap: "12px" }}>
               <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/img9.jpeg" alt="Modular kitchen" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <Image src="/projects-photos/IMG-20260407-WA0242.jpg" alt="Modular kitchen" fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>
               <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/img13.jpeg" alt="Bedroom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <Image src="/projects-photos/IMG-20250103-WA0004.jpg" alt="Bedroom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>
             </div>
           </div>

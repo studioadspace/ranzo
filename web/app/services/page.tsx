@@ -17,7 +17,7 @@ const services = [
     slug: "interior-design",
     tagline: "Full-home & commercial interiors",
     body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage - designed as a unified whole.",
-    img: "/img18.jpeg",
+    img: "/projects-photos/IMG-20250426-WA0024.jpg",
     tags: ["Residential", "Commercial", "Full-Home"],
   },
   {
@@ -26,7 +26,7 @@ const services = [
     slug: "architecture",
     tagline: "Architecture & space planning",
     body: "From initial concept to construction documentation. We shape volumes, light, and circulation before a single material is chosen.",
-    img: "/img14.jpeg",
+    img: "/projects-photos/IMG-20250103-WA0006.jpg",
     tags: ["New Build", "Renovation", "Space Planning"],
   },
   {
@@ -35,7 +35,7 @@ const services = [
     slug: "furniture",
     tagline: "Modular furniture & curated décor",
     body: "Curated furniture selection and smart décor solutions - sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
-    img: "/img11.jpeg",
+    img: "/projects-photos/IMG-20250426-WA0023.jpg",
     tags: ["Modular", "Custom", "Sourcing"],
   },
 ];
