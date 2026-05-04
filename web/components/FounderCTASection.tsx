@@ -12,7 +12,7 @@ export default function FounderCTASection() {
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section style={{ padding: isMobile ? `0 20px 64px` : `0 ${PAD} 88px`, background: "#0e0e0c" }}>
+    <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px`, background: "#0e0e0c" }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.div
           ref={ref}

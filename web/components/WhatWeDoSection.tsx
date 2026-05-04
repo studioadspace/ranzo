@@ -74,7 +74,7 @@ export default function WhatWeDoSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "64px 20px" : `80px ${PAD}` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "48px 20px" : `80px ${PAD}` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
           style={{ fontSize: isMobile ? "clamp(28px, 9vw, 40px)" : "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "4px" : "8px" }}

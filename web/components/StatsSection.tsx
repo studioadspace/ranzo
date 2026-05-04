@@ -39,7 +39,7 @@ export default function StatsSection() {
   };
 
   return (
-    <section ref={ref} style={{ background: "#0e0e0c", padding: isMobile ? "52px 20px 48px" : `70px ${PAD} 60px` }}>
+    <section ref={ref} style={{ background: "#0e0e0c", padding: isMobile ? "32px 20px 20px" : `70px ${PAD} 60px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
 
         <motion.p
@@ -50,7 +50,7 @@ export default function StatsSection() {
         </motion.p>
 
         <motion.p
-          style={{ fontSize: isMobile ? "15px" : "clamp(17px, 1.1vw, 19px)", fontWeight: 300, color: "#fefefe", lineHeight: 1.85, maxWidth: isMobile ? "100%" : "540px", marginBottom: isMobile ? "44px" : "60px" }}
+          style={{ fontSize: isMobile ? "15px" : "clamp(17px, 1.1vw, 19px)", fontWeight: 300, color: "#fefefe", lineHeight: 1.85, maxWidth: isMobile ? "100%" : "540px", marginBottom: isMobile ? "28px" : "60px" }}
           initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.1 }}
         >
           We don't design for photographs. We design for living. At Ranzospace, every space is shaped
@@ -118,7 +118,7 @@ export default function StatsSection() {
         )}
 
         <motion.div
-          style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginTop: isMobile ? "44px" : "60px" }}
+          style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginTop: isMobile ? "20px" : "60px" }}
           initial={{ scaleX: 0, originX: 0 }} animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 1.0, delay: 0.5 }}
         />

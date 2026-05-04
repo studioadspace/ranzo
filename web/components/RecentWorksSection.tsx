@@ -74,7 +74,7 @@ export default function RecentWorksSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 64px" : `0 ${PAD} 88px` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 48px" : `0 ${PAD} 88px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
           style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: "16px", textAlign: "right" }}

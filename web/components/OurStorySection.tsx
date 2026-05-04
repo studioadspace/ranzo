@@ -22,7 +22,7 @@ export default function OurStorySection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 64px" : `0 ${PAD} 88px` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 48px" : `0 ${PAD} 88px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <div style={{
           display: "grid",

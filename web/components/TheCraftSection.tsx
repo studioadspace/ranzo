@@ -43,7 +43,7 @@ export default function TheCraftSection() {
 
   if (isMobile) {
     return (
-      <section style={{ background: "#0e0e0c", padding: "0 0 72px" }}>
+      <section style={{ background: "#0e0e0c", padding: "0 0 48px" }}>
         {/* Heading + text — whileInView so they're self-contained, not tied to a downstream ref */}
         <div style={{ padding: "0 20px 32px" }}>
           <motion.h2
