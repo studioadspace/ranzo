@@ -36,7 +36,7 @@ export default function HeroSection() {
       {/* Heading row */}
       <div style={{
         display: "flex",
-        alignItems: isMobile ? "flex-start" : "flex-start",
+        alignItems: isMobile ? "flex-end" : "flex-start",
         justifyContent: "space-between",
         paddingTop: isMobile ? "100px" : "clamp(80px, 12vw, 120px)",
         paddingBottom: isMobile ? "20px" : "clamp(20px, 3vw, 28px)",

@@ -1,10 +1,16 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function CustomCursor() {
-  const isMobile = useBreakpoint(768);
+  // Detect touch/coarse pointer — covers phones, tablets, and mobile browsers
+  // on any screen size. Width-based breakpoints miss desktop Chrome DevTools mobile mode.
+  const [isTouch, setIsTouch] = useState(true);
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
+
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const dotX = useMotionValue(-100);
@@ -36,8 +42,8 @@ export default function CustomCursor() {
       ringRef.current?.classList.remove("scale-[2.5]", "border-[var(--accent)]", "bg-[rgba(248,147,30,0.08)]");
     };
 
-    // Only attach event listeners on desktop
-    if (!isMobile) {
+    // Only attach on actual pointer devices (not touch)
+    if (!isTouch) {
       window.addEventListener("mousemove", move);
       window.addEventListener("mouseover", over);
       window.addEventListener("mouseout", out);
@@ -47,10 +53,10 @@ export default function CustomCursor() {
         window.removeEventListener("mouseout", out);
       };
     }
-  }, [cursorX, cursorY, dotX, dotY, isMobile]);
+  }, [cursorX, cursorY, dotX, dotY, isTouch]);
 
-  // Don't render cursor follower on mobile
-  if (isMobile) return null;
+  // Never render on touch/coarse-pointer devices
+  if (isTouch) return null;
 
   return (
     <>

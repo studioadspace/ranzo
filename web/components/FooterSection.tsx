@@ -52,65 +52,86 @@ export default function FooterSection() {
       </div>
 
       {/* CTA + footer columns */}
-      <div ref={ref} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: isMobile ? "48px 20px 40px" : `60px ${PAD}` }}>
-        <div style={{
-          maxWidth: MAX_W, margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-          gap: isMobile ? "40px" : "48px",
-          alignItems: "start",
-        }}>
-
-          {/* Logo + CTA */}
-          <div>
-            <Image src="/logo.svg" alt="Ranzospace" width={88} height={22} style={{ marginBottom: "24px" }} />
-            <motion.p
-              style={{ fontSize: isMobile ? "22px" : "clamp(22px, 2vw, 32px)", fontWeight: 700, color: "#fefefe", lineHeight: 1.25, marginBottom: "16px", letterSpacing: "-0.02em" }}
-              initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.65 }}
-            >
+      {isMobile ? (
+        /* Mobile: fully centred single-column layout */
+        <div ref={ref} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "56px 24px 40px", textAlign: "center" }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65 }}>
+            <Image src="/logo.svg" alt="Ranzospace" width={120} height={30} style={{ margin: "0 auto 36px" }} />
+            <p style={{ fontSize: "28px", fontWeight: 700, color: "#fefefe", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Would like to talk<br />about a project?
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.55, delay: 0.15 }}
-            >
-              <Link href="/contact" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
-                Get in touch →
-              </Link>
-            </motion.div>
-          </div>
+            </p>
+            <Link href="/contact" style={{ fontSize: "16px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
+              Get in touch →
+            </Link>
+          </motion.div>
 
-          {/* Navigation */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.1 }}
-          >
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Navigate</p>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.12 }}
+            style={{ marginTop: "48px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Contact</p>
             {["About", "Work", "Services", "Contact"].map(link => (
-              <div key={link} style={{ marginBottom: "12px" }}>
-                <Link href={`/${link.toLowerCase()}`} style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, textDecoration: "none" }}>
+              <div key={link} style={{ marginBottom: "20px" }}>
+                <Link href={`/${link.toLowerCase()}`} style={{ fontSize: "18px", color: "#fefefe", fontWeight: 300, textDecoration: "none" }}>
                   {link}
                 </Link>
               </div>
             ))}
           </motion.div>
 
-          {/* Reach Us */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.18 }}
-          >
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
-            <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>info@ranzospace.in</p>
-            <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>+91 96991 47145</p>
-            <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "20px", lineHeight: 1.6 }}>Mumbai, India</p>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.22 }}
+            style={{ marginTop: "40px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Reach Us</p>
+            <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>info@ranzospace.in</p>
+            <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>+91 96991 47145</p>
+            <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>Mumbai, India</p>
           </motion.div>
         </div>
-      </div>
+      ) : (
+        /* Desktop: 3-column grid */
+        <div ref={ref} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: `60px ${PAD}` }}>
+          <div style={{
+            maxWidth: MAX_W, margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr",
+            gap: "48px",
+            alignItems: "start",
+          }}>
+            <div>
+              <Image src="/logo.svg" alt="Ranzospace" width={88} height={22} style={{ marginBottom: "24px" }} />
+              <motion.p
+                style={{ fontSize: "clamp(22px, 2vw, 32px)", fontWeight: 700, color: "#fefefe", lineHeight: 1.25, marginBottom: "16px", letterSpacing: "-0.02em" }}
+                initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.65 }}
+              >
+                Would like to talk<br />about a project?
+              </motion.p>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.15 }}>
+                <Link href="/contact" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
+                  Get in touch →
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.1 }}>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Navigate</p>
+              {["About", "Work", "Services", "Contact"].map(link => (
+                <div key={link} style={{ marginBottom: "12px" }}>
+                  <Link href={`/${link.toLowerCase()}`} style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, textDecoration: "none" }}>{link}</Link>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.18 }}>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
+              <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>info@ranzospace.in</p>
+              <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>+91 96991 47145</p>
+              <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "20px", lineHeight: 1.6 }}>Mumbai, India</p>
+            </motion.div>
+          </div>
+        </div>
+      )}
 
       {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: isMobile ? `14px 20px` : `16px ${PAD}`, display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? "4px" : "0" }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: isMobile ? `14px 20px` : `16px ${PAD}`, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>© 2025 Ranzospace. All rights reserved.</p>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>ranzospace.in</p>
       </div>
