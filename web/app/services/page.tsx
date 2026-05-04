@@ -17,7 +17,7 @@ const services = [
     slug: "interior-design",
     tagline: "Full-home & commercial interiors",
     body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage - designed as a unified whole.",
-    img: "/projects-photos/rishi-staging-05.jpg",
+    img: "/projects-photos/pramod-02.jpg",
     tags: ["Residential", "Commercial", "Full-Home"],
   },
   {
@@ -35,7 +35,7 @@ const services = [
     slug: "furniture",
     tagline: "Modular furniture & curated décor",
     body: "Curated furniture selection and smart décor solutions - sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
-    img: "/projects-photos/rishi-staging-06.jpg",
+    img: "/projects-photos/rishi-photo-04.jpg",
     tags: ["Modular", "Custom", "Sourcing"],
   },
 ];

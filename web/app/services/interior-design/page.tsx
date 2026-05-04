@@ -129,7 +129,7 @@ export default function InteriorDesignPage() {
         {/* Gallery */}
         <section style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-            {["/projects-photos/rishi-staging-02.jpg", "/projects-photos/rishi-staging-03.jpg", "/projects-photos/pramod-02.jpg", "/projects-photos/pramod-03.jpg"].map((src, i) => (
+            {["/projects-photos/rishi-staging-02.jpg", "/projects-photos/rishi-staging-03.jpg", "/projects-photos/pramod-02.jpg", "/projects-photos/rishi-staging-04.jpg"].map((src, i) => (
               <div key={i} style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: "8px" }}>
                 <Image src={src} alt={`Interior design project ${i + 1}`} fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>

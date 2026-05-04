@@ -12,20 +12,14 @@ const PAD = "48px";
 const categories = ["All", "Residential", "Commercial", "Kitchen", "Bedroom"];
 
 const projects = [
-  { src: "/projects-photos/rishi-staging-01.jpg", alt: "Luxury living room - Bandra", label: "Living Room", location: "Bandra, Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
-  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Living room with dining - Andheri", label: "Living & Dining", location: "Andheri, Mumbai", category: "Residential", area: "2,100 sq ft", span: "" },
-  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Dining space - Powai", label: "Dining Room", location: "Powai, Mumbai", category: "Residential", area: "950 sq ft", span: "" },
-  { src: "/projects-photos/rishi-staging-04.jpg", alt: "Kitchen and living - Mulund", label: "Kitchen & Living", location: "Mulund, Mumbai", category: "Kitchen", area: "410 sq ft", span: "" },
-  { src: "/projects-photos/rishi-staging-05.jpg", alt: "Modern kitchen - Ghatkopar", label: "Modern Kitchen", location: "Ghatkopar, Mumbai", category: "Kitchen", area: "480 sq ft", span: "" },
-  { src: "/projects-photos/rishi-staging-06.jpg", alt: "Open plan living - Thane", label: "Open Plan Living", location: "Thane", category: "Residential", area: "1,200 sq ft", span: "col-span-2" },
-  { src: "/projects-photos/pramod-01.jpg", alt: "Residential interior - Bandra", label: "Residential Interior", location: "Bandra, Mumbai", category: "Residential", area: "1,500 sq ft", span: "" },
-  { src: "/projects-photos/pramod-02.jpg", alt: "Commercial space - Worli", label: "Commercial Space", location: "Worli, Mumbai", category: "Commercial", area: "2,500 sq ft", span: "" },
-  { src: "/projects-photos/pramod-03.jpg", alt: "Bedroom design - Dadar", label: "Bedroom Design", location: "Dadar, Mumbai", category: "Bedroom", area: "400 sq ft", span: "" },
-  { src: "/projects-photos/pramod-04.jpg", alt: "Kitchen renovation - Colaba", label: "Kitchen Renovation", location: "Colaba, Mumbai", category: "Kitchen", area: "320 sq ft", span: "" },
-  { src: "/projects-photos/rishi-photo-01.jpg", alt: "Master suite - Powai", label: "Master Suite", location: "Powai, Mumbai", category: "Bedroom", area: "600 sq ft", span: "" },
-  { src: "/projects-photos/rishi-photo-02.jpg", alt: "Contemporary living - Bandra", label: "Contemporary Living", location: "Bandra, Mumbai", category: "Residential", area: "2,200 sq ft", span: "col-span-2" },
-  { src: "/projects-photos/rishi-photo-03.jpg", alt: "Dining space - Andheri", label: "Dining Experience", location: "Andheri, Mumbai", category: "Residential", area: "1,100 sq ft", span: "" },
-  { src: "/projects-photos/rishi-photo-04.jpg", alt: "Studio apartment - Mumbai", label: "Studio Apartment", location: "Mumbai Central", category: "Residential", area: "500 sq ft", span: "" },
+  { src: "/projects-photos/pramod-02.jpg",        alt: "Living room - Pramod Residence", label: "Living Room", location: "Mumbai", category: "Residential", area: "1,800 sq ft", span: "col-span-2" },
+  { src: "/projects-photos/rishi-staging-01.jpg", alt: "Foyer - Rishi Residence",        label: "Foyer & Entrance", location: "Mumbai", category: "Residential", area: "120 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Dining room - Rishi Residence",  label: "Dining Room", location: "Mumbai", category: "Residential", area: "380 sq ft", span: "" },
+  { src: "/projects-photos/pramod-01.jpg",        alt: "Living room detail - Pramod Residence", label: "Living Room Detail", location: "Mumbai", category: "Residential", area: "1,800 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with study - Rishi Residence", label: "Bedroom & Study", location: "Mumbai", category: "Bedroom", area: "320 sq ft", span: "" },
+  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom - Rishi Residence", label: "Master Bedroom", location: "Mumbai", category: "Bedroom", area: "280 sq ft", span: "col-span-2" },
+  { src: "/projects-photos/rishi-photo-04.jpg",   alt: "Custom wardrobe - Rishi Residence", label: "Custom Wardrobe", location: "Mumbai", category: "Bedroom", area: "—", span: "" },
+  { src: "/projects-photos/rishi-photo-02.jpg",   alt: "Bar unit - Rishi Residence",     label: "Bar Unit", location: "Mumbai", category: "Residential", area: "—", span: "" },
 ];
 
 function ProjectCard({ p, index }: { p: typeof projects[0]; index: number }) {

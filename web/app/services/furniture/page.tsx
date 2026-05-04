@@ -59,14 +59,14 @@ export default function FurniturePage() {
         <div style={{ padding: `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
             <div style={{ position: "relative", height: "clamp(260px, 34vw, 500px)", overflow: "hidden", borderRadius: "10px" }}>
-              <Image src="/projects-photos/rishi-staging-04.jpg" alt="Dining room furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
+              <Image src="/projects-photos/rishi-photo-04.jpg" alt="Custom wardrobe joinery" fill style={{ objectFit: "cover" }} sizes="50vw" />
             </div>
             <div style={{ display: "grid", gap: "12px" }}>
               <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/projects-photos/rishi-staging-05.jpg" alt="Modular kitchen" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <Image src="/projects-photos/rishi-staging-04.jpg" alt="Bedroom with custom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>
               <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/projects-photos/rishi-staging-06.jpg" alt="Bedroom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <Image src="/projects-photos/rishi-photo-02.jpg" alt="Custom bar unit" fill style={{ objectFit: "cover" }} sizes="50vw" />
               </div>
             </div>
           </div>
