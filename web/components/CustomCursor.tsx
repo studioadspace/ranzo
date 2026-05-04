@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function CustomCursor() {
+  const isMobile = useBreakpoint(768);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const dotX = useMotionValue(-100);
@@ -34,15 +36,21 @@ export default function CustomCursor() {
       ringRef.current?.classList.remove("scale-[2.5]", "border-[var(--accent)]", "bg-[rgba(248,147,30,0.08)]");
     };
 
-    window.addEventListener("mousemove", move);
-    window.addEventListener("mouseover", over);
-    window.addEventListener("mouseout", out);
-    return () => {
-      window.removeEventListener("mousemove", move);
-      window.removeEventListener("mouseover", over);
-      window.removeEventListener("mouseout", out);
-    };
-  }, [cursorX, cursorY, dotX, dotY]);
+    // Only attach event listeners on desktop
+    if (!isMobile) {
+      window.addEventListener("mousemove", move);
+      window.addEventListener("mouseover", over);
+      window.addEventListener("mouseout", out);
+      return () => {
+        window.removeEventListener("mousemove", move);
+        window.removeEventListener("mouseover", over);
+        window.removeEventListener("mouseout", out);
+      };
+    }
+  }, [cursorX, cursorY, dotX, dotY, isMobile]);
+
+  // Don't render cursor follower on mobile
+  if (isMobile) return null;
 
   return (
     <>

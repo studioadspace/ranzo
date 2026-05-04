@@ -7,7 +7,9 @@
       "Bash(npm install *)",
       "Bash(npx tsc *)",
       "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\(json.dumps\\(p.get\\('scripts', {}\\), indent=2\\)\\)\")",
-      "Bash(xargs -I {} basename \"{}\")"
+      "Bash(xargs -I {} basename \"{}\")",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
     ]
   }
 }
