@@ -4,6 +4,7 @@
   --bg: #0e0e0c;
   --bg-2: #141410;
   --text: #fefefe;
+  --text-secondary: #c8c4bc;
   --text-muted: #6b6860;
   --accent: #F8931E;
   --border: rgba(255,255,255,0.06);
@@ -27,6 +28,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure no text renders with opacity below 100% */
+p, h1, h2, h3, h4, h5, h6, span, a, button, li, label {
+  opacity: 1;
+}
+
 ::selection {
   background: var(--accent);
   color: #0e0e0c;
@@ -35,3 +41,20 @@ body {
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent text size inflation on iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}

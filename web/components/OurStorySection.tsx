@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -16,16 +17,22 @@ const lines = [
 ];
 
 export default function OurStorySection() {
+  const isMobile = useBreakpoint(768);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: `0 ${PAD} 88px` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 64px" : `0 ${PAD} 88px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: "80px", alignItems: "start" }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "220px 1fr",
+          gap: isMobile ? "24px" : "80px",
+          alignItems: "start",
+        }}>
 
           <motion.h2
-            style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
+            style={{ fontSize: isMobile ? "clamp(28px, 9vw, 40px)" : "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
@@ -33,16 +40,18 @@ export default function OurStorySection() {
             Our<br />Story
           </motion.h2>
 
-          <div ref={ref} style={{ maxWidth: "640px", paddingTop: "6px" }}>
+          <div ref={ref} style={{ maxWidth: "640px", paddingTop: isMobile ? "0" : "6px" }}>
             {lines.map((line, i) => (
               <div key={i} style={{ overflow: "hidden" }}>
                 <motion.p
                   style={{
-                    fontSize: line.bold ? "clamp(16px, 1.3vw, 20px)" : "clamp(15px, 1.1vw, 17px)",
+                    fontSize: line.bold
+                      ? (isMobile ? "16px" : "clamp(16px, 1.3vw, 20px)")
+                      : (isMobile ? "15px" : "clamp(15px, 1.1vw, 17px)"),
                     fontWeight: line.bold ? 600 : 300,
-                    color: line.bold ? "rgba(240,236,228,0.88)" : "rgba(240,236,228,0.75)",
+                    color: line.bold ? "#fefefe" : "#c8c4bc",
                     lineHeight: line.text ? 1.85 : 0,
-                    height: line.text ? "auto" : "22px",
+                    height: line.text ? "auto" : isMobile ? "16px" : "22px",
                   }}
                   initial={{ y: "110%", opacity: 0 }}
                   animate={inView ? { y: "0%", opacity: 1 } : {}}

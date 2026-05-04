@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const LINE1 = ["Mumbai's", "most", "loved"];
 const LINE2 = ["architecture", "&", "interior"];
@@ -25,6 +26,7 @@ function Word({ word }: { word: string }) {
 
 export default function HeroSection() {
   wordIdx = 0;
+  const isMobile = useBreakpoint(768);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
@@ -33,53 +35,71 @@ export default function HeroSection() {
     <section ref={ref} style={{ background: "#0e0e0c", overflow: "hidden" }}>
       {/* Heading row */}
       <div style={{
-        display: "flex", alignItems: "flex-start", justifyContent: "space-between",
-        paddingTop: "clamp(80px, 12vw, 120px)", paddingBottom: "clamp(20px, 3vw, 28px)",
-        paddingLeft: "clamp(16px, 5vw, 48px)", paddingRight: "clamp(16px, 5vw, 48px)",
+        display: "flex",
+        alignItems: isMobile ? "flex-start" : "flex-start",
+        justifyContent: "space-between",
+        paddingTop: isMobile ? "100px" : "clamp(80px, 12vw, 120px)",
+        paddingBottom: isMobile ? "20px" : "clamp(20px, 3vw, 28px)",
+        paddingLeft: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
+        paddingRight: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         maxWidth: "1440px", margin: "0 auto",
       }}>
         <h1 style={{
-          fontSize: "clamp(46px, 4.8vw, 76px)",
-          fontWeight: 800, lineHeight: 1.08,
+          fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(46px, 4.8vw, 76px)",
+          fontWeight: 800, lineHeight: 1.05,
           letterSpacing: "-0.03em", color: "#fefefe",
-          maxWidth: "clamp(280px, 100%, 85%)",
+          maxWidth: isMobile ? "100%" : "clamp(280px, 100%, 85%)",
         }}>
           <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>
           <div>{LINE2.map(w => <Word key={w} word={w} />)}</div>
           <div>{LINE3.map(w => <Word key={w} word={w} />)}</div>
         </h1>
 
-        <motion.div
-          style={{ textAlign: "right", paddingTop: "6px" }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.9 }}
-        >
-          <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "8px" }}>Since 2018</p>
-          <p style={{ fontSize: "28px", fontWeight: 300, color: "rgba(240,236,228,0.75)", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
-            Architecture.<br />Design.<br />Furnitures.
-          </p>
-        </motion.div>
+        {!isMobile && (
+          <motion.div
+            style={{ textAlign: "right", paddingTop: "6px", flexShrink: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.9 }}
+          >
+            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "8px" }}>Since 2018</p>
+            <p style={{ fontSize: "28px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
+              Architecture.<br />Design.<br />Furnitures.
+            </p>
+          </motion.div>
+        )}
+
+        {isMobile && (
+          <motion.div
+            style={{ flexShrink: 0, textAlign: "right", paddingTop: "4px" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.55, delay: 0.9 }}
+          >
+            <p style={{ fontSize: "9px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "6px" }}>Since 2018</p>
+            <p style={{ fontSize: "13px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
+              Architecture.<br />Design.<br />Furnitures.
+            </p>
+          </motion.div>
+        )}
       </div>
 
-      {/* Full-width hero video with fallback */}
+      {/* Full-width hero video */}
       <motion.div
-        style={{ y: imgY, overflow: "hidden" }}
+        style={{ y: isMobile ? 0 : imgY, overflow: "hidden" }}
         initial={{ opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.0, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div style={{ position: "relative", width: "100%", height: "clamp(280px, 48vw, 640px)", overflow: "hidden", background: "url(/img18.jpeg) center/cover" }}>
+        <div style={{
+          position: "relative", width: "100%",
+          height: isMobile ? "52vw" : "clamp(280px, 48vw, 640px)",
+          minHeight: isMobile ? "220px" : undefined,
+          overflow: "hidden", background: "url(/projects-photos/pramod-02.jpg) center/cover",
+        }}>
           <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{
-              position: "absolute", inset: 0,
-              width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: "center 30%",
-            }}
+            autoPlay muted loop playsInline
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
           >
             <source src="/hero.mp4" type="video/mp4" />
           </video>
