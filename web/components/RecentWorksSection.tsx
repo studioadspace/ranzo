@@ -36,20 +36,34 @@ function Card({ p, index, isMobile }: { p: (typeof projects)[0]; index: number; 
       >
         <Image src={p.src} alt={p.alt} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 50vw, 50vw" />
       </motion.div>
-      <motion.div
-        variants={{ hover: { opacity: 1 } }}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        style={{
+      {isMobile ? (
+        /* On mobile: label always visible, no hover needed */
+        <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to top, rgba(14,14,12,0.75) 0%, transparent 55%)",
-          display: "flex", alignItems: "flex-end", padding: isMobile ? "10px" : "20px",
-        }}
-      >
-        <p style={{ fontSize: isMobile ? "10px" : "13px", color: "#fefefe", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 500 }}>
-          {p.label}
-        </p>
-      </motion.div>
+          display: "flex", alignItems: "flex-end", padding: "10px",
+        }}>
+          <p style={{ fontSize: "10px", color: "#fefefe", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 500 }}>
+            {p.label}
+          </p>
+        </div>
+      ) : (
+        /* On desktop: label reveals on hover */
+        <motion.div
+          variants={{ hover: { opacity: 1 } }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to top, rgba(14,14,12,0.75) 0%, transparent 55%)",
+            display: "flex", alignItems: "flex-end", padding: "20px",
+          }}
+        >
+          <p style={{ fontSize: "13px", color: "#fefefe", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 500 }}>
+            {p.label}
+          </p>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
