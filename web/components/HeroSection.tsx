@@ -8,10 +8,10 @@ const LINE2 = ["architecture", "&", "interior"];
 const LINE3 = ["design", "studio"];
 
 let wordIdx = 0;
-function Word({ word }: { word: string }) {
+function Word({ word, overflowVisible = false }: { word: string; overflowVisible?: boolean }) {
   const i = wordIdx++;
   return (
-    <span style={{ display: "inline-block", overflow: "hidden", marginRight: "0.2em", verticalAlign: "bottom" }}>
+    <span style={{ display: "inline-block", overflow: overflowVisible ? "visible" : "hidden", marginRight: "0.2em", verticalAlign: "bottom" }}>
       <motion.span
         style={{ display: "inline-block" }}
         initial={{ y: "110%", opacity: 0 }}
@@ -38,8 +38,8 @@ export default function HeroSection() {
         display: "flex",
         alignItems: isMobile ? "flex-end" : "flex-start",
         justifyContent: "space-between",
-        paddingTop: isMobile ? "100px" : "clamp(80px, 12vw, 120px)",
-        paddingBottom: isMobile ? "20px" : "clamp(20px, 3vw, 28px)",
+        paddingTop: isMobile ? "100px" : "clamp(180px, 12vw, 120px)",
+        paddingBottom: isMobile ? "20px" : "clamp(120px, 3vw, 32px)",
         paddingLeft: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         paddingRight: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         maxWidth: "1440px", margin: "0 auto",
@@ -52,7 +52,7 @@ export default function HeroSection() {
         }}>
           <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>
           <div>{LINE2.map(w => <Word key={w} word={w} />)}</div>
-          <div>{LINE3.map(w => <Word key={w} word={w} />)}</div>
+          <div>{LINE3.map((w, idx) => <Word key={w} word={w} overflowVisible={idx === 0} />)}</div>
         </h1>
 
         {!isMobile && (

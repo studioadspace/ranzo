@@ -62,7 +62,7 @@ export default function CustomCursor() {
     <>
       <motion.div
         ref={ringRef}
-        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-white/30 pointer-events-none z-[9999] transition-all duration-300"
+        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-white/30 pointer-events-none z-[9999] transition-all duration-100"
         style={{ x: springX, y: springY }}
       />
       <motion.div
