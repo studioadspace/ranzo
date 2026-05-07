@@ -4,42 +4,19 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
-const PAD = "48px";
+const PAD = "clamp(16px, 5vw, 48px)";
 
-const inputStyle = {
-  width: "100%",
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.1)",
-  borderRadius: "6px",
-  padding: "14px 18px",
-  fontSize: "15px",
-  color: "#fefefe",
-  fontFamily: "inherit",
-  fontWeight: 300,
-  outline: "none",
-  boxSizing: "border-box" as const,
-  transition: "border-color 0.2s ease",
-};
-
-const labelStyle = {
-  display: "block",
-  fontSize: "11px",
-  fontWeight: 600,
-  color: "rgba(240,236,228,0.75)",
-  letterSpacing: "0.16em",
-  textTransform: "uppercase" as const,
-  marginBottom: "8px",
-};
-
-const interests = ["Full-Home Interior", "Architecture", "Modular Kitchen", "Furniture & Décor", "Commercial Space", "Other"];
+const interests = ["Full-Home Interior", "Architecture", "Modular Kitchen", "Furniture & Decor", "Commercial Space", "Other"];
 
 export default function ContactPage() {
+  const isMobile = useBreakpoint(768);
   const heroRef = useRef(null);
   const formRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
-  const formInView = useInView(formRef, { once: true, margin: "-40px" });
+  const formInView = useInView(formRef, { once: true, margin: isMobile ? "0px" : "-40px" });
 
   const [selected, setSelected] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
@@ -54,6 +31,31 @@ export default function ContactPage() {
     setSubmitted(true);
   };
 
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    background: "rgba(255,255,255,0.04)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: "6px",
+    padding: "14px 18px",
+    fontSize: "15px",
+    color: "#fefefe",
+    fontFamily: "inherit",
+    fontWeight: 300,
+    outline: "none",
+    boxSizing: "border-box",
+    transition: "border-color 0.2s ease",
+  };
+
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontSize: "11px",
+    fontWeight: 600,
+    color: "#c8c4bc",
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    marginBottom: "8px",
+  };
+
   return (
     <>
       <CustomCursor />
@@ -61,7 +63,7 @@ export default function ContactPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: `140px ${PAD} 80px` }}>
+        <section style={{ padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
@@ -71,7 +73,7 @@ export default function ContactPage() {
               Let's Talk
             </motion.p>
             <motion.h1
-              style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+              style={{ fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
               initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -81,49 +83,56 @@ export default function ContactPage() {
         </section>
 
         {/* Main content */}
-        <section style={{ padding: `0 ${PAD} 100px` }}>
-          <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "100px" }}>
+        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px` }}>
+          <div style={{
+            maxWidth: MAX_W,
+            margin: "0 auto",
+            display: isMobile ? "flex" : "grid",
+            flexDirection: isMobile ? "column" : undefined,
+            gridTemplateColumns: isMobile ? undefined : "1fr 1.6fr",
+            gap: isMobile ? "48px" : "100px",
+          }}>
 
-            {/* Left - contact info */}
+            {/* Contact info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
             >
-              <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.85, marginBottom: "52px" }}>
+              <p style={{ fontSize: isMobile ? "15px" : "clamp(15px, 1.2vw, 19px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "40px" }}>
                 Tell us about your project. We'll get back to you within 24 hours with an honest assessment of whether we're the right fit.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Email</p>
-                  <a href="mailto:info@ranzospace.in" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
+                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Email</p>
+                  <a href="mailto:info@ranzospace.in" style={{ fontSize: isMobile ? "16px" : "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     info@ranzospace.in
                   </a>
                 </div>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Phone</p>
-                  <a href="tel:+919699147145" style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
+                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Phone</p>
+                  <a href="tel:+919699147145" style={{ fontSize: isMobile ? "16px" : "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     +91 96991 47145
                   </a>
                 </div>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "10px" }}>Studio</p>
-                  <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.6)", fontWeight: 300, lineHeight: 1.65 }}>
+                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Studio</p>
+                  <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.65 }}>
                     Mumbai, India<br />
-                    <span style={{ fontSize: "13px", color: "rgba(240,236,228,0.6)" }}>ranzospace.in</span>
+                    <span style={{ fontSize: "13px" }}>ranzospace.in</span>
                   </p>
                 </div>
 
-                <div style={{ marginTop: "8px", paddingTop: "36px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "rgba(240,236,228,0.75)", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "16px" }}>Response time</p>
-                  <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300 }}>
+                <div style={{ paddingTop: "28px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>Response time</p>
+                  <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300 }}>
                     We respond to every inquiry within <strong style={{ color: "#F8931E", fontWeight: 600 }}>24 hours</strong>.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right - form */}
+            {/* Form */}
             <motion.div
               ref={formRef}
               initial={{ opacity: 0, y: 24 }} animate={formInView ? { opacity: 1, y: 0 } : {}}
@@ -137,17 +146,17 @@ export default function ContactPage() {
                     transition={{ duration: 0.6 }}
                   >
                     <p style={{ fontSize: "48px", marginBottom: "24px" }}>✓</p>
-                    <h2 style={{ fontSize: "clamp(28px, 2.5vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", marginBottom: "16px" }}>
+                    <h2 style={{ fontSize: isMobile ? "clamp(26px, 7vw, 36px)" : "clamp(28px, 2.5vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", marginBottom: "16px" }}>
                       Message received.
                     </h2>
-                    <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "rgba(240,236,228,0.75)", fontWeight: 300, lineHeight: 1.75 }}>
+                    <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75 }}>
                       We'll be in touch within 24 hours.
                     </p>
                   </motion.div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                  <div style={{ display: isMobile ? "flex" : "grid", flexDirection: isMobile ? "column" : undefined, gridTemplateColumns: isMobile ? undefined : "1fr 1fr", gap: "20px" }}>
                     <div>
                       <label style={labelStyle}>Name</label>
                       <input
@@ -193,9 +202,9 @@ export default function ContactPage() {
                             padding: "8px 18px",
                             border: `1px solid ${selected.includes(item) ? "#F8931E" : "rgba(255,255,255,0.12)"}`,
                             background: selected.includes(item) ? "rgba(248,147,30,0.12)" : "transparent",
-                            color: selected.includes(item) ? "#F8931E" : "rgba(240,236,228,0.75)",
+                            color: selected.includes(item) ? "#F8931E" : "#c8c4bc",
                             borderRadius: "100px", fontSize: "13px", fontWeight: 500,
-                            cursor: "none", transition: "all 0.2s ease", fontFamily: "inherit",
+                            cursor: "pointer", transition: "all 0.2s ease", fontFamily: "inherit",
                           }}
                         >
                           {item}
@@ -219,8 +228,9 @@ export default function ContactPage() {
                     style={{
                       padding: "16px 40px", background: "#F8931E", border: "none",
                       color: "#0e0e0c", fontWeight: 700, fontSize: "15px",
-                      borderRadius: "6px", cursor: "none", fontFamily: "inherit",
-                      alignSelf: "flex-start", letterSpacing: "0.01em",
+                      borderRadius: "6px", cursor: "pointer", fontFamily: "inherit",
+                      alignSelf: isMobile ? "stretch" : "flex-start",
+                      letterSpacing: "0.01em",
                       transition: "opacity 0.2s ease",
                     }}
                   >
