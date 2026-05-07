@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useLightbox } from "@/components/LightboxProvider";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -37,6 +38,7 @@ const inclusions = [
 
 export default function InteriorDesignPage() {
   const isMobile = useBreakpoint(768);
+  const { openLightbox } = useLightbox();
   const heroRef = useRef(null);
   const inclusionsRef = useRef(null);
   const processRef = useRef(null);
@@ -162,9 +164,19 @@ export default function InteriorDesignPage() {
         {/* Gallery */}
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? "6px" : "12px" }}>
-            {["/projects-photos/rishi-staging-02.jpg", "/projects-photos/rishi-staging-03.jpg", "/projects-photos/pramod-02.jpg", "/projects-photos/rishi-staging-04.jpg"].map((src, i) => (
-              <div key={i} style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: isMobile ? "4px" : "8px" }}>
-                <Image src={src} alt={`Interior design project ${i + 1}`} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 50vw, 50vw" />
+            {[
+              { src: "/projects-photos/rishi-staging-02.jpg", alt: "Dining room interior design" },
+              { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom interior design" },
+              { src: "/projects-photos/pramod-02.jpg",        alt: "Living room interior design" },
+              { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with study interior design" },
+            ].map((img, i) => (
+              <div
+                key={i}
+                onClick={() => openLightbox(img.src, img.alt)}
+                data-cursor="hover"
+                style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", borderRadius: isMobile ? "4px" : "8px", cursor: "pointer" }}
+              >
+                <Image src={img.src} alt={img.alt} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 50vw, 50vw" />
               </div>
             ))}
           </div>

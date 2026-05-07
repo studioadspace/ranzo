@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useLightbox } from "@/components/LightboxProvider";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -17,13 +18,16 @@ const projects = [
 function Card({ p, index, isMobile }: { p: (typeof projects)[0]; index: number; isMobile: boolean }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
+  const { openLightbox } = useLightbox();
   const isRightColumn = index % 2 === 1;
   const marginTop = !isMobile && isRightColumn && index > 0 ? "32px" : undefined;
 
   return (
     <motion.div
       ref={ref}
-      style={{ aspectRatio: isMobile ? "4 / 3" : p.ratio, overflow: "hidden", position: "relative", cursor: "none", marginTop }}
+      onClick={() => openLightbox(p.src, p.alt)}
+      data-cursor="hover"
+      style={{ aspectRatio: isMobile ? "4 / 3" : p.ratio, overflow: "hidden", position: "relative", cursor: "pointer", marginTop }}
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}

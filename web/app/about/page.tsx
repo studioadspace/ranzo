@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useLightbox } from "@/components/LightboxProvider";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -19,11 +20,10 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2018", event: "Ranzospace founded in Mumbai by Ar. Manas Makwana" },
-  { year: "2020", event: "First commercial project. A 4,500 sq ft workspace in Lower Parel" },
-  { year: "2022", event: "Launched India's first AI-powered interior simulation offering" },
-  { year: "2024", event: "100+ completed projects across Mumbai" },
-  { year: "2025", event: "Expanded to architecture and structural services" },
+  { year: "2018", event: "Started with architecture and interiors" },
+  { year: "2020", event: "Introduced AI design and simulation" },
+  { year: "2022", event: "Expanded into large scale projects" },
+  { year: "2024", event: "Moved into the premium market" },
 ];
 
 function ValueCard({ v, index, isMobile }: { v: typeof values[0]; index: number; isMobile: boolean }) {
@@ -49,11 +49,10 @@ function ValueCard({ v, index, isMobile }: { v: typeof values[0]; index: number;
 
 export default function AboutPage() {
   const isMobile = useBreakpoint(768);
-  const heroRef = useRef(null);
+  const { openLightbox } = useLightbox();
   const storyRef = useRef(null);
   const timelineRef = useRef(null);
   const founderRef = useRef(null);
-  const heroInView = useInView(heroRef, { once: true });
   const storyInView = useInView(storyRef, { once: true, margin: isMobile ? "0px" : "-40px" });
   const timelineInView = useInView(timelineRef, { once: true, margin: isMobile ? "0px" : "-40px" });
   const founderInView = useInView(founderRef, { once: true, margin: isMobile ? "0px" : "-40px" });
@@ -64,41 +63,42 @@ export default function AboutPage() {
       <Navbar />
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
-        {/* Hero */}
+        {/* Hero — above the fold, animate on mount (no useInView needed) */}
         <section style={{
-          padding: isMobile
-            ? `100px 20px 48px`
-            : `140px ${PAD} 80px`,
+          padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px`,
           borderBottom: "1px solid rgba(255,255,255,0.05)",
         }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
                 <motion.p
-                  ref={heroRef}
                   style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
-                  initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
                   About Ranzospace
                 </motion.p>
                 <motion.h1
                   style={{ fontSize: "clamp(44px, 11vw, 64px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "24px" }}
-                  initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
                   A studio built<br />on conviction.
                 </motion.h1>
                 <motion.p
                   style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}
-                  initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
                   Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who are done with average. People who want spaces that genuinely reflect how they live, not just how spaces look on Instagram.
                 </motion.p>
                 <motion.p
                   style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginTop: "16px" }}
-                  initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: 0.28 }}
                 >
                   Founded in 2018. 100+ projects. One north star: design that lasts.
@@ -108,23 +108,25 @@ export default function AboutPage() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end" }}>
                 <div>
                   <motion.p
-                    ref={heroRef}
                     style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
-                    initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                   >
                     About Ranzospace
                   </motion.p>
                   <motion.h1
                     style={{ fontSize: "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05 }}
-                    initial={{ opacity: 0, y: 24 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                   >
                     A studio built<br />on conviction.
                   </motion.h1>
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.25 }}
                   style={{ paddingBottom: "8px" }}
                 >
@@ -140,8 +142,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Full-width image */}
-        <div style={{ position: "relative", height: isMobile ? "56vw" : "clamp(260px, 36vw, 520px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden" }}>
+        {/* Full-width image — clickable lightbox */}
+        <div
+          onClick={() => openLightbox("/projects-photos/pramod-02.jpg", "Ranzospace designed living room")}
+          data-cursor="hover"
+          style={{ position: "relative", height: isMobile ? "56vw" : "clamp(260px, 36vw, 520px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden", cursor: "pointer" }}
+        >
           <Image src="/projects-photos/pramod-02.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.35)" }} />
         </div>
@@ -193,7 +199,7 @@ export default function AboutPage() {
             >
               Our Journey
             </motion.p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               {timeline.map((t, i) => (
                 <motion.div
                   key={i}

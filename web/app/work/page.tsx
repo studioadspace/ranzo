@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useLightbox } from "@/components/LightboxProvider";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -27,6 +28,7 @@ function ProjectCard({ p, index, isMobile }: { p: typeof projects[0]; index: num
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: isMobile ? "0px" : "-40px" });
   const [hovered, setHovered] = useState(false);
+  const { openLightbox } = useLightbox();
 
   return (
     <motion.div
@@ -36,7 +38,9 @@ function ProjectCard({ p, index, isMobile }: { p: typeof projects[0]; index: num
       transition={{ duration: 0.7, delay: (index % 4) * 0.1, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ position: "relative", overflow: "hidden", cursor: "none", aspectRatio: "4/3" }}
+      onClick={() => openLightbox(p.src, p.alt)}
+      data-cursor="hover"
+      style={{ position: "relative", overflow: "hidden", cursor: "pointer", aspectRatio: "4/3" }}
     >
       <motion.div
         animate={{ scale: hovered && !isMobile ? 1.05 : 1 }}
