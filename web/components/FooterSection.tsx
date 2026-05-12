@@ -19,35 +19,52 @@ export default function FooterSection() {
 
   return (
     <footer style={{ background: "#0e0e0c" }}>
-      {/* Closing — full-width image with ghost type */}
-      <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: isMobile ? "56vw" : "clamp(320px, 40vw, 580px)", minHeight: isMobile ? "240px" : undefined }}>
+      {/* Closing — full-width image with headline */}
+      <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: isMobile ? "clamp(280px, 72vw, 420px)" : "clamp(380px, 50vw, 640px)" }}>
         <motion.div style={{ y: isMobile ? 0 : imgY, position: "absolute", inset: 0 }}>
           <Image src="/img17.jpeg" alt="Ranzospace designed spaces" fill style={{ objectFit: "cover", objectPosition: "center 40%" }} sizes="100vw" />
-          <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.62)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.65)" }} />
         </motion.div>
 
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "24px" : "40px", textAlign: "center" }}>
-          <motion.p
-            style={{ fontSize: isMobile ? "clamp(64px, 22vw, 120px)" : "clamp(80px, 14vw, 220px)", fontWeight: 800, color: "rgba(240,236,228,0.05)", letterSpacing: "-0.04em", lineHeight: 1, userSelect: "none" }}
-            initial={{ opacity: 0, y: 30 }}
+        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "24px 20px" : "48px", textAlign: "center" }}>
+          {/* Main headline: SPACES that ENDURE */}
+          <motion.h2
+            style={{
+              fontSize: isMobile ? "clamp(36px, 11vw, 60px)" : "clamp(56px, 7.5vw, 112px)",
+              lineHeight: 1.0,
+              letterSpacing: isMobile ? "-0.02em" : "-0.03em",
+              color: "#fefefe",
+              marginBottom: isMobile ? "20px" : "28px",
+              userSelect: "none",
+              fontWeight: 800,
+            }}
+            initial={{ opacity: 0, y: 28 }}
             animate={closingInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            RANZO
-          </motion.p>
-          <motion.div
-            style={{ marginTop: "-8px" }}
+            SPACES{" "}
+            <span style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 300, fontStyle: "italic", letterSpacing: "0.01em" }}>
+              that
+            </span>
+            {" "}ENDURE
+          </motion.h2>
+
+          {/* Subtext */}
+          <motion.p
+            style={{
+              fontSize: isMobile ? "clamp(13px, 3.8vw, 17px)" : "clamp(15px, 1.2vw, 19px)",
+              color: "#c8c4bc",
+              fontWeight: 300,
+              lineHeight: 1.75,
+              maxWidth: isMobile ? "320px" : "480px",
+            }}
             initial={{ opacity: 0, y: 16 }}
             animate={closingInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.75, delay: 0.2 }}
           >
-            <p style={{ fontSize: isMobile ? "12px" : "14px", color: "#c8c4bc", fontWeight: 300, letterSpacing: "0.06em", marginBottom: "8px" }}>
-              Founded on the belief that true luxury is in refined spaces.
-            </p>
-            <p style={{ fontSize: isMobile ? "clamp(16px, 4.5vw, 22px)" : "clamp(20px, 2vw, 32px)", color: "#c8c4bc", fontWeight: 300, fontStyle: "italic", letterSpacing: "0.03em" }}>
-              It's about understanding.
-            </p>
-          </motion.div>
+            Founded on the belief that true luxury isn&apos;t about excess.{" "}
+            <strong style={{ color: "#fefefe", fontWeight: 700 }}>It&apos;s about understanding.</strong>
+          </motion.p>
         </div>
       </div>
 
