@@ -152,7 +152,7 @@ export default function FooterSection() {
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>© {new Date().getFullYear()} Ranzospace. All rights reserved.</p>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300, textAlign: "center" }}>
           Built with ♥️ by{" "}
-          <Link href="https://studioadspace.com/ref=ranzo" target="_blank" rel="noopener noreferrer" style={{ color: "#c8c4bc", fontWeight: 700, textDecoration: "none" }}>
+          <Link href="https://studioadspace.com/?ref=ranzo" target="_blank" rel="noopener noreferrer" style={{ color: "#c8c4bc", fontWeight: 700, textDecoration: "none" }}>
             Studio AdSpace
           </Link>
         </p>
