@@ -17,10 +17,8 @@ export default function FounderCTASection() {
         <motion.div
           ref={ref}
           style={{
-            background: "#111110",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: "14px",
             padding: isMobile ? "36px 28px 32px" : "56px 48px",
+            textAlign: "center",
           }}
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -52,6 +50,7 @@ export default function FounderCTASection() {
                 fontStyle: "italic",
                 marginBottom: isMobile ? "16px" : "20px",
                 maxWidth: "760px",
+                margin: isMobile ? "0 auto 16px" : "0 auto 20px",
               }}
               initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -79,13 +78,13 @@ export default function FounderCTASection() {
 
           {/* Attribution */}
           <motion.div
-            style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: isMobile ? "20px" : "24px", display: "flex", alignItems: "center", gap: "14px" }}
+            style={{ paddingTop: isMobile ? "20px" : "24px", display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.6 }}
           >
-            <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block", flexShrink: 0 }} />
-            <div>
+            <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block" }} />
+            <div style={{ textAlign: "center" }}>
               <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.04em" }}>Ar. Manas Makwana</p>
               <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "3px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Founder, Ranzospace</p>
             </div>
