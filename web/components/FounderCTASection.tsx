@@ -20,7 +20,7 @@ export default function FounderCTASection() {
             background: "#111110",
             border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: "14px",
-            padding: isMobile ? "36px 28px 32px" : "64px 72px 56px",
+            padding: isMobile ? "36px 28px 32px" : "56px 48px",
           }}
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
