@@ -227,48 +227,71 @@ export default function AboutPage() {
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.div
               ref={founderRef}
-              style={{ background: "#F8931E", borderRadius: "14px", overflow: "hidden", padding: isMobile ? "32px 24px" : "52px 60px" }}
+              style={{
+                background: "#111110",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: "14px",
+                padding: isMobile ? "36px 28px 32px" : "64px 72px 56px",
+              }}
               initial={{ opacity: 0, y: 32 }}
               animate={founderInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
             >
-              {isMobile ? (
+              {/* Decorative opening quote */}
+              <p style={{
+                fontSize: isMobile ? "72px" : "108px",
+                lineHeight: 0.75,
+                color: "#F8931E",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                marginBottom: isMobile ? "20px" : "28px",
+                userSelect: "none",
+              }}>&ldquo;</p>
+
+              {/* Quote body */}
+              <p style={{
+                fontSize: isMobile ? "17px" : "clamp(18px, 1.6vw, 24px)",
+                fontWeight: 300,
+                color: "#fefefe",
+                lineHeight: 1.85,
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: "italic",
+                marginBottom: isMobile ? "16px" : "20px",
+                maxWidth: "760px",
+              }}>
+                I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
+              </p>
+              <p style={{
+                fontSize: isMobile ? "17px" : "clamp(18px, 1.6vw, 24px)",
+                fontWeight: 300,
+                color: "#fefefe",
+                lineHeight: 1.85,
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: "italic",
+                marginBottom: isMobile ? "24px" : "32px",
+                maxWidth: "760px",
+              }}>
+                I wanted to build something different. A studio where design felt like life. Where honesty matters more than agreement. Where the answers we create feel right not just on day one, but years from then.
+              </p>
+
+              {/* Closing statement */}
+              <p style={{
+                fontSize: isMobile ? "16px" : "clamp(16px, 1.3vw, 20px)",
+                fontWeight: 700,
+                color: "#fefefe",
+                letterSpacing: "-0.01em",
+                marginBottom: isMobile ? "28px" : "40px",
+              }}>
+                That&apos;s still what drives us today.
+              </p>
+
+              {/* Attribution */}
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: isMobile ? "20px" : "24px", display: "flex", alignItems: "center", gap: "14px" }}>
+                <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block", flexShrink: 0 }} />
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
-                    <div style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <span style={{ fontSize: "9px", color: "rgba(0,0,0,0.35)", letterSpacing: "0.08em" }}>PHOTO</span>
-                    </div>
-                    <div>
-                      <p style={{ fontSize: "13px", fontWeight: 700, color: "rgba(0,0,0,0.65)", letterSpacing: "0.02em" }}>Ar. Manas Makwana</p>
-                      <p style={{ fontSize: "11px", color: "rgba(0,0,0,0.45)", marginTop: "2px" }}>Founder, Ranzospace</p>
-                    </div>
-                  </div>
-                  <p style={{ fontSize: "15px", fontWeight: 300, color: "rgba(0,0,0,0.82)", lineHeight: 1.85, marginBottom: "16px" }}>
-                    "I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability."
-                  </p>
-                  <p style={{ fontSize: "16px", fontWeight: 700, color: "rgba(0,0,0,0.92)" }}>
-                    We built the studio we wished had always existed.
-                  </p>
+                  <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.04em" }}>Ar. Manas Makwana</p>
+                  <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "3px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Founder, Ranzospace</p>
                 </div>
-              ) : (
-                <div style={{ display: "flex", gap: "56px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0 }}>
-                    <div style={{ width: "72px", height: "72px", borderRadius: "50%", background: "rgba(0,0,0,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontSize: "10px", color: "rgba(0,0,0,0.35)", letterSpacing: "0.08em" }}>PHOTO</span>
-                    </div>
-                    <p style={{ fontSize: "12px", fontWeight: 700, color: "rgba(0,0,0,0.65)", marginTop: "14px", letterSpacing: "0.02em" }}>Ar. Manas Makwana</p>
-                    <p style={{ fontSize: "11px", color: "rgba(0,0,0,0.45)", marginTop: "2px" }}>Founder, Ranzospace</p>
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: "clamp(14px, 1.15vw, 17px)", fontWeight: 300, color: "rgba(0,0,0,0.82)", lineHeight: 1.85, marginBottom: "18px" }}>
-                      "I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability."
-                    </p>
-                    <p style={{ fontSize: "clamp(15px, 1.2vw, 18px)", fontWeight: 700, color: "rgba(0,0,0,0.92)" }}>
-                      We built the studio we wished had always existed.
-                    </p>
-                  </div>
-                </div>
-              )}
+              </div>
             </motion.div>
           </div>
         </section>
