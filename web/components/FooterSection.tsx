@@ -148,8 +148,14 @@ export default function FooterSection() {
       )}
 
       {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: isMobile ? `14px 20px` : `16px ${PAD}`, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: isMobile ? `14px 20px` : `16px ${PAD}`, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>© {new Date().getFullYear()} Ranzospace. All rights reserved.</p>
+        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300, textAlign: "center" }}>
+          Built with ♥️ by{" "}
+          <Link href="https://studioadspace.com/ref=ranzo" target="_blank" rel="noopener noreferrer" style={{ color: "#c8c4bc", fontWeight: 700, textDecoration: "none" }}>
+            Studio AdSpace
+          </Link>
+        </p>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>ranzospace.in</p>
       </div>
     </footer>
