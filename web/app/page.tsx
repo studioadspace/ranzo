@@ -6,6 +6,7 @@ import TheCraftSection from "@/components/TheCraftSection";
 import RecentWorksSection from "@/components/RecentWorksSection";
 import WhatWeDoSection from "@/components/WhatWeDoSection";
 import OurStorySection from "@/components/OurStorySection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import FounderCTASection from "@/components/FounderCTASection";
 import FooterSection from "@/components/FooterSection";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <RecentWorksSection />
       <WhatWeDoSection />
       <OurStorySection />
+      <TestimonialsSection />
       <FounderCTASection />
       <FooterSection />
     </main>

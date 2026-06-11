@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Architecture Services in Mumbai - Design & Space Planning | Ranzospace",
     description: "Architecture and space planning in Mumbai. Concept to construction documents with 3D modeling and structural coordination.",
+    images: [{ url: "/projects-photos/pramod-01.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/projects-photos/pramod-01.jpg"],
   },
 };
 

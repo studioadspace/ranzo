@@ -13,7 +13,7 @@ const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
 const values = [
-  { num: "01", title: "Honesty over agreement", body: "We tell clients what their space needs, not what they want to hear. Honest conversations early save costly revisions later." },
+  { num: "01", title: "Vision over validation", body: "We tell clients what their space needs, not what they want to hear. Considered conversations early save costly revisions later." },
   { num: "02", title: "Substance before style", body: "Every material, every detail earns its place. We start with function and let beauty follow, never the reverse." },
   { num: "03", title: "Accountability by default", body: "We own our timelines, our costs, and our outcomes. 140 quality checks per project. No excuses, no surprises." },
   { num: "04", title: "Design that compounds", body: "The spaces we create should feel better with every passing year. We make decisions for the long run, not for the photograph." },
@@ -24,6 +24,8 @@ const timeline = [
   { year: "2020", event: "Introduced AI design and simulation" },
   { year: "2022", event: "Expanded into large scale projects" },
   { year: "2024", event: "Moved into the premium market" },
+  { year: "2025", event: "Launched AI-integrated design pipeline" },
+  { year: "2026", event: "Continuing to redefine what premium means in Mumbai" },
 ];
 
 function ValueCard({ v, index, isMobile }: { v: typeof values[0]; index: number; isMobile: boolean }) {
@@ -88,12 +90,20 @@ export default function AboutPage() {
                   A studio built<br />on conviction.
                 </motion.h1>
                 <motion.p
+                  style={{ fontSize: "13px", fontWeight: 400, color: "#c8c4bc", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: "16px" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                >
+                  Where Space Becomes Legacy
+                </motion.p>
+                <motion.p
                   style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
-                  Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who are done with average. People who want spaces that genuinely reflect how they live, not just how spaces look on Instagram.
+                  Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who want spaces that carry genuine weight. Residences, hospitality projects, and commercial spaces built not for the photograph, but for the decades that follow.
                 </motion.p>
                 <motion.p
                   style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginTop: "16px" }}
@@ -130,8 +140,11 @@ export default function AboutPage() {
                   transition={{ duration: 0.7, delay: 0.25 }}
                   style={{ paddingBottom: "8px" }}
                 >
+                  <p style={{ fontSize: "13px", fontWeight: 400, color: "#c8c4bc", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: "24px" }}>
+                    Where Space Becomes Legacy
+                  </p>
                   <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}>
-                    Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who are done with average. People who want spaces that genuinely reflect how they live, not just how spaces look on Instagram.
+                    Ranzospace is a Mumbai-based architecture and interior design studio. We work with clients who want spaces that carry genuine weight. Residences, hospitality projects, and commercial spaces built not for the photograph, but for the decades that follow.
                   </p>
                   <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginTop: "20px" }}>
                     Founded in 2018. 100+ projects. One north star: design that lasts.
@@ -270,7 +283,7 @@ export default function AboutPage() {
                 marginBottom: isMobile ? "24px" : "32px",
                 maxWidth: "760px",
               }}>
-                I wanted to build something different. A studio where design felt like life. Where honesty matters more than agreement. Where the answers we create feel right not just on day one, but years from then.
+                I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family&apos;s legacy.
               </p>
 
               {/* Closing statement */}

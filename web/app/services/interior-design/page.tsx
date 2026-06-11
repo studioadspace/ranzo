@@ -18,7 +18,7 @@ const process = [
   { step: "03", title: "Concept Development", body: "AI-powered 3D simulations so you see your space before a single tile is laid. Revise until it's exactly right." },
   { step: "04", title: "Material Selection", body: "Curated material presentations. Finishes, fabrics, hardware, and lighting selected as a cohesive whole." },
   { step: "05", title: "Execution", body: "Our team manages civil, carpentry, electrical, plumbing, and finishing. All 140 quality checks completed before handover." },
-  { step: "06", title: "Handover", body: "A complete walkthrough. Every detail reviewed. We don't leave until you're entirely satisfied." },
+  { step: "06", title: "Handover", body: "A complete walkthrough. Every detail resolved to your standard. The space is yours when it is exactly right." },
 ];
 
 const inclusions = [
@@ -74,7 +74,7 @@ export default function InteriorDesignPage() {
               initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
             >
-              Full-home and commercial interiors. Designed around how you actually live. Every room considered as part of a unified whole, from the first conversation to the final handover.
+              Full-home and commercial interiors. Designed around the life your space should support. Every room considered as part of a unified whole, from the first conversation to the final handover.
             </motion.p>
           </div>
         </section>
@@ -165,10 +165,10 @@ export default function InteriorDesignPage() {
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? "6px" : "12px" }}>
             {[
-              { src: "/projects-photos/rishi-staging-02.jpg", alt: "Dining room interior design" },
-              { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom interior design" },
-              { src: "/projects-photos/pramod-02.jpg",        alt: "Living room interior design" },
-              { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with study interior design" },
+              { src: "/projects-photos/rishi-staging-02.jpg", alt: "Luxury dining room interior design by Ranzospace Mumbai - custom joinery and ambient lighting" },
+              { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom interior design by Ranzospace Mumbai - minimal palette and layered lighting" },
+              { src: "/projects-photos/pramod-02.jpg",        alt: "Full-home living room interior design by Ranzospace Mumbai - warm tones and proportional furniture" },
+              { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with integrated study by Ranzospace Mumbai - custom built-in joinery" },
             ].map((img, i) => (
               <div
                 key={i}

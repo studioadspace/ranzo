@@ -76,8 +76,24 @@ export default function ArchitecturePage() {
 
         {/* Hero image */}
         <div style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
-          <div style={{ maxWidth: MAX_W, margin: "0 auto", position: "relative", height: isMobile ? "56vw" : "clamp(300px, 42vw, 600px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden", borderRadius: "10px" }}>
-            <Image src="/projects-photos/pramod-01.jpg" alt="Architecture by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
+          <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
+            {isMobile ? (
+              <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden", borderRadius: "10px" }}>
+                <Image src="/projects-photos/pramod-01.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="100vw" />
+              </div>
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
+                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/projects-photos/pramod-01.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                </div>
+                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/projects-photos/pramod-03.jpg" alt="Interior architecture detail with bespoke joinery by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                </div>
+                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/projects-photos/rishi-photo-01.jpg" alt="Residential architecture entrance design by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

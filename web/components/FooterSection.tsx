@@ -27,6 +27,23 @@ export default function FooterSection() {
         </motion.div>
 
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "24px 20px" : "48px", textAlign: "center" }}>
+          {/* Tagline above headline */}
+          <motion.p
+            style={{
+              fontSize: isMobile ? "12px" : "13px",
+              fontWeight: 400,
+              color: "#c8c4bc",
+              fontFamily: "'Instrument Serif', serif",
+              fontStyle: "italic",
+              letterSpacing: "0.06em",
+              marginBottom: isMobile ? "14px" : "20px",
+            }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={closingInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Where Space Becomes Legacy
+          </motion.p>
           {/* Main headline: SPACES that ENDURE */}
           <motion.h2
             style={{
@@ -75,7 +92,7 @@ export default function FooterSection() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65 }}>
             <Image src="/logo.svg" alt="Ranzospace" width={120} height={30} style={{ margin: "0 auto 36px" }} />
             <p style={{ fontSize: "28px", fontWeight: 700, color: "#fefefe", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.02em" }}>
-              Would like to talk<br />about a project?
+              Let&apos;s build something<br />that endures.
             </p>
             <Link href="/contact" style={{ fontSize: "16px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
               Get in touch →
@@ -101,6 +118,17 @@ export default function FooterSection() {
             <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>+91 96991 47145</p>
             <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>Mumbai, India</p>
           </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.3 }}
+            style={{ marginTop: "40px", display: "flex", gap: "20px", justifyContent: "center" }}>
+            <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              Instagram
+            </Link>
+            <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "13px" }}>|</span>
+            <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              LinkedIn
+            </Link>
+          </motion.div>
         </div>
       ) : (
         /* Desktop: 3-column grid */
@@ -119,11 +147,22 @@ export default function FooterSection() {
                 initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.65 }}
               >
-                Would like to talk<br />about a project?
+                Let&apos;s build something<br />that endures.
               </motion.p>
               <motion.div initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.15 }}>
                 <Link href="/contact" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
                   Get in touch →
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.55, delay: 0.25 }}
+                style={{ display: "flex", gap: "20px", marginTop: "28px" }}
+              >
+                <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  Instagram
+                </Link>
+                <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  LinkedIn
                 </Link>
               </motion.div>
             </div>

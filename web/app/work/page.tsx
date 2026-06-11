@@ -11,17 +11,81 @@ import { useLightbox } from "@/components/LightboxProvider";
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
-const categories = ["All", "Residential", "Commercial", "Kitchen", "Bedroom"];
+const categories = ["All", "Residential", "Bedroom"];
 
 const projects = [
-  { src: "/projects-photos/pramod-02.jpg",        alt: "Living room - Pramod Residence",       label: "Living Room",       location: "Mumbai", category: "Residential", area: "1,800 sq ft" },
-  { src: "/projects-photos/rishi-staging-01.jpg", alt: "Foyer - Rishi Residence",              label: "Foyer & Entrance",  location: "Mumbai", category: "Residential", area: "120 sq ft" },
-  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Dining room - Rishi Residence",        label: "Dining Room",       location: "Mumbai", category: "Residential", area: "380 sq ft" },
-  { src: "/projects-photos/pramod-01.jpg",        alt: "Living room detail - Pramod Residence",label: "Living Room Detail", location: "Mumbai", category: "Residential", area: "1,800 sq ft" },
-  { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with study - Rishi Residence", label: "Bedroom & Study",   location: "Mumbai", category: "Bedroom",     area: "320 sq ft" },
-  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom - Rishi Residence",     label: "Master Bedroom",    location: "Mumbai", category: "Bedroom",     area: "280 sq ft" },
-  { src: "/projects-photos/rishi-photo-04.jpg",   alt: "Custom wardrobe - Rishi Residence",    label: "Custom Wardrobe",   location: "Mumbai", category: "Bedroom",     area: "Custom" },
-  { src: "/projects-photos/rishi-photo-02.jpg",   alt: "Bar unit - Rishi Residence",           label: "Bar Unit",          location: "Mumbai", category: "Residential", area: "Custom" },
+  {
+    src: "/projects-photos/pramod-02.jpg",
+    alt: "Luxury living room interior design by Ranzospace, Mumbai - warm tones and custom joinery",
+    label: "Living Room", location: "Mumbai", category: "Residential", area: "1,800 sq ft",
+    description: "A full-home residential project redesigned around natural light and open circulation. Warm timber finishes, custom storage, and a palette built to improve with age.",
+  },
+  {
+    src: "/projects-photos/pramod-01.jpg",
+    alt: "Living room detail with custom wall panelling - Pramod Residence by Ranzospace, Mumbai",
+    label: "Living Room Detail", location: "Mumbai", category: "Residential", area: "1,800 sq ft",
+    description: "Custom wall panelling and integrated lighting designed as a single resolved composition. Every surface considered as part of the whole.",
+  },
+  {
+    src: "/projects-photos/pramod-03.jpg",
+    alt: "Interior detail with bespoke joinery - Pramod Residence by Ranzospace, Mumbai",
+    label: "Dining & Corridor", location: "Mumbai", category: "Residential", area: "1,800 sq ft",
+    description: "Transitional spaces treated with the same rigour as primary rooms. Proportional joinery and material continuity throughout.",
+  },
+  {
+    src: "/projects-photos/pramod-04.jpg",
+    alt: "Bedroom interior design with soft lighting - Pramod Residence by Ranzospace, Mumbai",
+    label: "Master Bedroom", location: "Mumbai", category: "Bedroom", area: "400 sq ft",
+    description: "A restrained bedroom designed for genuine rest. Layered lighting, built-in storage, and a material palette chosen for its warmth over time.",
+  },
+  {
+    src: "/projects-photos/rishi-staging-01.jpg",
+    alt: "Foyer and entrance design - Rishi Residence by Ranzospace, Mumbai",
+    label: "Foyer & Entrance", location: "Mumbai", category: "Residential", area: "120 sq ft",
+    description: "An entrance that sets the tone for the home. Considered proportions, stone underfoot, and a sense of arrival from the first step.",
+  },
+  {
+    src: "/projects-photos/rishi-staging-02.jpg",
+    alt: "Dining room interior by Ranzospace Mumbai - custom table and warm ambient lighting",
+    label: "Dining Room", location: "Mumbai", category: "Residential", area: "380 sq ft",
+    description: "Dining designed for long evenings and real conversation. Custom table, considered chair selection, and ambient lighting that flatters rather than performs.",
+  },
+  {
+    src: "/projects-photos/rishi-staging-04.jpg",
+    alt: "Bedroom with integrated study nook - Rishi Residence by Ranzospace, Mumbai",
+    label: "Bedroom & Study", location: "Mumbai", category: "Bedroom", area: "320 sq ft",
+    description: "A dual-purpose bedroom that holds a full study without compromise. Built-in joinery manages both functions seamlessly.",
+  },
+  {
+    src: "/projects-photos/rishi-staging-03.jpg",
+    alt: "Master bedroom interior design by Ranzospace Mumbai - minimal and warm",
+    label: "Master Bedroom", location: "Mumbai", category: "Bedroom", area: "280 sq ft",
+    description: "A minimal bedroom where every decision earns its place. Clean volumes, soft materials, and nothing that does not belong.",
+  },
+  {
+    src: "/projects-photos/rishi-photo-04.jpg",
+    alt: "Custom wardrobe with soft-close joinery - Rishi Residence by Ranzospace, Mumbai",
+    label: "Custom Wardrobe", location: "Mumbai", category: "Bedroom", area: "Custom",
+    description: "Bespoke wardrobe joinery designed for a specific life. Soft-close hardware, considered internal organisation, and a finish that matches the room precisely.",
+  },
+  {
+    src: "/projects-photos/rishi-photo-02.jpg",
+    alt: "Custom bar unit design - Rishi Residence by Ranzospace, Mumbai",
+    label: "Bar Unit", location: "Mumbai", category: "Residential", area: "Custom",
+    description: "A custom bar unit built as a furniture piece, not a fixture. Materials chosen to age with the home rather than date it.",
+  },
+  {
+    src: "/projects-photos/rishi-photo-01.jpg",
+    alt: "Living space with custom detailing - Rishi Residence by Ranzospace, Mumbai",
+    label: "Living Space", location: "Mumbai", category: "Residential", area: "Custom",
+    description: "Detailing that rewards close attention. Every junction, every reveal, every finish resolved before a single item was ordered.",
+  },
+  {
+    src: "/projects-photos/rishi-photo-03.jpg",
+    alt: "Interior detail photography - Rishi Residence by Ranzospace, Mumbai",
+    label: "Interior Detail", location: "Mumbai", category: "Residential", area: "Custom",
+    description: "The spaces between spaces, considered. Good design lives in the transitions as much as the set pieces.",
+  },
 ];
 
 function ProjectCard({ p, index, isMobile }: { p: typeof projects[0]; index: number; isMobile: boolean }) {
@@ -57,14 +121,15 @@ function ProjectCard({ p, index, isMobile }: { p: typeof projects[0]; index: num
           transition={{ duration: 0.3 }}
           style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(to top, rgba(14,14,12,0.88) 0%, rgba(14,14,12,0.3) 55%, transparent 100%)",
+            background: "linear-gradient(to top, rgba(14,14,12,0.92) 0%, rgba(14,14,12,0.4) 55%, transparent 100%)",
             display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "28px",
           }}
         >
           <p style={{ fontSize: "18px", fontWeight: 600, color: "#fefefe", letterSpacing: "-0.01em", marginBottom: "4px" }}>{p.label}</p>
-          <p style={{ fontSize: "13px", color: "#c8c4bc", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 400 }}>
+          <p style={{ fontSize: "13px", color: "#c8c4bc", letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 400, marginBottom: "10px" }}>
             {p.location} · {p.area}
           </p>
+          <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.6, opacity: 0.85 }}>{p.description}</p>
         </motion.div>
       )}
 

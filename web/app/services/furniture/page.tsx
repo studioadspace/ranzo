@@ -18,7 +18,7 @@ const categories = [
   { title: "Dining", items: ["Dining tables", "Chairs & benches", "Display units", "Bar counters"] },
 ];
 
-const approachItems = ["Proportion-first selection", "Budget-realistic sourcing", "Coordinated installation", "Post-handover support"];
+const approachItems = ["Proportion-first selection", "Curated sourcing", "Coordinated installation", "Post-handover support"];
 
 export default function FurniturePage() {
   const isMobile = useBreakpoint(768);
@@ -126,7 +126,7 @@ export default function FurniturePage() {
                   No catalogue browsing.<br />A curated edit.
                 </h2>
                 <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "28px" }}>
-                  We don't hand you a catalogue and wish you luck. Our team builds a curated selection based on your space, your lifestyle, and your budget. Every piece is chosen because it works.
+                  Our team builds a considered selection based on your space, your life, and the aesthetic you are building toward. Every piece is chosen because it earns its place.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   {approachItems.map((item, i) => (
@@ -151,7 +151,7 @@ export default function FurniturePage() {
                     No catalogue browsing.<br />A curated edit.
                   </h2>
                   <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}>
-                    We don't hand you a catalogue and wish you luck. Our team builds a curated selection based on your space, your lifestyle, and your budget. Every piece is chosen because it works. Proportionally, functionally, and aesthetically.
+                    Our team builds a considered selection based on your space, your life, and the aesthetic you are building toward. Every piece is chosen because it earns its place. Proportionally, functionally, and aesthetically.
                   </p>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>

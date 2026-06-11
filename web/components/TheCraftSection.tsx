@@ -69,7 +69,7 @@ export default function TheCraftSection() {
         </div>
 
         {/* Full-width first image */}
-        <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Foyer design" h="72vw" delay={0} mobile />
+        <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Luxury foyer interior design by Ranzospace Mumbai - custom joinery and curated lighting" h="72vw" delay={0} mobile />
 
         <div style={{ padding: "20px 20px 0" }}>
           <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75, marginBottom: "24px" }}>
@@ -78,12 +78,12 @@ export default function TheCraftSection() {
         </div>
 
         {/* Second image */}
-        <RevealImg src="/projects-photos/pramod-01.jpg" alt="Living room design" h="64vw" delay={0.15} mobile />
+        <RevealImg src="/projects-photos/pramod-01.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="64vw" delay={0.15} mobile />
 
         <div style={{ padding: "20px 20px 0" }}>
           <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75 }}>
             Materiality is the primary language of Ranzospace. We source materials unique to
-            your requirements and help living in calm in the chaos.
+            your requirements and bring each space a sense of calm and permanence.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function TheCraftSection() {
 
           {/* LEFT */}
           <div>
-            <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Foyer design" h="clamp(400px, 52vw, 720px)" delay={0} />
+            <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Luxury foyer interior design by Ranzospace Mumbai - custom joinery and curated lighting" h="clamp(400px, 52vw, 720px)" delay={0} />
             <p style={{ fontSize: "14px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "360px" }}>
               Creating structures that breathe. Our practice focuses on the core principles: light, air, and space.
               We aim to bring in the humane functionality together.
@@ -124,11 +124,11 @@ export default function TheCraftSection() {
               spaces with depth, balance, and intention.
             </motion.p>
 
-            <RevealImg src="/projects-photos/pramod-01.jpg" alt="Contemporary living room" h="clamp(280px, 36vw, 520px)" delay={0.2} />
+            <RevealImg src="/projects-photos/pramod-01.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="clamp(280px, 36vw, 520px)" delay={0.2} />
 
             <p style={{ fontSize: "14px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "400px" }}>
               Materiality is the primary language of Ranzospace. We source materials that are unique to
-              your requirements and help living in calm in the chaos.
+              your requirements and bring each space a sense of calm and permanence.
             </p>
           </div>
         </div>

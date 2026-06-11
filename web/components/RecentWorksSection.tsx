@@ -9,10 +9,10 @@ const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
 const projects = [
-  { src: "/projects-photos/pramod-02.jpg",        alt: "Living room - Mumbai",     ratio: "4 / 3",  label: "Living Room · Mumbai" },
-  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Dining room - Mumbai",     ratio: "4 / 3",  label: "Dining Room · Mumbai" },
-  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom - Mumbai",  ratio: "4 / 3",  label: "Master Bedroom · Mumbai" },
-  { src: "/projects-photos/rishi-photo-04.jpg",   alt: "Custom wardrobe - Mumbai", ratio: "4 / 3",  label: "Custom Wardrobe · Mumbai" },
+  { src: "/projects-photos/pramod-02.jpg",        alt: "Luxury living room interior design by Ranzospace Mumbai - warm tones and bespoke furniture",          ratio: "4 / 3",  label: "Living Room · Mumbai" },
+  { src: "/projects-photos/rishi-staging-02.jpg", alt: "Contemporary dining room design Mumbai - custom built-ins and natural materials by Ranzospace",        ratio: "4 / 3",  label: "Dining Room · Mumbai" },
+  { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom interior design Mumbai - layered lighting and premium finishes by Ranzospace",          ratio: "4 / 3",  label: "Master Bedroom · Mumbai" },
+  { src: "/projects-photos/rishi-photo-04.jpg",   alt: "Custom wardrobe and storage design Mumbai - floor-to-ceiling joinery by Ranzospace",                  ratio: "4 / 3",  label: "Custom Wardrobe · Mumbai" },
 ];
 
 function Card({ p, index, isMobile }: { p: (typeof projects)[0]; index: number; isMobile: boolean }) {

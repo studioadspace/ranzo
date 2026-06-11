@@ -19,10 +19,23 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ranzospace.in"),
   title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
-  description: "Honest interior design and architecture in Mumbai. Custom homes, offices, and modular furniture designed for how you actually live.",
+  description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living. Ranzospace.",
   icons: {
     icon: "/favicon.png",
+  },
+  openGraph: {
+    title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
+    description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living.",
+    images: [{ url: "/projects-photos/pramod-02.jpg", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
+    description: "Mumbai's most considered architecture and interior design studio. Spaces shaped for legacy.",
+    images: ["/projects-photos/pramod-02.jpg"],
   },
 };
 

@@ -8,11 +8,13 @@ const PAD = "clamp(16px, 5vw, 48px)";
 
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
+  const [animating, setAnimating] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   useEffect(() => {
     if (!inView) return;
+    setAnimating(true);
     const duration = 1600;
     const t0 = performance.now();
     const step = (now: number) => {
@@ -24,7 +26,7 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
     requestAnimationFrame(step);
   }, [inView, target]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return <span ref={ref}>{animating ? count : target}{suffix}</span>;
 }
 
 export default function StatsSection() {

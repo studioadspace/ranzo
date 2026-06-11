@@ -3,9 +3,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
-const LINE1 = ["Mumbai's", "most", "loved"];
-const LINE2 = ["architecture", "&", "interior"];
-const LINE3 = ["design", "studio"];
+const LINE1 = ["Where", "Mumbai's"];
+const LINE2 = ["finest", "spaces"];
+const LINE3 = ["take", "form."];
 
 let wordIdx = 0;
 function Word({ word, overflowVisible = false }: { word: string; overflowVisible?: boolean }) {
@@ -44,16 +44,34 @@ export default function HeroSection() {
         paddingRight: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         maxWidth: "1440px", margin: "0 auto",
       }}>
-        <h1 style={{
-          fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(46px, 4.8vw, 76px)",
-          fontWeight: 800, lineHeight: 1.05,
-          letterSpacing: "-0.03em", color: "#fefefe",
-          maxWidth: isMobile ? "100%" : "clamp(280px, 100%, 85%)",
-        }}>
-          <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>
-          <div>{LINE2.map(w => <Word key={w} word={w} />)}</div>
-          <div>{LINE3.map((w, idx) => <Word key={w} word={w} overflowVisible={idx === 0} />)}</div>
-        </h1>
+        <div>
+          <h1 style={{
+            fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(46px, 4.8vw, 76px)",
+            fontWeight: 800, lineHeight: 1.05,
+            letterSpacing: "-0.03em", color: "#fefefe",
+            maxWidth: isMobile ? "100%" : "clamp(280px, 100%, 85%)",
+          }}>
+            <div>{LINE1.map(w => <Word key={w} word={w} />)}</div>
+            <div>{LINE2.map(w => <Word key={w} word={w} />)}</div>
+            <div>{LINE3.map((w, idx) => <Word key={w} word={w} overflowVisible={idx === 0} />)}</div>
+          </h1>
+          <motion.p
+            style={{
+              fontSize: isMobile ? "13px" : "clamp(13px, 1vw, 16px)",
+              fontWeight: 400,
+              color: "#c8c4bc",
+              fontFamily: "'Instrument Serif', serif",
+              fontStyle: "italic",
+              letterSpacing: "0.02em",
+              marginTop: isMobile ? "14px" : "20px",
+            }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.85 }}
+          >
+            Where Space Becomes Legacy
+          </motion.p>
+        </div>
 
         {!isMobile && (
           <motion.div
@@ -99,6 +117,7 @@ export default function HeroSection() {
         }}>
           <video
             autoPlay muted loop playsInline
+            poster="/projects-photos/pramod-02.jpg"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
           >
             <source src="/hero.mp4" type="video/mp4" />

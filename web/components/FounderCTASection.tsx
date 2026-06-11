@@ -37,7 +37,7 @@ export default function FounderCTASection() {
           {/* Quote body */}
           {[
             "I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.",
-            "I wanted to build something different. A studio where design felt like life. Where honesty matters more than agreement. Where the answers we create feel right not just on day one, but years from then.",
+            "I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family's legacy.",
           ].map((text, i) => (
             <motion.p
               key={i}

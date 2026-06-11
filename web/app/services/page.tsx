@@ -187,7 +187,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
-                  Three disciplines. One studio. Every project managed end-to-end with 140 quality checks and complete accountability.
+                  Three disciplines. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
                 </motion.p>
               </div>
             ) : (
@@ -204,7 +204,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
-                  Three disciplines. One studio. Every project managed end-to-end with 140 quality checks and complete accountability.
+                  Three disciplines. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
                 </motion.p>
               </div>
             )}
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                 Civil work, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting. All managed by our team. We hand over one project, not a coordination problem.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: isMobile ? "24px" : "40px" }}>
-                {[["140+", "Quality checks"], ["100+", "Completed projects"], ["7", "Years experience"], ["9+", "Years avg team tenure"]].map(([num, label]) => (
+                {[["140+", "Quality checks per project"], ["100+", "Completed projects"], ["7+", "Years experience"], ["8+", "Team members retained"]].map(([num, label]) => (
                   <div key={label}>
                     <p style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#F8931E", letterSpacing: "-0.03em", lineHeight: 1 }}>{num}</p>
                     <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>{label}</p>

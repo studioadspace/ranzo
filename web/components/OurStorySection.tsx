@@ -11,9 +11,9 @@ const lines = [
   { text: "", bold: false },
   { text: "We don't begin with style.", bold: true },
   { text: "", bold: false },
-  { text: "We begin by understanding how you live.", bold: true },
+  { text: "We begin by understanding the life your space should support.", bold: true },
   { text: "", bold: false },
-  { text: "Your medium, your preferences, the life you want your space to support. Then we translate that into interiors that feel natural, considered, and entirely yours.", bold: false },
+  { text: "Your preferences, your rhythms, the legacy you are building. Then we translate that into interiors that feel natural, considered, and entirely yours.", bold: false },
 ];
 
 export default function OurStorySection() {
