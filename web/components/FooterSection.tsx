@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { siInstagram, siLinkedin } from "simple-icons";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
@@ -121,12 +122,11 @@ export default function FooterSection() {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.3 }}
             style={{ marginTop: "40px", display: "flex", gap: "20px", justifyContent: "center" }}>
-            <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              Instagram
+            <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on Instagram" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
+              <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siInstagram.path} /></svg>
             </Link>
-            <span style={{ color: "rgba(255,255,255,0.2)", fontSize: "13px" }}>|</span>
-            <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              LinkedIn
+            <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on LinkedIn" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
+              <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siLinkedin.path} /></svg>
             </Link>
           </motion.div>
         </div>
@@ -156,13 +156,13 @@ export default function FooterSection() {
               </motion.div>
               <motion.div
                 initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.55, delay: 0.25 }}
-                style={{ display: "flex", gap: "20px", marginTop: "28px" }}
+                style={{ display: "flex", gap: "16px", marginTop: "28px" }}
               >
-                <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  Instagram
+                <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on Instagram" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
+                  <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siInstagram.path} /></svg>
                 </Link>
-                <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 500, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  LinkedIn
+                <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on LinkedIn" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
+                  <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siLinkedin.path} /></svg>
                 </Link>
               </motion.div>
             </div>
