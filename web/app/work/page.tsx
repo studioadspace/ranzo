@@ -14,14 +14,14 @@ const PAD = "clamp(16px, 5vw, 48px)";
 
 const categories = ["Residential", "Architectural", "Modular Furniture"];
 
-// One real concept-to-built pairing (not a generic strip) — same house, sketch vs. finished render
+// One real concept-to-built pairing (not a generic strip) - same house, sketch vs. finished render
 const conceptPair = {
   sketch: { src: "/architecture/in-process-01.jpg", alt: "Hand-drawn architectural elevation sketch by Ranzospace - concrete mass and wood screen concept" },
   built: { src: "/architecture/arch-01.jpg", alt: "Finished concrete and wood-screen residence facade by Ranzospace" },
 };
 
 const projects = [
-  // Residential — 5 genuinely distinct spaces, no repeats
+  // Residential - 5 genuinely distinct spaces, no repeats
   {
     src: "/interiors/amir-living-tv-01.jpg",
     alt: "Living room interior design with floating wood console and coffee table by Ranzospace, Mumbai",
@@ -53,7 +53,7 @@ const projects = [
     description: "A compact two-seat dining corner with open shelving and framed art, softened by greenery.",
   },
 
-  // Architectural — one case study, distinct angles (kept separate from the concept/built pairing above)
+  // Architectural - one case study, distinct angles (kept separate from the concept/built pairing above)
   {
     src: "/architecture/arch-02.jpg",
     alt: "Architectural elevation with folding wooden shutters by Ranzospace",
@@ -79,7 +79,7 @@ const projects = [
     description: "From concept to construction documentation, we shape volumes, light, and circulation before a single material is chosen.",
   },
 
-  // Modular Furniture — 3 distinct furniture pieces, no overlap with Residential
+  // Modular Furniture - 3 distinct furniture pieces, no overlap with Residential
   {
     src: "/interiors/amir-tv-unit-01.jpg",
     alt: "Custom floating TV console with cove lighting - Ranzospace, Mumbai",
@@ -145,7 +145,7 @@ function ProjectCard({ p, index, isMobile }: { p: typeof projects[0]; index: num
         </motion.div>
       )}
 
-      {/* Category chip — desktop only */}
+      {/* Category chip - desktop only */}
       {!isMobile && (
         <div style={{
           position: "absolute", top: "18px", left: "18px",
@@ -224,7 +224,7 @@ export default function WorkPage() {
           </div>
         </section>
 
-        {/* From sketch to structure — one real concept/built pairing, drag to compare */}
+        {/* From sketch to structure - one real concept/built pairing, drag to compare */}
         <section style={{ padding: isMobile ? `0 20px 56px` : `0 ${PAD} 96px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <div style={{

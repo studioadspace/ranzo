@@ -21,7 +21,7 @@ export default function Home() {
       <RecentWorksSection />
       <WhatWeDoSection />
       <OurStorySection />
-      {/* TestimonialsSection hidden per client request — TestimonialsReelSection replaces it */}
+      {/* TestimonialsSection hidden per client request - TestimonialsReelSection replaces it */}
       <TestimonialsReelSection />
       <FounderCTASection />
       <FooterSection />

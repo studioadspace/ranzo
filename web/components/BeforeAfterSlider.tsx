@@ -56,7 +56,7 @@ export default function BeforeAfterSlider({
         cursor: "ew-resize", userSelect: "none", touchAction: "none", background: "#0e0e0c",
       }}
     >
-      {/* After (base layer — always fully visible on the right of the handle) */}
+      {/* After (base layer - always fully visible on the right of the handle) */}
       <Image
         src={afterSrc} alt={afterAlt} fill
         style={{ objectFit: "cover", pointerEvents: "none", transform: mirrorAfter ? "scaleX(-1)" : undefined }}

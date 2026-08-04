@@ -26,18 +26,33 @@ const testimonials = [
   },
 ];
 
-// Tile fills — plain dark tiles with an occasional warm accent tile, no imagery needed
-const TILE_VARIANTS = [
-  "rgba(255,255,255,0.06)",
-  "rgba(255,255,255,0.04)",
-  "linear-gradient(135deg, rgba(248,147,30,0.32), rgba(248,147,30,0.04))",
-  "rgba(255,255,255,0.06)",
-  "rgba(255,255,255,0.09)",
-  "rgba(255,255,255,0.04)",
-];
+// The reel is built from the studio's own logomark shapes (square / circle / triangle) - a
+// scattered brand motif rather than generic decorative rectangles.
+const SHAPE_SEQUENCE: Array<"square" | "circle" | "triangle"> = ["square", "circle", "triangle", "square", "circle", "square", "triangle", "circle"];
+const OPACITY_SEQUENCE = [0.14, 0.42, 0.2, 0.58, 0.12, 0.3, 0.18, 0.46];
+const SCALE_SEQUENCE = [0.4, 0.56, 0.46, 0.62, 0.36, 0.5, 0.42, 0.58];
+const ROTATION_SEQUENCE = [0, 0, 10, -8, 0, 14, -12, 0];
 
-function ReelColumn({ seed, reverse, tileCount, tileHeight }: { seed: number; reverse: boolean; tileCount: number; tileHeight: string }) {
-  const tiles = Array.from({ length: tileCount }, (_, i) => TILE_VARIANTS[(i + seed) % TILE_VARIANTS.length]);
+function LogoBitShape({ type, size, opacity }: { type: "square" | "circle" | "triangle"; size: number; opacity: number }) {
+  const color = `rgba(248,147,30,${opacity})`;
+  if (type === "circle") {
+    return <div style={{ width: size, height: size, borderRadius: "50%", background: color }} />;
+  }
+  if (type === "triangle") {
+    return (
+      <div style={{
+        width: 0, height: 0,
+        borderLeft: `${size / 2}px solid transparent`,
+        borderRight: `${size / 2}px solid transparent`,
+        borderBottom: `${size}px solid ${color}`,
+      }} />
+    );
+  }
+  return <div style={{ width: size, height: size, borderRadius: size * 0.14, background: color }} />;
+}
+
+function ReelColumn({ seed, reverse, tileCount, tileHeightPx }: { seed: number; reverse: boolean; tileCount: number; tileHeightPx: number }) {
+  const tiles = Array.from({ length: tileCount }, (_, i) => (i + seed) % SHAPE_SEQUENCE.length);
   const track = [...tiles, ...tiles];
 
   return (
@@ -46,16 +61,16 @@ function ReelColumn({ seed, reverse, tileCount, tileHeight }: { seed: number; re
         className={reverse ? "reel-col reel-col-reverse" : "reel-col"}
         style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}
       >
-        {track.map((bg, i) => (
-          <div
-            key={i}
-            style={{
-              height: tileHeight,
-              borderRadius: "10px",
-              background: bg,
-              flexShrink: 0,
-            }}
-          />
+        {track.map((variant, i) => (
+          <div key={i} style={{ height: tileHeightPx, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <div style={{ transform: `rotate(${ROTATION_SEQUENCE[variant]}deg)` }}>
+              <LogoBitShape
+                type={SHAPE_SEQUENCE[variant]}
+                size={Math.round(tileHeightPx * SCALE_SEQUENCE[variant])}
+                opacity={OPACITY_SEQUENCE[variant]}
+              />
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -101,14 +116,14 @@ export default function TestimonialsReelSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          More From<br />Our Clients
+          Hear from<br />our Clients
         </motion.h2>
 
         <div style={{ position: "relative", height: reelHeight, borderRadius: "20px", overflow: "hidden" }}>
           {/* Reel background */}
           <div style={{ position: "absolute", inset: 0, display: "grid", gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: "10px", padding: "10px" }}>
             {Array.from({ length: columns }, (_, c) => (
-              <ReelColumn key={c} seed={c * 2} reverse={c % 2 === 1} tileCount={14} tileHeight={isMobile ? "56px" : "68px"} />
+              <ReelColumn key={c} seed={c * 2} reverse={c % 2 === 1} tileCount={14} tileHeightPx={isMobile ? 56 : 68} />
             ))}
           </div>
 
@@ -117,7 +132,7 @@ export default function TestimonialsReelSection() {
           {/* Darken behind the card */}
           <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 62% 60% at 50% 50%, rgba(14,14,12,0.94) 0%, rgba(14,14,12,0.55) 50%, transparent 78%)" }} />
 
-          {/* Central row: prev arrow — card — next arrow, grouped together */}
+          {/* Central row: prev arrow - card - next arrow, grouped together */}
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: isMobile ? "8px" : "20px", padding: isMobile ? "20px 12px" : "20px" }}>
             <button
               onClick={prev}

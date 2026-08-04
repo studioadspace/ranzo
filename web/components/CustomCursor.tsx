@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-  // Detect touch/coarse pointer — covers phones, tablets, and mobile browsers
+  // Detect touch/coarse pointer - covers phones, tablets, and mobile browsers
   // on any screen size. Width-based breakpoints miss desktop Chrome DevTools mobile mode.
   const [isTouch, setIsTouch] = useState(true);
 

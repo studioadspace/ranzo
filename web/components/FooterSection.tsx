@@ -9,7 +9,7 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
-// First entry is the guaranteed fallback — always shown on first paint before the rotation kicks in
+// First entry is the guaranteed fallback - always shown on first paint before the rotation kicks in
 const CLOSING_IMAGES = [
   { src: "/img17.jpeg", alt: "Ranzospace designed spaces" },
   { src: "/projects-real/ranzo-living-tv.jpg", alt: "Living room with fluted panelling by Ranzospace, Mumbai" },
@@ -36,7 +36,7 @@ export default function FooterSection() {
 
   return (
     <footer style={{ background: "#0e0e0c" }}>
-      {/* Closing — full-width image with headline */}
+      {/* Closing - full-width image with headline */}
       <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: isMobile ? "clamp(320px, 78vw, 460px)" : "clamp(440px, 56vw, 700px)" }}>
         <motion.div style={{ y: isMobile ? 0 : imgY, position: "absolute", inset: 0 }}>
           <AnimatePresence>

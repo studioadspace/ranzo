@@ -56,7 +56,7 @@ export default function LightboxProvider({ children }: { children: React.ReactNo
               cursor: !isMobile ? "pointer" : "default",
             }}
           >
-            {/* Close button — mobile only */}
+            {/* Close button - mobile only */}
             {isMobile && (
               <button
                 onClick={close}
@@ -76,7 +76,7 @@ export default function LightboxProvider({ children }: { children: React.ReactNo
               </button>
             )}
 
-            {/* Image container — stop propagation so clicking image doesn't close on desktop */}
+            {/* Image container - stop propagation so clicking image doesn't close on desktop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}

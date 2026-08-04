@@ -128,22 +128,23 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>WhatsApp</p>
                   <a
                     href="https://wa.me/919699147145"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="whatsapp-btn"
                     style={{
                       display: "inline-flex", alignItems: "center", gap: "10px",
                       padding: "14px 28px",
-                      background: "#F8931E",
-                      border: "none",
+                      background: "transparent",
+                      border: "1.5px solid #fefefe",
                       borderRadius: "6px",
                       fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 16px)",
-                      color: "#0e0e0c",
+                      color: "#fefefe",
                       fontWeight: 700,
                       textDecoration: "none",
                       letterSpacing: "0.01em",
+                      transition: "background-color 0.25s ease, border-color 0.25s ease",
                     }}
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -275,6 +276,12 @@ export default function ContactPage() {
 
       </main>
       <FooterSection />
+      <style>{`
+        .whatsapp-btn:hover {
+          background-color: #25d366 !important;
+          border-color: #25d366 !important;
+        }
+      `}</style>
     </>
   );
 }

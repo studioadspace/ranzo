@@ -10,8 +10,8 @@ const PAD = "clamp(16px, 5vw, 48px)";
 const services = [
   { title: "Full-Home & Commercial Interiors", body: "Every space thoughtfully planned in proportion, finish, and detail to maximise functionality across kitchens, bedrooms, living areas, workspaces, and storage." },
   { title: "Architecture & Space Planning", body: "From initial concept to construction documentation. We shape volumes, light, and circulation before a single material is chosen." },
-  { title: "Modular Furniture & Decor", body: "Curated furniture selection and smart décor solutions — sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic." },
-  { title: "On-Site Execution", body: "Civil, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting — managed by our team with 140 quality checks." },
+  { title: "Modular Furniture & Decor", body: "Curated furniture selection and smart décor solutions: sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic." },
+  { title: "On-Site Execution", body: "Civil, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting, managed by our team with 140 quality checks." },
   { title: "AI-Powered Design & 360° Simulations", body: "India's first AI design studio. Experience your space in photorealistic 3D before a single tile is laid. Decisions made with clarity, not guesswork." },
   { title: "Design Consultation", body: "Ergonomically designed interior spaces to match your needs and give you maximum comfort and space utilisation. From design to execution, living room to bedroom, kitchen to bathroom, on-site services to modular solutions, one point of contact for it all." },
 ];

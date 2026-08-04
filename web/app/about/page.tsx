@@ -65,7 +65,7 @@ export default function AboutPage() {
       <Navbar />
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
-        {/* Hero — above the fold, animate on mount (no useInView needed) */}
+        {/* Hero - above the fold, animate on mount (no useInView needed) */}
         <section style={{
           padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px`,
           borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Full-width image — clickable lightbox */}
+        {/* Full-width image - clickable lightbox */}
         <div
           onClick={() => openLightbox("/interiors/amir-living-sofa.jpg", "Ranzospace designed living room")}
           data-cursor="hover"
