@@ -18,16 +18,22 @@ const categories = [
   { title: "Dining", items: ["Dining tables", "Chairs & benches", "Display units", "Bar counters"] },
 ];
 
-const approachItems = ["Proportion-first selection", "Curated sourcing", "Coordinated installation", "Post-handover support"];
+const process = [
+  { step: "01", title: "Discovery", body: "Understanding room usage, existing decor, and lifestyle before any sourcing begins." },
+  { step: "02", title: "Curated Shortlist", body: "A tailored selection matched to proportion, material, and budget. Not a generic catalogue." },
+  { step: "03", title: "Sample & Finish Approval", body: "Physical swatches and finish samples reviewed and confirmed before any order is placed." },
+  { step: "04", title: "Sourcing & Fabrication", body: "Coordinated procurement and custom fabrication with vetted workshops and vendors." },
+  { step: "05", title: "Delivery & Installation", body: "White-glove delivery, assembly, and final styling handled entirely by our team." },
+];
 
 export default function FurniturePage() {
   const isMobile = useBreakpoint(768);
   const heroRef = useRef(null);
   const gridRef = useRef(null);
-  const approachRef = useRef(null);
+  const processRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
   const gridInView = useInView(gridRef, { once: true, margin: isMobile ? "0px" : "-40px" });
-  const approachInView = useInView(approachRef, { once: true, margin: isMobile ? "0px" : "-40px" });
+  const processInView = useInView(processRef, { once: true, margin: isMobile ? "0px" : "-40px" });
 
   return (
     <>
@@ -39,7 +45,7 @@ export default function FurniturePage() {
         <section style={{ padding: isMobile ? `100px 20px 0` : `140px ${PAD} 0` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
+              style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
               initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
@@ -67,19 +73,19 @@ export default function FurniturePage() {
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/projects-photos/rishi-photo-04.jpg" alt="Custom wardrobe joinery" fill style={{ objectFit: "cover" }} sizes="100vw" />
+                <Image src="/interiors/amir-bedroom-wardrobe.jpg" alt="Custom wardrobe joinery" fill style={{ objectFit: "cover" }} sizes="100vw" />
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
                 <div style={{ position: "relative", height: "clamp(260px, 34vw, 500px)", overflow: "hidden", borderRadius: "10px" }}>
-                  <Image src="/projects-photos/rishi-photo-04.jpg" alt="Custom wardrobe joinery" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                  <Image src="/interiors/amir-bedroom-wardrobe.jpg" alt="Custom wardrobe joinery" fill style={{ objectFit: "cover" }} sizes="50vw" />
                 </div>
                 <div style={{ display: "grid", gap: "12px" }}>
                   <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                    <Image src="/projects-photos/rishi-staging-04.jpg" alt="Bedroom with custom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                    <Image src="/interiors/amir-bedroom-orange.jpg" alt="Bedroom with custom furniture" fill style={{ objectFit: "cover" }} sizes="50vw" />
                   </div>
                   <div style={{ position: "relative", height: "clamp(124px, 16.5vw, 244px)", overflow: "hidden", borderRadius: "10px" }}>
-                    <Image src="/projects-photos/rishi-photo-02.jpg" alt="Custom bar unit" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                    <Image src="/interiors/amir-tv-unit-01.jpg" alt="Custom bar unit" fill style={{ objectFit: "cover" }} sizes="50vw" />
                   </div>
                 </div>
               </div>
@@ -90,9 +96,12 @@ export default function FurniturePage() {
         {/* Categories */}
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
           <div ref={gridRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "28px" : "48px" }}>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "16px" : "20px" }}>
               What We Source
             </p>
+            <h2 style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: isMobile ? "28px" : "48px" }}>
+              Curated for<br />every room.
+            </h2>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "2px" }}>
               {categories.map((cat, i) => (
                 <motion.div
@@ -116,60 +125,27 @@ export default function FurniturePage() {
           </div>
         </section>
 
-        {/* Approach */}
-        <section ref={approachRef} style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
-          <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            {isMobile ? (
-              <div>
-                <p style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "16px" }}>Our Approach</p>
-                <h2 style={{ fontSize: "clamp(26px, 7vw, 36px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "20px" }}>
-                  No catalogue browsing.<br />A curated edit.
-                </h2>
-                <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "28px" }}>
-                  Our team builds a considered selection based on your space, your life, and the aesthetic you are building toward. Every piece is chosen because it earns its place.
-                </p>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {approachItems.map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={approachInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.5, delay: i * 0.08 }}
-                      style={{ display: "flex", alignItems: "center", gap: "16px", padding: "18px 0", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
-                    >
-                      <span style={{ fontSize: "12px", color: "#F8931E", fontWeight: 700, minWidth: "24px" }}>{String(i + 1).padStart(2, "0")}</span>
-                      <span style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 400 }}>{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
-                <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "20px" }}>Our Approach</p>
-                  <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "24px" }}>
-                    No catalogue browsing.<br />A curated edit.
-                  </h2>
-                  <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}>
-                    Our team builds a considered selection based on your space, your life, and the aesthetic you are building toward. Every piece is chosen because it earns its place. Proportionally, functionally, and aesthetically.
-                  </p>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {approachItems.map((item, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={approachInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.5, delay: i * 0.1 }}
-                      style={{ display: "flex", alignItems: "center", gap: "16px", padding: "20px 0", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
-                    >
-                      <span style={{ fontSize: "12px", color: "#F8931E", fontWeight: 700, minWidth: "28px" }}>{String(i + 1).padStart(2, "0")}</span>
-                      <span style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 400 }}>{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
+        {/* Process */}
+        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+          <div ref={processRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "28px" : "48px" }}>
+              Our Process
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "0" }}>
+              {process.map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={processInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ padding: isMobile ? "20px 0" : "28px 0", borderTop: "1px solid rgba(255,255,255,0.07)", paddingRight: isMobile ? "0" : "40px" }}
+                >
+                  <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "10px" }}>{p.step}</p>
+                  <p style={{ fontSize: isMobile ? "16px" : "clamp(15px, 1.2vw, 19px)", fontWeight: 600, color: "#fefefe", marginBottom: "8px", letterSpacing: "-0.01em" }}>{p.title}</p>
+                  <p style={{ fontSize: isMobile ? "14px" : "clamp(13px, 1vw, 15px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75 }}>{p.body}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

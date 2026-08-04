@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
@@ -66,7 +67,7 @@ export default function ContactPage() {
         <section style={{ padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
+              style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
               initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
@@ -107,19 +108,19 @@ export default function ContactPage() {
 
               <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Email</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Email</p>
                   <a href="mailto:info@ranzospace.in" style={{ fontSize: isMobile ? "16px" : "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     info@ranzospace.in
                   </a>
                 </div>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Phone</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Phone</p>
                   <a href="tel:+919699147145" style={{ fontSize: isMobile ? "16px" : "clamp(14px, 1.1vw, 17px)", color: "#fefefe", fontWeight: 400, textDecoration: "none" }}>
                     +91 96991 47145
                   </a>
                 </div>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Studio</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Studio</p>
                   <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.65 }}>
                     Mumbai, India<br />
                     <span style={{ fontSize: "13px" }}>ranzospace.in</span>
@@ -127,20 +128,20 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>WhatsApp</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>WhatsApp</p>
                   <a
                     href="https://wa.me/919699147145"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
                       display: "inline-flex", alignItems: "center", gap: "10px",
-                      padding: "12px 24px",
-                      background: "rgba(37,211,102,0.12)",
-                      border: "1px solid rgba(37,211,102,0.3)",
+                      padding: "14px 28px",
+                      background: "#F8931E",
+                      border: "none",
                       borderRadius: "6px",
                       fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 16px)",
-                      color: "#25d366",
-                      fontWeight: 600,
+                      color: "#0e0e0c",
+                      fontWeight: 700,
                       textDecoration: "none",
                       letterSpacing: "0.01em",
                     }}
@@ -153,7 +154,7 @@ export default function ContactPage() {
                 </div>
 
                 <div style={{ paddingTop: "28px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>Response time</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "12px" }}>Response time</p>
                   <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300 }}>
                     We respond to every inquiry within <strong style={{ color: "#F8931E", fontWeight: 600 }}>24 hours</strong>.
                   </p>
@@ -261,9 +262,10 @@ export default function ContactPage() {
                       alignSelf: isMobile ? "stretch" : "flex-start",
                       letterSpacing: "0.01em",
                       transition: "opacity 0.2s ease",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
                     }}
                   >
-                    Send message →
+                    Send message <ArrowRight size={16} weight="bold" />
                   </button>
                 </form>
               )}

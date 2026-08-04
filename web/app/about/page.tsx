@@ -74,7 +74,7 @@ export default function AboutPage() {
             {isMobile ? (
               <div>
                 <motion.p
-                  style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
+                  style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
@@ -90,7 +90,7 @@ export default function AboutPage() {
                   A studio built<br />on conviction.
                 </motion.h1>
                 <motion.p
-                  style={{ fontSize: "13px", fontWeight: 400, color: "#c8c4bc", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: "16px" }}
+                  style={{ fontSize: "18px", fontWeight: 400, color: "#fefefe", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "16px" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.15 }}
@@ -118,7 +118,7 @@ export default function AboutPage() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "end" }}>
                 <div>
                   <motion.p
-                    style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
+                    style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
@@ -140,7 +140,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.7, delay: 0.25 }}
                   style={{ paddingBottom: "8px" }}
                 >
-                  <p style={{ fontSize: "13px", fontWeight: 400, color: "#c8c4bc", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.03em", marginBottom: "24px" }}>
+                  <p style={{ fontSize: "20px", fontWeight: 400, color: "#fefefe", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "24px" }}>
                     Where Space Becomes Legacy
                   </p>
                   <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}>
@@ -157,11 +157,11 @@ export default function AboutPage() {
 
         {/* Full-width image — clickable lightbox */}
         <div
-          onClick={() => openLightbox("/projects-photos/pramod-02.jpg", "Ranzospace designed living room")}
+          onClick={() => openLightbox("/interiors/amir-living-sofa.jpg", "Ranzospace designed living room")}
           data-cursor="hover"
           style={{ position: "relative", height: isMobile ? "56vw" : "clamp(260px, 36vw, 520px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden", cursor: "pointer" }}
         >
-          <Image src="/projects-photos/pramod-02.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
+          <Image src="/interiors/amir-living-sofa.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.35)" }} />
         </div>
 
@@ -206,7 +206,7 @@ export default function AboutPage() {
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
           <div ref={timelineRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "32px" }}
+              style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "32px" }}
               initial={{ opacity: 0 }} animate={timelineInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
@@ -262,24 +262,20 @@ export default function AboutPage() {
 
               {/* Quote body */}
               <p style={{
-                fontSize: isMobile ? "17px" : "clamp(18px, 1.6vw, 24px)",
-                fontWeight: 300,
+                fontSize: isMobile ? "17px" : "clamp(18px, 1.5vw, 23px)",
+                fontWeight: 400,
                 color: "#fefefe",
-                lineHeight: 1.85,
-                fontFamily: "'Instrument Serif', serif",
-                fontStyle: "italic",
+                lineHeight: 1.75,
                 marginBottom: isMobile ? "16px" : "20px",
                 maxWidth: "760px",
               }}>
                 I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
               </p>
               <p style={{
-                fontSize: isMobile ? "17px" : "clamp(18px, 1.6vw, 24px)",
-                fontWeight: 300,
+                fontSize: isMobile ? "17px" : "clamp(18px, 1.5vw, 23px)",
+                fontWeight: 400,
                 color: "#fefefe",
-                lineHeight: 1.85,
-                fontFamily: "'Instrument Serif', serif",
-                fontStyle: "italic",
+                lineHeight: 1.75,
                 marginBottom: isMobile ? "24px" : "32px",
                 maxWidth: "760px",
               }}>

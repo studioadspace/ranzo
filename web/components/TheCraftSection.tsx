@@ -69,7 +69,7 @@ export default function TheCraftSection() {
         </div>
 
         {/* Full-width first image */}
-        <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Luxury foyer interior design by Ranzospace Mumbai - custom joinery and curated lighting" h="72vw" delay={0} mobile />
+        <RevealImg src="/interiors/amir-dining-nook.jpg" alt="Dining nook interior design by Ranzospace Mumbai - custom shelving and framed art" h="72vw" delay={0} mobile />
 
         <div style={{ padding: "20px 20px 0" }}>
           <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75, marginBottom: "24px" }}>
@@ -78,7 +78,7 @@ export default function TheCraftSection() {
         </div>
 
         {/* Second image */}
-        <RevealImg src="/projects-photos/pramod-01.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="64vw" delay={0.15} mobile />
+        <RevealImg src="/interiors/amir-living-wall.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="64vw" delay={0.15} mobile />
 
         <div style={{ padding: "20px 20px 0" }}>
           <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.75 }}>
@@ -97,7 +97,7 @@ export default function TheCraftSection() {
 
           {/* LEFT */}
           <div>
-            <RevealImg src="/projects-photos/rishi-staging-01.jpg" alt="Luxury foyer interior design by Ranzospace Mumbai - custom joinery and curated lighting" h="clamp(400px, 52vw, 720px)" delay={0} />
+            <RevealImg src="/interiors/amir-dining-nook.jpg" alt="Dining nook interior design by Ranzospace Mumbai - custom shelving and framed art" h="clamp(400px, 52vw, 720px)" delay={0} />
             <p style={{ fontSize: "14px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "360px" }}>
               Creating structures that breathe. Our practice focuses on the core principles: light, air, and space.
               We aim to bring in the humane functionality together.
@@ -105,7 +105,7 @@ export default function TheCraftSection() {
           </div>
 
           {/* RIGHT */}
-          <div style={{ paddingTop: "56px" }}>
+          <div style={{ paddingTop: "40px" }}>
             <motion.h2
               style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: "20px" }}
               initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -124,7 +124,7 @@ export default function TheCraftSection() {
               spaces with depth, balance, and intention.
             </motion.p>
 
-            <RevealImg src="/projects-photos/pramod-01.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="clamp(280px, 36vw, 520px)" delay={0.2} />
+            <RevealImg src="/interiors/amir-living-wall.jpg" alt="Premium living room interior design Mumbai - considered proportions and bespoke finishes by Ranzospace" h="clamp(320px, 42vw, 560px)" delay={0.2} />
 
             <p style={{ fontSize: "14px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.8, marginTop: "16px", maxWidth: "400px" }}>
               Materiality is the primary language of Ranzospace. We source materials that are unique to

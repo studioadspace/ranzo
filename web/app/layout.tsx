@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living.",
-    images: [{ url: "/projects-photos/pramod-02.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/interiors/amir-living-cove.jpg", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Spaces shaped for legacy.",
-    images: ["/projects-photos/pramod-02.jpg"],
+    images: ["/interiors/amir-living-cove.jpg"],
   },
 };
 

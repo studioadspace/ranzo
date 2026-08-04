@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfolio - Interior Design & Architecture Projects in Mumbai | Ranzospace",
     description: "100+ completed design projects across Mumbai. Residential interiors, architecture, and custom furniture. Built to last.",
-    images: [{ url: "/projects-photos/pramod-02.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/interiors/amir-living-tv-01.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/projects-photos/pramod-02.jpg"],
+    images: ["/interiors/amir-living-tv-01.jpg"],
   },
 };
 

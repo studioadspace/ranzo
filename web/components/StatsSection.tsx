@@ -45,7 +45,7 @@ export default function StatsSection() {
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
 
         <motion.p
-          style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}
+          style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}
           initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.5 }}
         >
           About us
@@ -69,7 +69,7 @@ export default function StatsSection() {
               transition={{ duration: 0.8, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
               <div style={{ ...num, fontSize: "clamp(64px, 18vw, 96px)" }}>
-                <Counter target={9} suffix="+" />
+                <Counter target={8} suffix="+" />
               </div>
               <p style={{ fontSize: "13px", color: "#fefefe", fontWeight: 400, marginTop: "8px", lineHeight: 1.4, maxWidth: "120px" }}>
                 Years of architecture design and planning
@@ -97,7 +97,7 @@ export default function StatsSection() {
               transition={{ duration: 0.8, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
               <div style={{ ...num, fontSize: "clamp(80px, 9.5vw, 152px)" }}>
-                <Counter target={9} suffix="+" />
+                <Counter target={8} suffix="+" />
               </div>
               <p style={{ fontSize: "15px", color: "#fefefe", fontWeight: 400, marginTop: "8px", letterSpacing: "0.02em" }}>
                 Years of architecture design and planning

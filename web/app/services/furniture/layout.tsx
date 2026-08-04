@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Modular Furniture & Décor in Mumbai - Curated Selection | Ranzospace",
     description: "Curated modular furniture and décor in Mumbai. Sourced, coordinated, and installed by our team. A considered edit for your space.",
-    images: [{ url: "/projects-photos/rishi-photo-04.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/interiors/amir-tv-unit-01.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/projects-photos/rishi-photo-04.jpg"],
+    images: ["/interiors/amir-tv-unit-01.jpg"],
   },
 };
 

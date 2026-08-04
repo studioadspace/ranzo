@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "@phosphor-icons/react/dist/ssr";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface LightboxContextValue {
@@ -65,13 +66,13 @@ export default function LightboxProvider({ children }: { children: React.ReactNo
                   background: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.18)",
                   borderRadius: "50%",
-                  color: "#fefefe", fontSize: "22px", lineHeight: 1,
+                  color: "#fefefe",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   cursor: "pointer", zIndex: 10001, fontFamily: "inherit",
                   flexShrink: 0,
                 }}
               >
-                ×
+                <X size={20} weight="regular" />
               </button>
             )}
 

@@ -56,7 +56,7 @@ export default function InteriorDesignPage() {
         <section style={{ padding: isMobile ? `100px 20px 0` : `140px ${PAD} 0` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
+              style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
               initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
@@ -82,7 +82,7 @@ export default function InteriorDesignPage() {
         {/* Hero image */}
         <div style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", position: "relative", height: isMobile ? "56vw" : "clamp(300px, 42vw, 600px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden", borderRadius: "10px" }}>
-            <Image src="/projects-photos/rishi-staging-01.jpg" alt="Interior design by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
+            <Image src="/interiors/amir-living-sofa.jpg" alt="Interior design by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
           </div>
         </div>
 
@@ -91,7 +91,7 @@ export default function InteriorDesignPage() {
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
-                <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "16px" }}>What's included</p>
+                <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "16px" }}>What's included</p>
                 <h2 style={{ fontSize: "clamp(28px, 8vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "28px" }}>
                   Everything.<br />End to end.
                 </h2>
@@ -113,7 +113,7 @@ export default function InteriorDesignPage() {
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: "80px" }}>
                 <div>
-                  <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>What's included</p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>What's included</p>
                   <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                     Everything.<br />End to end.
                   </h2>
@@ -140,7 +140,7 @@ export default function InteriorDesignPage() {
         {/* Process */}
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
           <div ref={processRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "28px" : "48px" }}>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "28px" : "48px" }}>
               Our Process
             </p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "0" }}>
@@ -165,10 +165,10 @@ export default function InteriorDesignPage() {
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? "6px" : "12px" }}>
             {[
-              { src: "/projects-photos/rishi-staging-02.jpg", alt: "Luxury dining room interior design by Ranzospace Mumbai - custom joinery and ambient lighting" },
-              { src: "/projects-photos/rishi-staging-03.jpg", alt: "Master bedroom interior design by Ranzospace Mumbai - minimal palette and layered lighting" },
-              { src: "/projects-photos/pramod-02.jpg",        alt: "Full-home living room interior design by Ranzospace Mumbai - warm tones and proportional furniture" },
-              { src: "/projects-photos/rishi-staging-04.jpg", alt: "Bedroom with integrated study by Ranzospace Mumbai - custom built-in joinery" },
+              { src: "/interiors/amir-living-cove.jpg", alt: "Living room TV nook by Ranzospace Mumbai - arched cove-lit alcove" },
+              { src: "/interiors/amir-bedroom-orange.jpg", alt: "Master bedroom interior design by Ranzospace Mumbai - upholstered bed frame" },
+              { src: "/interiors/amir-living-wall.jpg", alt: "Living room interior design by Ranzospace Mumbai - warm tones and proportional furniture" },
+              { src: "/interiors/amir-dining-nook.jpg", alt: "Dining nook by Ranzospace Mumbai - custom shelving and framed art" },
             ].map((img, i) => (
               <div
                 key={i}

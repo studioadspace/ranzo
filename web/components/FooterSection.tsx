@@ -1,13 +1,23 @@
 "use client";
-import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { siInstagram, siLinkedin } from "simple-icons";
+import { ArrowRight, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
+
+// First entry is the guaranteed fallback — always shown on first paint before the rotation kicks in
+const CLOSING_IMAGES = [
+  { src: "/img17.jpeg", alt: "Ranzospace designed spaces" },
+  { src: "/projects-real/ranzo-living-tv.jpg", alt: "Living room with fluted panelling by Ranzospace, Mumbai" },
+  { src: "/projects-real/ranzo-dining.jpg", alt: "Dining room with sculptural pendant light by Ranzospace, Mumbai" },
+  { src: "/projects-real/ranzo-bedroom-tufted.jpg", alt: "Master bedroom with channel-tufted headboard by Ranzospace, Mumbai" },
+  { src: "/projects-real/ranzo-kitchen-wood.jpg", alt: "Modular kitchen by Ranzospace, Mumbai" },
+  { src: "/projects-real/ranzo-living-sofa.jpg", alt: "Living room with bouclé sofa by Ranzospace, Mumbai" },
+];
 
 export default function FooterSection() {
   const isMobile = useBreakpoint(768);
@@ -18,25 +28,50 @@ export default function FooterSection() {
   const { scrollYProgress } = useScroll({ target: closingRef, offset: ["start end", "end end"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["6%", "0%"]);
 
+  const [imgIndex, setImgIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setImgIndex(i => (i + 1) % CLOSING_IMAGES.length), 2000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <footer style={{ background: "#0e0e0c" }}>
       {/* Closing — full-width image with headline */}
-      <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: isMobile ? "clamp(280px, 72vw, 420px)" : "clamp(380px, 50vw, 640px)" }}>
+      <div ref={closingRef} style={{ position: "relative", overflow: "hidden", height: isMobile ? "clamp(320px, 78vw, 460px)" : "clamp(440px, 56vw, 700px)" }}>
         <motion.div style={{ y: isMobile ? 0 : imgY, position: "absolute", inset: 0 }}>
-          <Image src="/img17.jpeg" alt="Ranzospace designed spaces" fill style={{ objectFit: "cover", objectPosition: "center 40%" }} sizes="100vw" />
-          <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.65)" }} />
+          <AnimatePresence>
+            <motion.div
+              key={imgIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              style={{ position: "absolute", inset: 0 }}
+            >
+              <Image
+                src={CLOSING_IMAGES[imgIndex].src}
+                alt={CLOSING_IMAGES[imgIndex].alt}
+                fill
+                style={{ objectFit: "cover", objectPosition: "center 40%" }}
+                sizes="100vw"
+                priority={imgIndex === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
+          <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.74)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 55%, rgba(14,14,12,0.35) 0%, rgba(14,14,12,0.15) 60%, transparent 85%)" }} />
         </motion.div>
 
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: isMobile ? "24px 20px" : "48px", textAlign: "center" }}>
           {/* Tagline above headline */}
           <motion.p
             style={{
-              fontSize: isMobile ? "12px" : "13px",
+              fontSize: isMobile ? "16px" : "19px",
               fontWeight: 400,
-              color: "#c8c4bc",
+              color: "#fefefe",
               fontFamily: "'Instrument Serif', serif",
               fontStyle: "italic",
-              letterSpacing: "0.06em",
+              letterSpacing: "0.03em",
               marginBottom: isMobile ? "14px" : "20px",
             }}
             initial={{ opacity: 0, y: 12 }}
@@ -95,14 +130,14 @@ export default function FooterSection() {
             <p style={{ fontSize: "28px", fontWeight: 700, color: "#fefefe", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Let&apos;s build something<br />that endures.
             </p>
-            <Link href="/contact" style={{ fontSize: "16px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
-              Get in touch →
+            <Link href="/contact" style={{ fontSize: "16px", fontWeight: 600, color: "#F8931E", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              Get in touch <ArrowRight size={16} weight="bold" />
             </Link>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.12 }}
             style={{ marginTop: "48px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Contact</p>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Contact</p>
             {["About", "Work", "Services", "Contact"].map(link => (
               <div key={link} style={{ marginBottom: "20px" }}>
                 <Link href={`/${link.toLowerCase()}`} style={{ fontSize: "18px", color: "#fefefe", fontWeight: 300, textDecoration: "none" }}>
@@ -114,7 +149,7 @@ export default function FooterSection() {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.22 }}
             style={{ marginTop: "40px" }}>
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Reach Us</p>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Reach Us</p>
             <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>info@ranzospace.in</p>
             <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>+91 96991 47145</p>
             <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>Mumbai, India</p>
@@ -123,10 +158,10 @@ export default function FooterSection() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.3 }}
             style={{ marginTop: "40px", display: "flex", gap: "20px", justifyContent: "center" }}>
             <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on Instagram" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
-              <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siInstagram.path} /></svg>
+              <InstagramLogo size={20} weight="regular" />
             </Link>
             <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on LinkedIn" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
-              <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siLinkedin.path} /></svg>
+              <LinkedinLogo size={20} weight="regular" />
             </Link>
           </motion.div>
         </div>
@@ -150,8 +185,8 @@ export default function FooterSection() {
                 Let&apos;s build something<br />that endures.
               </motion.p>
               <motion.div initial={{ opacity: 0, y: 10 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.15 }}>
-                <Link href="/contact" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
-                  Get in touch →
+                <Link href="/contact" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                  Get in touch <ArrowRight size={15} weight="bold" />
                 </Link>
               </motion.div>
               <motion.div
@@ -159,16 +194,16 @@ export default function FooterSection() {
                 style={{ display: "flex", gap: "16px", marginTop: "28px" }}
               >
                 <Link href="https://instagram.com/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on Instagram" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
-                  <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siInstagram.path} /></svg>
+                  <InstagramLogo size={18} weight="regular" />
                 </Link>
                 <Link href="https://linkedin.com/company/ranzospace" target="_blank" rel="noopener noreferrer" aria-label="Ranzospace on LinkedIn" style={{ color: "#c8c4bc", display: "flex", alignItems: "center", transition: "color 0.2s ease" }}>
-                  <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d={siLinkedin.path} /></svg>
+                  <LinkedinLogo size={18} weight="regular" />
                 </Link>
               </motion.div>
             </div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.1 }}>
-              <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Navigate</p>
+              <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Navigate</p>
               {["About", "Work", "Services", "Contact"].map(link => (
                 <div key={link} style={{ marginBottom: "12px" }}>
                   <Link href={`/${link.toLowerCase()}`} style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, textDecoration: "none" }}>{link}</Link>
@@ -177,7 +212,7 @@ export default function FooterSection() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.18 }}>
-              <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
+              <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
               <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>info@ranzospace.in</p>
               <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>+91 96991 47145</p>
               <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "20px", lineHeight: 1.6 }}>Mumbai, India</p>

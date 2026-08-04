@@ -40,7 +40,7 @@ export default function OurStorySection() {
             Our<br />Story
           </motion.h2>
 
-          <div ref={ref} style={{ maxWidth: "640px", paddingTop: isMobile ? "0" : "6px" }}>
+          <div ref={ref} style={{ maxWidth: "640px", paddingTop: isMobile ? "0" : "14px" }}>
             {lines.map((line, i) => (
               <div key={i} style={{ overflow: "hidden" }}>
                 <motion.p

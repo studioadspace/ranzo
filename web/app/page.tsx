@@ -6,7 +6,7 @@ import TheCraftSection from "@/components/TheCraftSection";
 import RecentWorksSection from "@/components/RecentWorksSection";
 import WhatWeDoSection from "@/components/WhatWeDoSection";
 import OurStorySection from "@/components/OurStorySection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import TestimonialsReelSection from "@/components/TestimonialsReelSection";
 import FounderCTASection from "@/components/FounderCTASection";
 import FooterSection from "@/components/FooterSection";
 
@@ -21,7 +21,8 @@ export default function Home() {
       <RecentWorksSection />
       <WhatWeDoSection />
       <OurStorySection />
-      <TestimonialsSection />
+      {/* TestimonialsSection hidden per client request — TestimonialsReelSection replaces it */}
+      <TestimonialsReelSection />
       <FounderCTASection />
       <FooterSection />
     </main>

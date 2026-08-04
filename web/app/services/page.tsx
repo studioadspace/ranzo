@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
@@ -18,7 +19,7 @@ const services = [
     slug: "interior-design",
     tagline: "Full-home & commercial interiors",
     body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage. Designed as a unified whole.",
-    img: "/projects-photos/pramod-02.jpg",
+    img: "/interiors/amir-living-cove.jpg",
     tags: ["Residential", "Commercial", "Full-Home"],
   },
   {
@@ -27,7 +28,7 @@ const services = [
     slug: "architecture",
     tagline: "Architecture & space planning",
     body: "From initial concept to construction documentation. We shape volumes, light, and circulation before a single material is chosen.",
-    img: "/projects-photos/pramod-01.jpg",
+    img: "/architecture/arch-01.jpg",
     tags: ["New Build", "Renovation", "Space Planning"],
   },
   {
@@ -36,7 +37,7 @@ const services = [
     slug: "furniture",
     tagline: "Modular furniture & curated decor",
     body: "Curated furniture selection and smart decor solutions. Sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
-    img: "/projects-photos/rishi-photo-04.jpg",
+    img: "/interiors/amir-tv-unit-01.jpg",
     tags: ["Modular", "Custom", "Sourcing"],
   },
 ];
@@ -64,7 +65,7 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
           <h2 style={{ fontSize: "clamp(28px, 8vw, 40px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
             {s.title}
           </h2>
-          <p style={{ fontSize: "14px", color: "#c8c4bc", fontWeight: 400, fontStyle: "italic", marginBottom: "16px", letterSpacing: "0.01em" }}>
+          <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 500, marginBottom: "16px", letterSpacing: "0.01em" }}>
             {s.tagline}
           </p>
           <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "20px" }}>
@@ -79,8 +80,8 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
               }}>{tag}</span>
             ))}
           </div>
-          <Link href={`/services/${s.slug}`} style={{ fontSize: "14px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
-            Learn more →
+          <Link href={`/services/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "14px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
+            Learn more <ArrowRight size={14} weight="bold" />
           </Link>
         </div>
       </motion.div>
@@ -124,7 +125,7 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
         <h2 style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
           {s.title}
         </h2>
-        <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 400, fontStyle: "italic", marginBottom: "20px", letterSpacing: "0.01em" }}>
+        <p style={{ fontSize: "clamp(15px, 1.2vw, 18px)", color: "#c8c4bc", fontWeight: 500, marginBottom: "20px", letterSpacing: "0.01em" }}>
           {s.tagline}
         </p>
         <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "28px" }}>
@@ -143,7 +144,7 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
           href={`/services/${s.slug}`}
           style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}
         >
-          Learn more →
+          Learn more <ArrowRight size={14} weight="bold" />
         </Link>
       </div>
     </motion.div>
@@ -167,7 +168,7 @@ export default function ServicesPage() {
         <section style={{ padding: isMobile ? `100px 20px 40px` : `140px ${PAD} 80px` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "11px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
+              style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
               initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
@@ -234,7 +235,7 @@ export default function ServicesPage() {
                 Civil work, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting. All managed by our team. We hand over one project, not a coordination problem.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: isMobile ? "24px" : "40px" }}>
-                {[["140+", "Quality checks per project"], ["100+", "Completed projects"], ["7+", "Years experience"], ["8+", "Team members retained"]].map(([num, label]) => (
+                {[["140+", "Quality checks per project"], ["100+", "Completed projects"], ["8+", "Years experience"], ["8+", "Team members retained"]].map(([num, label]) => (
                   <div key={label}>
                     <p style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#F8931E", letterSpacing: "-0.03em", lineHeight: 1 }}>{num}</p>
                     <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>{label}</p>

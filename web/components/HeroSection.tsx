@@ -38,8 +38,8 @@ export default function HeroSection() {
         display: "flex",
         alignItems: isMobile ? "flex-end" : "flex-start",
         justifyContent: "space-between",
-        paddingTop: isMobile ? "100px" : "clamp(180px, 12vw, 120px)",
-        paddingBottom: isMobile ? "20px" : "clamp(120px, 3vw, 32px)",
+        paddingTop: isMobile ? "100px" : "clamp(120px, 12vw, 180px)",
+        paddingBottom: isMobile ? "20px" : "clamp(24px, 3vw, 56px)",
         paddingLeft: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         paddingRight: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         maxWidth: "1440px", margin: "0 auto",
@@ -57,12 +57,12 @@ export default function HeroSection() {
           </h1>
           <motion.p
             style={{
-              fontSize: isMobile ? "13px" : "clamp(13px, 1vw, 16px)",
+              fontSize: isMobile ? "18px" : "clamp(19px, 1.7vw, 26px)",
               fontWeight: 400,
-              color: "#c8c4bc",
+              color: "#fefefe",
               fontFamily: "'Instrument Serif', serif",
               fontStyle: "italic",
-              letterSpacing: "0.02em",
+              letterSpacing: "0.01em",
               marginTop: isMobile ? "14px" : "20px",
             }}
             initial={{ opacity: 0, y: 8 }}
@@ -80,7 +80,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.9 }}
           >
-            <p style={{ fontSize: "11px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "8px" }}>Since 2018</p>
+            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "8px" }}>Since 2018</p>
             <p style={{ fontSize: "28px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
               Architecture.<br />Design.<br />Furnitures.
             </p>
@@ -113,11 +113,11 @@ export default function HeroSection() {
           position: "relative", width: "100%",
           height: isMobile ? "52vw" : "clamp(280px, 48vw, 640px)",
           minHeight: isMobile ? "220px" : undefined,
-          overflow: "hidden", background: "url(/projects-photos/pramod-02.jpg) center/cover",
+          overflow: "hidden", background: "url(/interiors/amir-living-cove.jpg) center/cover",
         }}>
           <video
             autoPlay muted loop playsInline
-            poster="/projects-photos/pramod-02.jpg"
+            poster="/interiors/amir-living-cove.jpg"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
           >
             <source src="/hero.mp4" type="video/mp4" />

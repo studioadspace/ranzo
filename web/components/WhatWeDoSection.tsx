@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Plus } from "@phosphor-icons/react/dist/ssr";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
@@ -12,6 +13,7 @@ const services = [
   { title: "Modular Furniture & Decor", body: "Curated furniture selection and smart décor solutions — sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic." },
   { title: "On-Site Execution", body: "Civil, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting — managed by our team with 140 quality checks." },
   { title: "AI-Powered Design & 360° Simulations", body: "India's first AI design studio. Experience your space in photorealistic 3D before a single tile is laid. Decisions made with clarity, not guesswork." },
+  { title: "Design Consultation", body: "Ergonomically designed interior spaces to match your needs and give you maximum comfort and space utilisation. From design to execution, living room to bedroom, kitchen to bathroom, on-site services to modular solutions, one point of contact for it all." },
 ];
 
 function Row({ item, index, isMobile }: { item: (typeof services)[0]; index: number; isMobile: boolean }) {
@@ -43,9 +45,9 @@ function Row({ item, index, isMobile }: { item: (typeof services)[0]; index: num
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25 }}
-          style={{ fontSize: "24px", color: "#F8931E", fontWeight: 300, marginLeft: "16px", flexShrink: 0, lineHeight: 1 }}
+          style={{ color: "#F8931E", marginLeft: "16px", flexShrink: 0, display: "flex" }}
         >
-          +
+          <Plus size={22} weight="regular" />
         </motion.span>
       </button>
 
