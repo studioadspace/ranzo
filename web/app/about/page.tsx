@@ -68,7 +68,7 @@ export default function AboutPage() {
         {/* Hero - above the fold, animate on mount (no useInView needed) */}
         <section style={{
           padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px`,
-          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (

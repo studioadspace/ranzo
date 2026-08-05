@@ -1,0 +1,44 @@
+# Ranzospace
+
+> Ranzospace is a Mumbai-based interior design and architecture studio designing residential, commercial, and hospitality spaces for legacy. Founded in 2018 and operating across Mumbai and surrounding regions.
+
+## About
+Ranzospace was established in 2018 with a focus on architecture and full-home interiors. The studio introduced AI-powered 3D design simulation in 2020, expanded into large-scale projects in 2022, and moved into the premium market in 2024. Every project undergoes 140 quality checks before handover.
+
+Team: Manas, Umesh, and supporting designers and project managers.
+
+## Services
+
+### Interior Design
+Full-home and commercial interior design. Covers kitchens, bedrooms, living areas, workspaces, and storage, designed as a unified whole. Includes 2D and 3D floor plans, AI-powered 360-degree simulations, material and finish specification, custom furniture design, lighting design, civil works, carpentry, electrical, plumbing, false ceiling, flooring, paint specification, decor sourcing, and a 140-point quality check.
+
+### Architecture
+Architecture and space planning from initial concept to construction documentation. Services include site analysis and feasibility, schematic design, 3D volumetric modelling, building permit documentation, structural coordination, MEP integration, material specification, construction drawings, site supervision, and contractor coordination.
+
+### Furniture & Decor
+Modular furniture selection and curated decor. Covers sofas, beds, wardrobes, dining tables, kitchen systems, and accent pieces. Process includes discovery, curated shortlisting, sample approval, sourcing or custom fabrication, and white-glove delivery and installation.
+
+### Design Consultation
+A pre-project consultation covering design direction, material guidance, and budget framework. Includes a site walk-through, a focused session, and a written summary of agreed next steps. Intended to provide clarity before full project commitment.
+
+## Pages
+- Homepage: https://ranzospace.in/
+- About: https://ranzospace.in/about
+- Work / Portfolio: https://ranzospace.in/work
+- Services overview: https://ranzospace.in/services
+- Interior Design: https://ranzospace.in/services/interior-design
+- Architecture: https://ranzospace.in/services/architecture
+- Furniture & Decor: https://ranzospace.in/services/furniture
+- Design Consultation: https://ranzospace.in/services/design-consultation
+- Contact: https://ranzospace.in/contact
+
+## Contact
+- Website: https://ranzospace.in
+- Location: Mumbai, India
+- WhatsApp: available via the contact page
+
+## Key Facts
+- 100+ completed projects
+- 8+ years experience
+- 140 quality checks per project
+- Serves residential, commercial, and hospitality clients across Mumbai, Thane, and Navi Mumbai

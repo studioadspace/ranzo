@@ -48,14 +48,15 @@ export default function ArchitecturePage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 0` : `140px ${PAD} 0` }}>
+        <section style={{ padding: isMobile ? `100px 20px 52px` : `140px ${PAD} 64px`, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
-              style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
+              style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
               initial={{ opacity: 0 }} animate={heroInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5 }}
             >
-              Services / Architecture
+              <Link href="/services" style={{ color: "#F8931E", textDecoration: "none" }}>Services</Link>
+              <span style={{ color: "rgba(248,147,30,0.5)" }}> / Architecture</span>
             </motion.p>
             <motion.h1
               style={{ fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "24px" }}

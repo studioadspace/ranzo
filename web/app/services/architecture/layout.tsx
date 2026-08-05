@@ -14,10 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ArchitectureLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Architecture",
+  "provider": { "@id": "https://ranzospace.in/#organization" },
+  "serviceType": "Architecture",
+  "description": "Architecture and space planning in Mumbai from initial concept to construction documentation. Includes schematic design, 3D volumetric modelling, structural coordination, building permits, and site supervision.",
+  "areaServed": { "@type": "City", "name": "Mumbai" },
+  "url": "https://ranzospace.in/services/architecture"
+};
+
+export default function ArchitectureLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {children}
+    </>
+  );
 }

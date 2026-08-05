@@ -14,6 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Design Consultation",
+  "provider": { "@id": "https://ranzospace.in/#organization" },
+  "serviceType": "Design Consultation",
+  "description": "A focused pre-project design consultation. Includes a site walk-through, session covering design direction, material guidance, and budget framework, and a written summary of agreed next steps.",
+  "areaServed": { "@type": "City", "name": "Mumbai" },
+  "url": "https://ranzospace.in/services/design-consultation"
+};
+
 export default function DesignConsultationLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {children}
+    </>
+  );
 }

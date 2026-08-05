@@ -14,10 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FurnitureLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Furniture & Decor",
+  "provider": { "@id": "https://ranzospace.in/#organization" },
+  "serviceType": "Interior Furnishing",
+  "description": "Curated modular furniture and decor selection for Mumbai homes. Sourced for proportion, material, and function. Includes custom fabrication options and white-glove delivery and installation.",
+  "areaServed": { "@type": "City", "name": "Mumbai" },
+  "url": "https://ranzospace.in/services/furniture"
+};
+
+export default function FurnitureLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {children}
+    </>
+  );
 }

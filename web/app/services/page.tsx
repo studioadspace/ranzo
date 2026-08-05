@@ -162,7 +162,7 @@ export default function ServicesPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 40px` : `140px ${PAD} 80px` }}>
+        <section style={{ padding: isMobile ? `100px 20px 40px` : `140px ${PAD} 80px`, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
