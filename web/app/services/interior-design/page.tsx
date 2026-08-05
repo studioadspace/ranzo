@@ -53,7 +53,7 @@ export default function InteriorDesignPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 52px` : `140px ${PAD} 64px`, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <section style={{ padding: isMobile ? `100px 20px 52px` : `140px ${PAD} 64px` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
