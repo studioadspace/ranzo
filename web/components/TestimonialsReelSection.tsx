@@ -10,6 +10,21 @@ const AUTO_ADVANCE_MS = 7000;
 
 const testimonials = [
   {
+    quote: "Truly satisfied with the designing, space styling and complete home makeover, in such a short span and at a reasonable cost. Ranzo Space carried out our work in a very professional manner. Materials are of very good quality.",
+    client: "Sameera Ansari",
+    type: "Google Review",
+  },
+  {
+    quote: "We had an excellent experience working with Manas, Umesh and the entire team at Ranzo Space for our home interiors. They helped us design and install modular wardrobes for all three bedrooms and two beautiful crockery units.",
+    client: "Jay Shah",
+    type: "Google Review",
+  },
+  {
+    quote: "Working with Ranzo Space was an amazing experience. From the start, Manas really listened to my ideas and understood exactly what I wanted. I had so many references, and he not only embraced them but improved on them.",
+    client: "Gauri Sawant",
+    type: "Google Review",
+  },
+  {
     quote: "Working with Ranzospace felt less like hiring a vendor and more like adding a partner to the family. They caught details we hadn't even thought to ask about.",
     client: "S.K.",
     type: "Residential Client, Thane",

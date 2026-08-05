@@ -205,103 +205,143 @@ export default function AboutPage() {
         {/* Timeline */}
         <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
           <div ref={timelineRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            <motion.p
-              style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "32px" }}
-              initial={{ opacity: 0 }} animate={timelineInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5 }}
-            >
-              Our Journey
-            </motion.p>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {timeline.map((t, i) => (
-                <motion.div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    gap: isMobile ? "20px" : "60px",
-                    alignItems: "baseline",
-                    padding: isMobile ? "18px 0" : "24px 0",
-                    borderTop: "1px solid rgba(255,255,255,0.07)",
-                  }}
-                  initial={{ opacity: 0, x: -20 }} animate={timelineInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            {isMobile ? (
+              <div>
+                <motion.p
+                  style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "28px" }}
+                  initial={{ opacity: 0 }} animate={timelineInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5 }}
                 >
-                  <span style={{ fontSize: isMobile ? "12px" : "clamp(13px, 1vw, 15px)", fontWeight: 700, color: "#F8931E", minWidth: isMobile ? "38px" : "48px", letterSpacing: "0.03em", flexShrink: 0 }}>{t.year}</span>
-                  <span style={{ fontSize: isMobile ? "14px" : "clamp(15px, 1.2vw, 19px)", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6 }}>{t.event}</span>
+                  Our Journey
+                </motion.p>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {timeline.map((t, i) => (
+                    <motion.div
+                      key={i}
+                      style={{ display: "flex", gap: "20px", alignItems: "baseline", padding: "18px 0", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+                      initial={{ opacity: 0, x: -16 }} animate={timelineInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <span style={{ fontSize: "12px", fontWeight: 700, color: "#F8931E", minWidth: "38px", letterSpacing: "0.03em", flexShrink: 0 }}>{t.year}</span>
+                      <span style={{ fontSize: "14px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.65 }}>{t.event}</span>
+                    </motion.div>
+                  ))}
+                  <div style={{ height: "1px", background: "rgba(255,255,255,0.07)" }} />
+                </div>
+              </div>
+            ) : (
+              /* Desktop: heading-left / rows-right — mirrors the Values section pattern */
+              <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: "80px", alignItems: "start" }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }} animate={timelineInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ paddingTop: "24px" }}
+                >
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}>Our Journey</p>
+                  <h2 style={{ fontSize: "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}>
+                    Since<br />2018
+                  </h2>
                 </motion.div>
-              ))}
-              <div style={{ height: "1px", background: "rgba(255,255,255,0.07)" }} />
-            </div>
+                <div>
+                  {timeline.map((t, i) => (
+                    <motion.div
+                      key={i}
+                      style={{ display: "flex", gap: "48px", alignItems: "baseline", padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+                      initial={{ opacity: 0, x: -20 }} animate={timelineInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <span style={{ fontSize: "clamp(13px, 1vw, 15px)", fontWeight: 700, color: "#F8931E", minWidth: "44px", letterSpacing: "0.03em", flexShrink: 0 }}>{t.year}</span>
+                      <span style={{ fontSize: "clamp(15px, 1.2vw, 19px)", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.65 }}>{t.event}</span>
+                    </motion.div>
+                  ))}
+                  <div style={{ height: "1px", background: "rgba(255,255,255,0.07)" }} />
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Founder */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section ref={founderRef} style={{ padding: isMobile ? `0 0 48px` : `0 ${PAD} 100px` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            <motion.div
-              ref={founderRef}
-              style={{
-                background: "#111110",
-                border: "1px solid rgba(255,255,255,0.07)",
-                borderRadius: "14px",
-                padding: isMobile ? "36px 28px 32px" : "64px 72px 56px",
-              }}
-              initial={{ opacity: 0, y: 32 }}
-              animate={founderInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Decorative opening quote */}
-              <p style={{
-                fontSize: isMobile ? "72px" : "108px",
-                lineHeight: 0.75,
-                color: "#F8931E",
-                fontFamily: "Georgia, 'Times New Roman', serif",
-                marginBottom: isMobile ? "20px" : "28px",
-                userSelect: "none",
-              }}>&ldquo;</p>
-
-              {/* Quote body */}
-              <p style={{
-                fontSize: isMobile ? "17px" : "clamp(18px, 1.5vw, 23px)",
-                fontWeight: 400,
-                color: "#fefefe",
-                lineHeight: 1.75,
-                marginBottom: isMobile ? "16px" : "20px",
-                maxWidth: "760px",
-              }}>
-                I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
-              </p>
-              <p style={{
-                fontSize: isMobile ? "17px" : "clamp(18px, 1.5vw, 23px)",
-                fontWeight: 400,
-                color: "#fefefe",
-                lineHeight: 1.75,
-                marginBottom: isMobile ? "24px" : "32px",
-                maxWidth: "760px",
-              }}>
-                I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family&apos;s legacy.
-              </p>
-
-              {/* Closing statement */}
-              <p style={{
-                fontSize: isMobile ? "16px" : "clamp(16px, 1.3vw, 20px)",
-                fontWeight: 700,
-                color: "#fefefe",
-                letterSpacing: "-0.01em",
-                marginBottom: isMobile ? "28px" : "40px",
-              }}>
-                That&apos;s still what drives us today.
-              </p>
-
-              {/* Attribution */}
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: isMobile ? "20px" : "24px", display: "flex", alignItems: "center", gap: "14px" }}>
-                <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block", flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.04em" }}>Ar. Manas Makwana</p>
-                  <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "3px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Founder, Ranzospace</p>
+            {isMobile ? (
+              /* Mobile: photo above, quote below */
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={founderInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div style={{ position: "relative", height: "72vw", minHeight: "300px", overflow: "hidden" }}>
+                  <Image src="/ar-manas-makwana-ranzospace.jpeg" alt="Ar. Manas Makwana, Founder of Ranzospace" fill style={{ objectFit: "cover", objectPosition: "top center" }} sizes="100vw" />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, #0e0e0c 100%)" }} />
                 </div>
-              </div>
-            </motion.div>
+                <div style={{ padding: "32px 20px 0" }}>
+                  <p style={{ fontSize: "64px", lineHeight: 0.75, color: "#F8931E", fontFamily: "Georgia, serif", marginBottom: "20px", userSelect: "none" }}>&ldquo;</p>
+                  <p style={{ fontSize: "17px", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "16px" }}>
+                    I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
+                  </p>
+                  <p style={{ fontSize: "17px", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "24px" }}>
+                    I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family&apos;s legacy.
+                  </p>
+                  <p style={{ fontSize: "16px", fontWeight: 700, color: "#F8931E", letterSpacing: "-0.01em", marginBottom: "28px" }}>
+                    That&apos;s still what drives us today.
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                    <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block", flexShrink: 0 }} />
+                    <div>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.04em" }}>Ar. Manas Makwana</p>
+                      <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "3px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Founder, Ranzospace</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              /* Desktop: editorial split — photo left, quote right */
+              <motion.div
+                style={{ display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden", borderRadius: "16px" }}
+                initial={{ opacity: 0, y: 32 }}
+                animate={founderInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* Photo */}
+                <div style={{ position: "relative", minHeight: "600px" }}>
+                  <Image
+                    src="/ar-manas-makwana-ranzospace.jpeg"
+                    alt="Ar. Manas Makwana, Founder of Ranzospace"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "top center" }}
+                    sizes="420px"
+                  />
+                  {/* Subtle warm gradient on right edge to blend into quote area */}
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent 60%, rgba(14,14,12,0.5) 100%)" }} />
+                </div>
+
+                {/* Quote */}
+                <div style={{
+                  background: "#111110",
+                  padding: "72px 80px",
+                  display: "flex", flexDirection: "column", justifyContent: "center",
+                }}>
+                  <p style={{ fontSize: "96px", lineHeight: 0.75, color: "#F8931E", fontFamily: "Georgia, serif", marginBottom: "32px", userSelect: "none" }}>&ldquo;</p>
+                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "20px", maxWidth: "540px" }}>
+                    I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
+                  </p>
+                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "32px", maxWidth: "540px" }}>
+                    I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family&apos;s legacy.
+                  </p>
+                  <p style={{ fontSize: "clamp(16px, 1.3vw, 19px)", fontWeight: 700, color: "#F8931E", letterSpacing: "-0.01em", marginBottom: "40px" }}>
+                    That&apos;s still what drives us today.
+                  </p>
+                  <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "24px", display: "flex", alignItems: "center", gap: "14px" }}>
+                    <span style={{ width: "20px", height: "2px", background: "#F8931E", display: "block", flexShrink: 0 }} />
+                    <div>
+                      <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.04em" }}>Ar. Manas Makwana</p>
+                      <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "3px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Founder, Ranzospace</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
           </div>
         </section>
 

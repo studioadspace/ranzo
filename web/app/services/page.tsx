@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, House, Buildings, Armchair, Chats } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
@@ -20,7 +20,7 @@ const services = [
     tagline: "Full-home & commercial interiors",
     body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage. Designed as a unified whole.",
     img: "/interiors/amir-living-cove.jpg",
-    tags: ["Residential", "Commercial", "Full-Home"],
+    Icon: House,
   },
   {
     num: "02",
@@ -29,7 +29,7 @@ const services = [
     tagline: "Architecture & space planning",
     body: "From initial concept to construction documentation. We shape volumes, light, and circulation before a single material is chosen.",
     img: "/architecture/arch-01.jpg",
-    tags: ["New Build", "Renovation", "Space Planning"],
+    Icon: Buildings,
   },
   {
     num: "03",
@@ -38,7 +38,16 @@ const services = [
     tagline: "Modular furniture & curated decor",
     body: "Curated furniture selection and smart decor solutions. Sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
     img: "/interiors/amir-tv-unit-01.jpg",
-    tags: ["Modular", "Custom", "Sourcing"],
+    Icon: Armchair,
+  },
+  {
+    num: "04",
+    title: "Design Consultation",
+    slug: "design-consultation",
+    tagline: "Where your legacy begins",
+    body: "Every space begins with a conversation. We listen to your lifestyle, your vision, your space's potential, before we draw a single line. Clarity on design direction, materials, and budget.",
+    img: "/interiors/amir-study-nook.jpg",
+    Icon: Chats,
   },
 ];
 
@@ -55,31 +64,23 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
         style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
       >
-        {/* Image */}
         <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden" }}>
           <Image src={s.img} alt={s.title} fill style={{ objectFit: "cover" }} sizes="100vw" />
         </div>
-        {/* Content */}
         <div style={{ padding: "28px 0 40px" }}>
-          <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "12px" }}>{s.num}</p>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+            <s.Icon size={20} weight="regular" color="#F8931E" />
+            <span style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.2em", fontWeight: 600 }}>{s.num}</span>
+          </div>
           <h2 style={{ fontSize: "clamp(28px, 8vw, 40px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
             {s.title}
           </h2>
-          <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 500, marginBottom: "16px", letterSpacing: "0.01em" }}>
+          <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 400, marginBottom: "14px", letterSpacing: "0.02em" }}>
             {s.tagline}
           </p>
-          <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "20px" }}>
+          <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "24px" }}>
             {s.body}
           </p>
-          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "24px" }}>
-            {s.tags.map(tag => (
-              <span key={tag} style={{
-                padding: "4px 12px", border: "1px solid rgba(255,255,255,0.12)",
-                borderRadius: "100px", fontSize: "11px", color: "#c8c4bc",
-                letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 500,
-              }}>{tag}</span>
-            ))}
-          </div>
           <Link href={`/services/${s.slug}`} style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "14px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}>
             Learn more <ArrowRight size={14} weight="bold" />
           </Link>
@@ -104,7 +105,7 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
       }}
     >
       {/* Image */}
-      <div style={{ position: "relative", height: "clamp(260px, 32vw, 480px)", overflow: "hidden" }}>
+      <div style={{ position: "relative", height: "clamp(300px, 36vw, 520px)", overflow: "hidden" }}>
         <motion.div
           initial={{ scale: 1.08 }}
           animate={inView ? { scale: 1 } : {}}
@@ -119,27 +120,23 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
       <div style={{
         direction: "ltr",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "60px", background: "#0e0e0c",
+        padding: "60px 64px",
+        background: "#0e0e0c",
       }}>
-        <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "16px" }}>{s.num}</p>
-        <h2 style={{ fontSize: "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "8px", lineHeight: 1.1 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+          <s.Icon size={24} weight="regular" color="#F8931E" />
+          <span style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.2em", fontWeight: 700 }}>{s.num}</span>
+        </div>
+
+        <h2 style={{ fontSize: "clamp(32px, 3vw, 54px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", marginBottom: "10px", lineHeight: 1.05 }}>
           {s.title}
         </h2>
-        <p style={{ fontSize: "clamp(15px, 1.2vw, 18px)", color: "#c8c4bc", fontWeight: 500, marginBottom: "20px", letterSpacing: "0.01em" }}>
+        <p style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "#c8c4bc", fontWeight: 400, marginBottom: "20px", letterSpacing: "0.02em" }}>
           {s.tagline}
         </p>
-        <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "28px" }}>
+        <p style={{ fontSize: "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, marginBottom: "36px" }}>
           {s.body}
         </p>
-        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "36px" }}>
-          {s.tags.map(tag => (
-            <span key={tag} style={{
-              padding: "4px 14px", border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: "100px", fontSize: "11px", color: "#c8c4bc",
-              letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 500,
-            }}>{tag}</span>
-          ))}
-        </div>
         <Link
           href={`/services/${s.slug}`}
           style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: "#F8931E", textDecoration: "none" }}
@@ -188,7 +185,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
-                  Three disciplines. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
+                  Four services. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
                 </motion.p>
               </div>
             ) : (
@@ -205,7 +202,7 @@ export default function ServicesPage() {
                   initial={{ opacity: 0, y: 16 }} animate={heroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.65, delay: 0.2 }}
                 >
-                  Three disciplines. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
+                  Four services. One studio. We work with homeowners, developers, and hospitality brands. Every project managed end-to-end with 140 quality checks and complete accountability.
                 </motion.p>
               </div>
             )}

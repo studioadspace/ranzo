@@ -10,7 +10,7 @@ import { useBreakpoint } from "@/hooks/useBreakpoint";
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
-const interests = ["Full-Home Interior", "Architecture", "Modular Kitchen", "Furniture & Decor", "Commercial Space", "Other"];
+const interests = ["Design Consultation", "Full-Home Interior", "Architecture", "Modular Kitchen", "Furniture & Decor", "Commercial Space", "Other"];
 
 export default function ContactPage() {
   const isMobile = useBreakpoint(768);

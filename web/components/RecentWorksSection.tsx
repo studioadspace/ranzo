@@ -66,8 +66,8 @@ export default function RecentWorksSection() {
   const track = [...projects, ...projects];
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 0 48px" : `0 0 88px`, overflow: "hidden" }}>
-      <div style={{ maxWidth: MAX_W, margin: "0 auto", padding: isMobile ? "0 20px" : `0 ${PAD}` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? `0 20px 32px` : `0 ${PAD} 48px` }}>
+      <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
           ref={ref}
           style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "24px" : "36px" }}
@@ -78,7 +78,8 @@ export default function RecentWorksSection() {
         </motion.h2>
       </div>
 
-      <div className="rw-marquee-viewport" style={{ overflow: "hidden", width: "100%" }}>
+      {/* Negative margins break the marquee out of the section padding for full-bleed effect */}
+      <div className="rw-marquee-viewport" style={{ overflow: "hidden", marginLeft: isMobile ? "-20px" : "clamp(-48px, -5vw, -16px)", marginRight: isMobile ? "-20px" : "clamp(-48px, -5vw, -16px)" }}>
         <div className="rw-marquee-track" style={{ display: "flex", width: "max-content" }}>
           {track.map((p, i) => <Card key={i} p={p} isMobile={isMobile} />)}
         </div>

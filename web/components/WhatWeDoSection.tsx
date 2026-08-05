@@ -13,7 +13,7 @@ const services = [
   { title: "Modular Furniture & Decor", body: "Curated furniture selection and smart décor solutions: sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic." },
   { title: "On-Site Execution", body: "Civil, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting, managed by our team with 140 quality checks." },
   { title: "AI-Powered Design & 360° Simulations", body: "India's first AI design studio. Experience your space in photorealistic 3D before a single tile is laid. Decisions made with clarity, not guesswork." },
-  { title: "Design Consultation", body: "Ergonomically designed interior spaces to match your needs and give you maximum comfort and space utilisation. From design to execution, living room to bedroom, kitchen to bathroom, on-site services to modular solutions, one point of contact for it all." },
+  { title: "Design Consultation", body: "Every space begins with a conversation. We listen to your lifestyle, your vision, and your space's potential before we draw a single line. Design direction, materials, and budget clarity, so your ideas can take architectural form." },
 ];
 
 function Row({ item, index, isMobile }: { item: (typeof services)[0]; index: number; isMobile: boolean }) {
@@ -76,7 +76,7 @@ export default function WhatWeDoSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "48px 20px" : `80px ${PAD}` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "40px 20px" : `56px ${PAD}` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.h2
           style={{ fontSize: isMobile ? "clamp(28px, 9vw, 40px)" : "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "4px" : "8px" }}
