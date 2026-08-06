@@ -31,9 +31,8 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const webhookUrl = process.env.NEXT_PUBLIC_SHEETS_WEBHOOK_URL;
-    if (webhookUrl) {
-      try {
+    const webhookUrl = "https://script.google.com/macros/s/AKfycby339jyqZrKJIsqCt9HCx2VdIAnTowiTLQSLeG2XO0LLQi5K50Tmt8UAKgAGMC8Ql3z/exec";
+    try {
         await fetch(webhookUrl, {
           method: "POST",
           // no-cors: Apps Script redirects strip CORS headers; data still posts fine
@@ -47,9 +46,8 @@ export default function ContactPage() {
             source: selected.length > 0 ? selected.join(", ") : "Contact Form",
           }),
         });
-      } catch {
-        // no-cors fetch always resolves; catch is a safety net only
-      }
+    } catch {
+      // no-cors fetch always resolves; catch is a safety net only
     }
     setLoading(false);
     setSubmitted(true);
