@@ -70,7 +70,7 @@ function DesktopFounder() {
         }}>
 
           <motion.div style={{ opacity: logoOpacity, scale: logoScale, marginBottom: "40px" }}>
-            <Image src="/favicon.svg" alt="" width={48} height={48} />
+            <Image src="/favicon.svg" alt="" width={64} height={64} />
           </motion.div>
 
           <div style={{ textAlign: "center", maxWidth: "760px" }}>
