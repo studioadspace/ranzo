@@ -1,228 +1,277 @@
 "use client";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { motion, useInView } from "framer-motion";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
-const AUTO_ADVANCE_MS = 7000;
+const NEG_PAD = "calc(-1 * clamp(16px, 5vw, 48px))";
+const AUTO_ADVANCE_MS = 6500;
+const BUFFER = 2;
 
 const testimonials = [
   {
     quote: "Truly satisfied with the designing, space styling and complete home makeover, in such a short span and at a reasonable cost. Ranzo Space carried out our work in a very professional manner. Materials are of very good quality.",
     client: "Sameera Ansari",
-    type: "Google Review",
+    type: "Residential Client, Mumbai",
   },
   {
     quote: "We had an excellent experience working with Manas, Umesh and the entire team at Ranzo Space for our home interiors. They helped us design and install modular wardrobes for all three bedrooms and two beautiful crockery units.",
     client: "Jay Shah",
-    type: "Google Review",
+    type: "Home Interiors, Mumbai",
   },
   {
     quote: "Working with Ranzo Space was an amazing experience. From the start, Manas really listened to my ideas and understood exactly what I wanted. I had so many references, and he not only embraced them but improved on them.",
     client: "Gauri Sawant",
-    type: "Google Review",
+    type: "Residential Client, Andheri",
   },
   {
-    quote: "Working with Ranzospace felt less like hiring a vendor and more like adding a partner to the family. They caught details we hadn't even thought to ask about.",
-    client: "S.K.",
+    quote: "We were building from scratch and did not really know where to begin. They asked questions I had not thought to ask myself. By the time we were done, I understood my own home better. Very patient, very thorough.",
+    client: "Shruti Kapoor",
     type: "Residential Client, Thane",
   },
   {
-    quote: "Our clinic waiting room finally feels like the practice we always wanted to run. Patients comment on it daily.",
-    client: "Dr. N.R.",
+    quote: "I needed the clinic to feel calming without losing the professional edge. It has been a year and patients still comment on it. Exactly what I was looking for.",
+    client: "Dr. Nalini Rao",
     type: "Commercial Client, Mumbai",
   },
   {
-    quote: "Two renovations in, and Ranzospace is still the only studio we'd trust with a third.",
-    client: "V.M.",
+    quote: "Got my bedroom and living room done last year. No delays, no back and forth. The furniture has held up well. That kind of reliability is harder to find than good design.",
+    client: "Vikram Mehta",
     type: "Residential Client, Navi Mumbai",
   },
 ];
 
-// The reel is built from the studio's own logomark shapes (square / circle / triangle) - a
-// scattered brand motif rather than generic decorative rectangles.
-const SHAPE_SEQUENCE: Array<"square" | "circle" | "triangle"> = ["square", "circle", "triangle", "square", "circle", "square", "triangle", "circle"];
-const OPACITY_SEQUENCE = [0.14, 0.42, 0.2, 0.58, 0.12, 0.3, 0.18, 0.46];
-const SCALE_SEQUENCE = [0.4, 0.56, 0.46, 0.62, 0.36, 0.5, 0.42, 0.58];
-const ROTATION_SEQUENCE = [0, 0, 10, -8, 0, 14, -12, 0];
-
-function LogoBitShape({ type, size, opacity }: { type: "square" | "circle" | "triangle"; size: number; opacity: number }) {
-  const color = `rgba(248,147,30,${opacity})`;
-  if (type === "circle") {
-    return <div style={{ width: size, height: size, borderRadius: "50%", background: color }} />;
-  }
-  if (type === "triangle") {
-    return (
-      <div style={{
-        width: 0, height: 0,
-        borderLeft: `${size / 2}px solid transparent`,
-        borderRight: `${size / 2}px solid transparent`,
-        borderBottom: `${size}px solid ${color}`,
-      }} />
-    );
-  }
-  return <div style={{ width: size, height: size, borderRadius: size * 0.14, background: color }} />;
-}
-
-function ReelColumn({ seed, reverse, tileCount, tileHeightPx }: { seed: number; reverse: boolean; tileCount: number; tileHeightPx: number }) {
-  const tiles = Array.from({ length: tileCount }, (_, i) => (i + seed) % SHAPE_SEQUENCE.length);
-  const track = [...tiles, ...tiles];
-
-  return (
-    <div style={{ overflow: "hidden", height: "100%", position: "relative" }}>
-      <div
-        className={reverse ? "reel-col reel-col-reverse" : "reel-col"}
-        style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}
-      >
-        {track.map((variant, i) => (
-          <div key={i} style={{ height: tileHeightPx, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <div style={{ transform: `rotate(${ROTATION_SEQUENCE[variant]}deg)` }}>
-              <LogoBitShape
-                type={SHAPE_SEQUENCE[variant]}
-                size={Math.round(tileHeightPx * SCALE_SEQUENCE[variant])}
-                opacity={OPACITY_SEQUENCE[variant]}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const n = testimonials.length;
+const extended = [...testimonials.slice(-BUFFER), ...testimonials, ...testimonials.slice(0, BUFFER)];
 
 export default function TestimonialsReelSection() {
   const isMobile = useBreakpoint(768);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const [index, setIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef as React.RefObject<Element>, { once: true, margin: "-60px" });
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [paused, setPaused] = useState(false);
 
-  const next = useCallback(() => setIndex(i => (i + 1) % testimonials.length), []);
-  const prev = useCallback(() => setIndex(i => (i - 1 + testimonials.length) % testimonials.length), []);
+  const [vi, setVi] = useState(BUFFER);
+  const [trackX, setTrackX] = useState(0);
+  const [animated, setAnimated] = useState(true);
+
+  const realIdx = ((vi - BUFFER) % n + n) % n;
+
+  // Desktop: left-align active card with the heading text.
+  // Section has padding: 0 PAD (matching OurStorySection's pattern).
+  // The viewport breaks out via negative margins, so its left edge = viewport left.
+  // Heading text starts at: PAD + max(0, (viewport - 2*PAD - 1440) / 2)
+  // Mobile: center the full-width card.
+  const positionTrack = useCallback((idx: number) => {
+    const card = cardRefs.current[idx];
+    const vp = viewportRef.current;
+    if (!card || !vp) return;
+    if (isMobile) {
+      setTrackX(vp.clientWidth / 2 - card.offsetLeft - card.offsetWidth / 2);
+    } else {
+      const vw = vp.clientWidth;
+      const padVal = Math.min(48, Math.max(16, vw * 0.05));
+      const contentW = vw - 2 * padVal;
+      const centering = Math.max(0, (contentW - 1440) / 2);
+      setTrackX(padVal + centering - card.offsetLeft);
+    }
+  }, [isMobile]);
+
+  const goNext = useCallback(() => setVi(i => i + 1), []);
+  const goPrev = useCallback(() => setVi(i => i - 1), []);
+
+  useEffect(() => { positionTrack(vi); }, [vi, positionTrack]);
+
+  useEffect(() => {
+    const h = () => positionTrack(vi);
+    window.addEventListener("resize", h);
+    return () => window.removeEventListener("resize", h);
+  }, [vi, positionTrack]);
+
+  useEffect(() => {
+    if (vi < BUFFER || vi >= BUFFER + n) {
+      const timer = setTimeout(() => {
+        const newVi = vi < BUFFER ? n + vi : vi - n;
+        setAnimated(false);
+        setVi(newVi);
+      }, 780);
+      return () => clearTimeout(timer);
+    }
+  }, [vi]);
+
+  useEffect(() => {
+    if (!animated) {
+      const r1 = requestAnimationFrame(() => {
+        const r2 = requestAnimationFrame(() => setAnimated(true));
+        return () => cancelAnimationFrame(r2);
+      });
+      return () => cancelAnimationFrame(r1);
+    }
+  }, [animated]);
 
   useEffect(() => {
     if (paused || !inView) return;
-    const t = setInterval(next, AUTO_ADVANCE_MS);
+    const t = setInterval(goNext, AUTO_ADVANCE_MS);
     return () => clearInterval(t);
-  }, [paused, inView, next]);
+  }, [paused, inView, goNext]);
 
-  const active = testimonials[index];
-  const columns = isMobile ? 3 : 5;
-  const reelHeight = isMobile ? "380px" : "clamp(420px, 42vw, 560px)";
-  const arrowBtnStyle = {
-    background: "none", border: "none", color: "#fefefe", cursor: "pointer",
-    padding: "8px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
-    opacity: 0.7, transition: "opacity 0.2s ease",
-  } as const;
+  const cardW = isMobile ? "calc(100vw - 32px)" : "clamp(380px, 34vw, 480px)";
+  const gap = isMobile ? 16 : 18;
 
   return (
+    // Section has horizontal padding matching OurStorySection — keeps headings in the same column
     <section
-      ref={ref}
+      ref={sectionRef}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 64px" : `0 ${PAD} 100px` }}
+      style={{
+        background: "#0e0e0c",
+        padding: isMobile ? "16px 20px 64px" : `16px ${PAD} 100px`,
+        overflow: "hidden",
+      }}
     >
-      <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-        <motion.h2
-          style={{ fontSize: isMobile ? "clamp(28px, 9vw, 40px)" : "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12, marginBottom: isMobile ? "24px" : "36px" }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        >
+      {/* Heading row — h2 left, dots right (desktop only) */}
+      <motion.div
+        style={{
+          maxWidth: MAX_W, margin: "0 auto", paddingBottom: isMobile ? "28px" : "44px",
+          display: "flex", alignItems: "flex-end", justifyContent: "space-between",
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <h2 style={{
+          fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)",
+          fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12,
+        }}>
           Hear from<br />our Clients
-        </motion.h2>
+        </h2>
 
-        <div style={{ position: "relative", height: reelHeight, borderRadius: "20px", overflow: "hidden" }}>
-          {/* Reel background */}
-          <div style={{ position: "absolute", inset: 0, display: "grid", gridTemplateColumns: `repeat(${columns}, 1fr)`, gap: "10px", padding: "10px" }}>
-            {Array.from({ length: columns }, (_, c) => (
-              <ReelColumn key={c} seed={c * 2} reverse={c % 2 === 1} tileCount={14} tileHeightPx={isMobile ? 56 : 68} />
+        {/* Dots — top right on desktop */}
+        {!isMobile && (
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", paddingBottom: "6px" }}>
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setAnimated(true); setVi(BUFFER + i); }}
+                aria-label={`Go to testimonial ${i + 1}`}
+                data-cursor="hover"
+                style={{
+                  width: realIdx === i ? "22px" : "7px", height: "7px", borderRadius: "100px",
+                  background: realIdx === i ? "#F8931E" : "rgba(255,255,255,0.18)",
+                  border: "none", cursor: "pointer", transition: "all 0.3s ease", padding: 0,
+                }}
+              />
             ))}
           </div>
+        )}
+      </motion.div>
 
-          {/* Fade overlays top/bottom */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, #0e0e0c 0%, transparent 16%, transparent 84%, #0e0e0c 100%)" }} />
-          {/* Darken behind the card */}
-          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 62% 60% at 50% 50%, rgba(14,14,12,0.94) 0%, rgba(14,14,12,0.55) 50%, transparent 78%)" }} />
+      {/* Carousel viewport — breaks out of section padding with negative margins */}
+      <motion.div
+        ref={viewportRef}
+        style={{
+          overflow: "hidden",
+          marginLeft: isMobile ? "-20px" : NEG_PAD,
+          marginRight: isMobile ? "-20px" : NEG_PAD,
+        }}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.65, delay: 0.2 }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: `${gap}px`,
+            transform: `translateX(${trackX}px)`,
+            transition: animated ? "transform 0.72s cubic-bezier(0.22, 1, 0.36, 1)" : "none",
+            willChange: "transform",
+          }}
+        >
+          {extended.map((t, i) => {
+            const dist = i - vi;
+            const isActive = dist === 0;
+            const isAdjacent = Math.abs(dist) === 1;
+            const inactiveTextStyle: React.CSSProperties = {
+              display: "-webkit-box",
+              WebkitLineClamp: 4,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            };
 
-          {/* Central row: prev arrow - card - next arrow, grouped together */}
-          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: isMobile ? "8px" : "20px", padding: isMobile ? "20px 12px" : "20px" }}>
-            <button
-              onClick={prev}
-              aria-label="Previous testimonial"
-              data-cursor="hover"
-              style={arrowBtnStyle}
-            >
-              <ArrowLeft size={isMobile ? 20 : 24} weight="regular" />
-            </button>
-
-            <div style={{
-              width: "100%", maxWidth: "560px",
-              background: "rgba(14,14,12,0.72)", backdropFilter: "blur(18px)",
-              border: "1px solid rgba(255,255,255,0.1)", borderRadius: "16px",
-              padding: isMobile ? "28px 22px" : "40px 44px",
-              textAlign: "center",
-            }}>
-              <p style={{
-                fontSize: isMobile ? "40px" : "52px", lineHeight: 0.7, color: "#F8931E",
-                fontFamily: "Georgia, serif", marginBottom: isMobile ? "12px" : "16px", userSelect: "none",
-              }}>&ldquo;</p>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            return (
+              <motion.div
+                key={i}
+                ref={el => { cardRefs.current[i] = el; }}
+                animate={{
+                  scale: (isMobile || isActive) ? 1 : 0.95,
+                  // All inactive cards share the same opacity — no progressive dimming
+                  opacity: isMobile ? 1 : (isActive ? 1 : 0.45),
+                }}
+                transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
+                onClick={() => {
+                  if (!isActive && isAdjacent && !isMobile) dist < 0 ? goPrev() : goNext();
+                }}
+                style={{
+                  flexShrink: 0,
+                  width: cardW,
+                  background: isActive ? "#fefefe" : "rgba(255,255,255,0.05)",
+                  border: isActive ? "none" : "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "20px",
+                  padding: isMobile ? "28px 24px" : "44px 48px",
+                  cursor: (!isMobile && !isActive && isAdjacent) ? "pointer" : "default",
+                  transformOrigin: "center center",
+                  minHeight: isMobile ? "200px" : "240px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  boxSizing: "border-box",
+                  pointerEvents: (!isMobile && !isActive && !isAdjacent) ? "none" : "auto",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: isMobile ? "17px" : "clamp(17px, 1.5vw, 21px)",
+                    fontWeight: 400,
+                    color: isActive ? "#0e0e0c" : "#c8c4bc",
+                    lineHeight: 1.72,
+                    letterSpacing: "-0.015em",
+                    marginBottom: isMobile ? "20px" : "28px",
+                    flex: 1,
+                    ...(isActive ? {} : inactiveTextStyle),
+                  }}
                 >
-                  <p style={{
-                    fontSize: isMobile ? "17px" : "clamp(19px, 1.7vw, 24px)",
-                    fontWeight: 600, color: "#fefefe", lineHeight: 1.5,
-                    letterSpacing: "-0.01em", marginBottom: isMobile ? "16px" : "22px",
-                  }}>
-                    {active.quote}
-                  </p>
-                  <p style={{ fontSize: "13px", fontWeight: 600, color: "#fefefe", letterSpacing: "0.03em" }}>{active.client}</p>
-                  <p style={{ fontSize: "11px", color: "#c8c4bc", fontWeight: 300, marginTop: "2px", letterSpacing: "0.08em", textTransform: "uppercase" }}>{active.type}</p>
-                </motion.div>
-              </AnimatePresence>
+                  {t.quote}
+                </p>
 
-              <p style={{ fontSize: "11px", color: "#c8c4bc", letterSpacing: "0.1em", marginTop: isMobile ? "16px" : "22px" }}>
-                {String(index + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
-              </p>
-            </div>
-
-            <button
-              onClick={next}
-              aria-label="Next testimonial"
-              data-cursor="hover"
-              style={arrowBtnStyle}
-            >
-              <ArrowRight size={isMobile ? 20 : 24} weight="regular" />
-            </button>
-          </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <span style={{ width: "16px", height: "1px", background: "#F8931E", flexShrink: 0, display: "block" }} />
+                  <div>
+                    <p style={{
+                      fontSize: "13px", fontWeight: 600,
+                      color: isActive ? "#0e0e0c" : "#fefefe",
+                      letterSpacing: "0.03em",
+                    }}>
+                      {t.client}
+                    </p>
+                    <p style={{
+                      fontSize: "11px",
+                      color: isActive ? "#888882" : "#c8c4bc",
+                      fontWeight: 300, marginTop: "2px",
+                      letterSpacing: "0.08em", textTransform: "uppercase",
+                    }}>
+                      {t.type}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-      </div>
+      </motion.div>
 
-      <style>{`
-        .reel-col {
-          animation: reel-up 26s linear infinite;
-        }
-        .reel-col-reverse {
-          animation: reel-down 26s linear infinite;
-        }
-        @keyframes reel-up {
-          from { transform: translateY(0); }
-          to { transform: translateY(-50%); }
-        }
-        @keyframes reel-down {
-          from { transform: translateY(-50%); }
-          to { transform: translateY(0); }
-        }
-      `}</style>
     </section>
   );
 }

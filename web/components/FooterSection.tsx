@@ -11,12 +11,10 @@ const PAD = "clamp(16px, 5vw, 48px)";
 
 // First entry is the guaranteed fallback - always shown on first paint before the rotation kicks in
 const CLOSING_IMAGES = [
-  { src: "/img17.jpeg", alt: "Ranzospace designed spaces" },
-  { src: "/projects-real/ranzo-living-tv.jpg", alt: "Living room with fluted panelling by Ranzospace, Mumbai" },
-  { src: "/projects-real/ranzo-dining.jpg", alt: "Dining room with sculptural pendant light by Ranzospace, Mumbai" },
-  { src: "/projects-real/ranzo-bedroom-tufted.jpg", alt: "Master bedroom with channel-tufted headboard by Ranzospace, Mumbai" },
-  { src: "/projects-real/ranzo-kitchen-wood.jpg", alt: "Modular kitchen by Ranzospace, Mumbai" },
-  { src: "/projects-real/ranzo-living-sofa.jpg", alt: "Living room with bouclé sofa by Ranzospace, Mumbai" },
+  { src: "/interiors/amir-living-02.jpg", alt: "Warm luxury living room interior by Ranzospace, Mumbai" },
+  { src: "/architecture/arch-01.jpg", alt: "Contemporary concrete and timber residence facade by Ranzospace, Mumbai" },
+  { src: "/interiors/amir-living-sofa.jpg", alt: "Bouclé sofa lounge corner interior design by Ranzospace, Mumbai" },
+  { src: "/architecture/arch-02.jpg", alt: "Architectural elevation with folding timber shutters by Ranzospace, Mumbai" },
 ];
 
 export default function FooterSection() {
@@ -150,8 +148,8 @@ export default function FooterSection() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.22 }}
             style={{ marginTop: "40px" }}>
             <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "24px" }}>Reach Us</p>
-            <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>info@ranzospace.in</p>
-            <p style={{ fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px" }}>+91 96991 47145</p>
+            <a href="mailto:info@ranzospace.in" style={{ display: "block", fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px", textDecoration: "none" }}>info@ranzospace.in</a>
+            <a href="tel:+919699147145" style={{ display: "block", fontSize: "17px", color: "#fefefe", fontWeight: 300, marginBottom: "16px", textDecoration: "none" }}>+91 96991 47145</a>
             <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>Mumbai, India</p>
           </motion.div>
 
@@ -213,8 +211,8 @@ export default function FooterSection() {
 
             <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65, delay: 0.18 }}>
               <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>Reach Us</p>
-              <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>info@ranzospace.in</p>
-              <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px" }}>+91 96991 47145</p>
+              <a href="mailto:info@ranzospace.in" style={{ display: "block", fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px", textDecoration: "none" }}>info@ranzospace.in</a>
+              <a href="tel:+919699147145" style={{ display: "block", fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginBottom: "10px", textDecoration: "none" }}>+91 96991 47145</a>
               <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "20px", lineHeight: 1.6 }}>Mumbai, India</p>
             </motion.div>
           </div>
@@ -222,9 +220,18 @@ export default function FooterSection() {
       )}
 
       {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: isMobile ? `14px 20px` : `16px ${PAD}`, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
+      <div style={{
+        borderTop: "1px solid rgba(255,255,255,0.04)",
+        padding: isMobile ? "16px 20px" : `16px ${PAD}`,
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        justifyContent: isMobile ? "center" : "space-between",
+        alignItems: "center",
+        gap: isMobile ? "6px" : "12px",
+        textAlign: isMobile ? "center" : undefined,
+      }}>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>© {new Date().getFullYear()} Ranzospace. All rights reserved.</p>
-        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300, textAlign: "center" }}>
+        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>
           Built with ♥️ by{" "}
           <Link href="https://studioadspace.com/?ref=ranzo" target="_blank" rel="noopener noreferrer" style={{ color: "#c8c4bc", fontWeight: 700, textDecoration: "none" }}>
             Studio AdSpace

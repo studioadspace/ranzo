@@ -16,12 +16,12 @@ const categories = ["Residential", "Architectural", "Modular Furniture"];
 
 // One real concept-to-built pairing (not a generic strip) - same house, sketch vs. finished render
 const conceptPair = {
-  sketch: { src: "/architecture/in-process-01.jpg", alt: "Hand-drawn architectural elevation sketch by Ranzospace - concrete mass and wood screen concept" },
+  sketch: { src: "/architecture/in-process-02.jpg", alt: "Architectural design process sketch by Ranzospace - concept drawing for Mumbai residence" },
   built: { src: "/architecture/arch-01.jpg", alt: "Finished concrete and wood-screen residence facade by Ranzospace" },
 };
 
 const projects = [
-  // Residential - 5 genuinely distinct spaces, no repeats
+  // Residential - 6 spaces (multiple of 2 and 3 — no orphan on any grid)
   {
     src: "/interiors/amir-living-tv-01.jpg",
     alt: "Living room interior design with floating wood console and coffee table by Ranzospace, Mumbai",
@@ -52,8 +52,20 @@ const projects = [
     label: "Dining Nook", location: "Mumbai", category: "Residential", area: "120 sq ft",
     description: "A compact two-seat dining corner with open shelving and framed art, softened by greenery.",
   },
+  {
+    src: "/interiors/amir-living-02.jpg",
+    alt: "Warm luxury living room interior design by Ranzospace, Mumbai",
+    label: "Living Room", location: "Mumbai", category: "Residential", area: "540 sq ft",
+    description: "A considered living space layered with warm tones, natural light, and materials chosen to age gracefully.",
+  },
 
-  // Architectural - one case study, distinct angles (kept separate from the concept/built pairing above)
+  // Architectural - 6 views (multiple of 2 and 3 — no orphan on any grid)
+  {
+    src: "/architecture/arch-01.jpg",
+    alt: "Finished concrete and wood-screen residence facade by Ranzospace, Mumbai",
+    label: "Residence Facade", location: "Mumbai", category: "Architectural", area: "4,200 sq ft",
+    description: "The built outcome of our most resolved residential project — concrete volume, timber screen, and native planting.",
+  },
   {
     src: "/architecture/arch-02.jpg",
     alt: "Architectural elevation with folding wooden shutters by Ranzospace",
@@ -78,8 +90,14 @@ const projects = [
     label: "Full Elevation", location: "Mumbai", category: "Architectural", area: "4,200 sq ft",
     description: "From concept to construction documentation, we shape volumes, light, and circulation before a single material is chosen.",
   },
+  {
+    src: "/architecture/in-process-01.jpg",
+    alt: "Architectural design process sketch by Ranzospace - early concept study for Mumbai residence",
+    label: "Design Process", location: "Mumbai", category: "Architectural", area: "4,200 sq ft",
+    description: "Every building begins as a line on paper. Early elevation studies where proportion, light, and scale are first established.",
+  },
 
-  // Modular Furniture - 3 distinct furniture pieces, no overlap with Residential
+  // Modular Furniture - 6 pieces (multiple of 2 and 3 — no orphan on any grid)
   {
     src: "/interiors/amir-tv-unit-01.jpg",
     alt: "Custom floating TV console with cove lighting - Ranzospace, Mumbai",
@@ -97,6 +115,24 @@ const projects = [
     alt: "Built-in study desk and shelving unit - Ranzospace, Mumbai",
     label: "Study Desk & Shelving", location: "Mumbai", category: "Modular Furniture", area: "Custom",
     description: "A built-in desk and floating shelves sized precisely to a bedroom corner, no space wasted.",
+  },
+  {
+    src: "/interiors/amir-tv-unit-02.jpg",
+    alt: "Custom TV unit with wall panelling by Ranzospace, Mumbai",
+    label: "TV Unit & Panelling", location: "Mumbai", category: "Modular Furniture", area: "Custom",
+    description: "Full-height wall panelling with an integrated TV unit, designed as one continuous architectural surface.",
+  },
+  {
+    src: "/interiors/amir-modern-01.jpg",
+    alt: "Modern interior design with custom furniture by Ranzospace, Mumbai",
+    label: "Modern Interior", location: "Mumbai", category: "Modular Furniture", area: "Custom",
+    description: "A contemporary interior where every furniture piece is purpose-built — nothing off the shelf, nothing wasted.",
+  },
+  {
+    src: "/interiors/amir-modern-02.jpg",
+    alt: "Contemporary modular interior by Ranzospace, Mumbai - warm tones and clean lines",
+    label: "Contemporary Interior", location: "Mumbai", category: "Modular Furniture", area: "Custom",
+    description: "Clean lines and warm material choices — a modular interior that reads as considered rather than assembled.",
   },
 ];
 
@@ -253,7 +289,8 @@ export default function WorkPage() {
               beforeLabel="Concept"
               afterLabel="Realized"
               aspectRatio={isMobile ? "4 / 5" : "16 / 8.5"}
-              mirrorAfter
+              beforeObjectPosition="50% 8%"
+              afterObjectPosition="50% 4%"
             />
           </div>
         </section>

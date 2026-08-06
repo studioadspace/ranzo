@@ -119,11 +119,6 @@ export default function StatsSection() {
           </div>
         )}
 
-        <motion.div
-          style={{ height: "1px", background: "rgba(255,255,255,0.05)", marginTop: isMobile ? "20px" : "60px" }}
-          initial={{ scaleX: 0, originX: 0 }} animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1.0, delay: 0.5 }}
-        />
       </div>
     </section>
   );

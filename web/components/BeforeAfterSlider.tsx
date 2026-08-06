@@ -8,12 +8,16 @@ export default function BeforeAfterSlider({
   beforeLabel = "Concept", afterLabel = "Realized",
   aspectRatio = "4 / 5",
   mirrorBefore = false, mirrorAfter = false,
+  beforeObjectPosition = "center center",
+  afterObjectPosition = "center center",
 }: {
   beforeSrc: string; beforeAlt: string;
   afterSrc: string; afterAlt: string;
   beforeLabel?: string; afterLabel?: string;
   aspectRatio?: string;
   mirrorBefore?: boolean; mirrorAfter?: boolean;
+  beforeObjectPosition?: string;
+  afterObjectPosition?: string;
 }) {
   const [pos, setPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,7 +63,7 @@ export default function BeforeAfterSlider({
       {/* After (base layer - always fully visible on the right of the handle) */}
       <Image
         src={afterSrc} alt={afterAlt} fill
-        style={{ objectFit: "cover", pointerEvents: "none", transform: mirrorAfter ? "scaleX(-1)" : undefined }}
+        style={{ objectFit: "cover", objectPosition: afterObjectPosition, pointerEvents: "none", transform: mirrorAfter ? "scaleX(-1)" : undefined }}
         sizes="(max-width: 768px) 100vw, 900px"
       />
 
@@ -67,7 +71,7 @@ export default function BeforeAfterSlider({
       <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
         <Image
           src={beforeSrc} alt={beforeAlt} fill
-          style={{ objectFit: "cover", pointerEvents: "none", transform: mirrorBefore ? "scaleX(-1)" : undefined }}
+          style={{ objectFit: "cover", objectPosition: beforeObjectPosition, pointerEvents: "none", transform: mirrorBefore ? "scaleX(-1)" : undefined }}
           sizes="(max-width: 768px) 100vw, 900px"
         />
       </div>

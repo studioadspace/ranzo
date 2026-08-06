@@ -13,7 +13,7 @@ const lines = [
   { text: "", bold: false },
   { text: "We begin by understanding the life your space should support.", bold: true },
   { text: "", bold: false },
-  { text: "Your preferences, your rhythms, the legacy you are building. Then we translate that into interiors that feel natural, considered, and entirely yours.", bold: false },
+  { text: "Your preferences, your rhythms, the legacy you are building. Then we translate that into designs that feel natural, considered, and entirely yours.", bold: false },
 ];
 
 export default function OurStorySection() {
@@ -22,7 +22,7 @@ export default function OurStorySection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "0 20px 48px" : `0 ${PAD} 88px` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "16px 20px 48px" : `16px ${PAD} 88px` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <div style={{
           display: "grid",
@@ -32,7 +32,7 @@ export default function OurStorySection() {
         }}>
 
           <motion.h2
-            style={{ fontSize: isMobile ? "clamp(28px, 9vw, 40px)" : "clamp(34px, 3.2vw, 56px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
+            style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
