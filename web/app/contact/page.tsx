@@ -21,14 +21,37 @@ export default function ContactPage() {
 
   const [selected, setSelected] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const toggleInterest = (item: string) => {
     setSelected(prev => prev.includes(item) ? prev.filter(x => x !== item) : [...prev, item]);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    const webhookUrl = process.env.NEXT_PUBLIC_SHEETS_WEBHOOK_URL;
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: "POST",
+          // no-cors: Apps Script redirects strip CORS headers; data still posts fine
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            message: formData.message,
+            source: selected.length > 0 ? selected.join(", ") : "Contact Form",
+          }),
+        });
+      } catch {
+        // no-cors fetch always resolves; catch is a safety net only
+      }
+    }
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -256,17 +279,19 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
+                    disabled={loading}
                     style={{
                       padding: "16px 40px", background: "#F8931E", border: "none",
                       color: "#0e0e0c", fontWeight: 700, fontSize: "15px",
-                      borderRadius: "6px", cursor: "pointer", fontFamily: "inherit",
+                      borderRadius: "6px", cursor: loading ? "default" : "pointer", fontFamily: "inherit",
                       alignSelf: isMobile ? "stretch" : "flex-start",
                       letterSpacing: "0.01em",
+                      opacity: loading ? 0.65 : 1,
                       transition: "opacity 0.2s ease",
                       display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
                     }}
                   >
-                    Send message <ArrowRight size={16} weight="bold" />
+                    {loading ? "Sending..." : <>{`Send message`} <ArrowRight size={16} weight="bold" /></>}
                   </button>
                 </form>
               )}
