@@ -227,17 +227,17 @@ export default function FooterSection() {
         flexDirection: isMobile ? "column" : "row",
         justifyContent: isMobile ? "center" : "space-between",
         alignItems: "center",
-        gap: isMobile ? "6px" : "12px",
+        gap: isMobile ? "4px" : "12px",
         textAlign: isMobile ? "center" : undefined,
       }}>
         <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>© {new Date().getFullYear()} Ranzospace. All rights reserved.</p>
-        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>
+        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>ranzospace.in</p>
+        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300, marginTop: isMobile ? "8px" : undefined }}>
           Built with ♥️ by{" "}
           <Link href="https://studioadspace.com/?ref=ranzo" target="_blank" rel="noopener noreferrer" style={{ color: "#c8c4bc", fontWeight: 700, textDecoration: "none" }}>
             Studio AdSpace
           </Link>
         </p>
-        <p style={{ fontSize: "12px", color: "#c8c4bc", fontWeight: 300 }}>ranzospace.in</p>
       </div>
     </footer>
   );
