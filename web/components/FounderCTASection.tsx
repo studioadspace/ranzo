@@ -70,7 +70,7 @@ function DesktopFounder() {
         }}>
 
           <motion.div style={{ opacity: logoOpacity, scale: logoScale, marginBottom: "40px" }}>
-            <Image src="/logo-mark.svg" alt="" width={72} height={48} />
+            <Image src="/favicon.svg" alt="" width={48} height={48} />
           </motion.div>
 
           <div style={{ textAlign: "center", maxWidth: "760px" }}>
@@ -126,7 +126,7 @@ function MobileFounder() {
             style={{ display: "flex", justifyContent: "center", marginBottom: "24px" }}
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.5 }}
           >
-            <Image src="/logo-mark.svg" alt="" width={40} height={27} />
+            <Image src="/favicon.svg" alt="" width={36} height={36} />
           </motion.div>
 
           {quoteParas.map((text, i) => (

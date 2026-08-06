@@ -21,7 +21,7 @@ export default function NotFound() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <Link href="/" style={{ display: "inline-block", marginBottom: "56px" }}>
-          <Image src="/logo.svg" alt="Ranzospace" width={96} height={24} />
+          <Image src="/logo.svg" alt="Ranzospace" width={110} height={18} />
         </Link>
 
         <p style={{

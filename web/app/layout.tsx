@@ -23,19 +23,23 @@ export const metadata: Metadata = {
   title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
   description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living. Ranzospace.",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-og.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/favicon-og.png", sizes: "512x512", type: "image/png" }],
   },
   openGraph: {
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living.",
-    images: [{ url: "/interiors/amir-living-cove.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/favicon-og.png", width: 512, height: 512 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Spaces shaped for legacy.",
-    images: ["/interiors/amir-living-cove.jpg"],
+    images: ["/favicon-og.png"],
   },
 };
 
@@ -47,7 +51,7 @@ const orgSchema = {
       "@id": "https://ranzospace.in/#organization",
       "name": "Ranzospace",
       "url": "https://ranzospace.in",
-      "logo": "https://ranzospace.in/favicon.png",
+      "logo": "https://ranzospace.in/favicon.svg",
       "description": "Mumbai-based interior design and architecture studio specialising in residential, commercial, and hospitality spaces.",
       "foundingDate": "2018",
       "address": {

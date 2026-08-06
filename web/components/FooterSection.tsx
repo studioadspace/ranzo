@@ -124,7 +124,7 @@ export default function FooterSection() {
         /* Mobile: fully centred single-column layout */
         <div ref={ref} style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "56px 24px 40px", textAlign: "center" }}>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.65 }}>
-            <Image src="/logo.svg" alt="Ranzospace" width={120} height={30} style={{ margin: "0 auto 36px" }} />
+            <Image src="/logo.svg" alt="Ranzospace" width={122} height={20} style={{ margin: "0 auto 36px" }} />
             <p style={{ fontSize: "28px", fontWeight: 700, color: "#fefefe", lineHeight: 1.2, marginBottom: "16px", letterSpacing: "-0.02em" }}>
               Let&apos;s build something<br />that endures.
             </p>
@@ -174,7 +174,7 @@ export default function FooterSection() {
             alignItems: "start",
           }}>
             <div>
-              <Image src="/logo.svg" alt="Ranzospace" width={88} height={22} style={{ marginBottom: "24px" }} />
+              <Image src="/logo.svg" alt="Ranzospace" width={110} height={18} style={{ marginBottom: "24px" }} />
               <motion.p
                 style={{ fontSize: "clamp(22px, 2vw, 32px)", fontWeight: 700, color: "#fefefe", lineHeight: 1.25, marginBottom: "16px", letterSpacing: "-0.02em" }}
                 initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}

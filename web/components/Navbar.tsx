@@ -25,7 +25,7 @@ export default function Navbar() {
         }}
       >
         <Link href="/" onClick={() => setMenuOpen(false)}>
-          <Image src="/logo.svg" alt="Ranzospace" width={isMobile ? 72 : 88} height={isMobile ? 18 : 22} priority />
+          <Image src="/logo.svg" alt="Ranzospace" width={isMobile ? 98 : 122} height={isMobile ? 16 : 20} priority />
         </Link>
 
         {isMobile ? (
