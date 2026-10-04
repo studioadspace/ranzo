@@ -270,9 +270,9 @@ export default function AboutPage() {
                 animate={founderInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div style={{ position: "relative", height: "72vw", minHeight: "300px", overflow: "hidden" }}>
-                  <Image src="/ar-manas-makwana-ranzospace.jpeg" alt="Ar. Manas Makwana, Founder of Ranzospace" fill style={{ objectFit: "cover", objectPosition: "top center" }} sizes="100vw" />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, #0e0e0c 100%)" }} />
+                <div style={{ position: "relative", aspectRatio: "2 / 3", overflow: "hidden" }}>
+                  <Image src="/ar-manas-makwana-ranzospace.jpeg" alt="Ar. Manas Makwana, Founder of Ranzospace" fill style={{ objectFit: "cover", objectPosition: "center" }} sizes="100vw" />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 82%, #0e0e0c 100%)" }} />
                 </div>
                 <div style={{ padding: "32px 20px 0" }}>
                   <p style={{ fontSize: "64px", lineHeight: 0.75, color: "#F8931E", fontFamily: "var(--font-serif-display), Georgia, serif", marginBottom: "20px", userSelect: "none" }}>&ldquo;</p>
