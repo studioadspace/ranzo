@@ -58,7 +58,7 @@ export default function DesignConsultationPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 52px` : `140px ${PAD} 64px` }}>
+        <section style={{ padding: isMobile ? `100px 20px var(--hero-gap)` : `140px ${PAD} var(--hero-gap)` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
@@ -66,7 +66,7 @@ export default function DesignConsultationPage() {
               transition={{ duration: 0.5 }}
             >
               <Link href="/services" style={{ color: "#F8931E", textDecoration: "none" }}>Services</Link>
-              <span style={{ color: "rgba(248,147,30,0.5)" }}> / Design Consultation</span>
+              <span style={{ color: "#c8c4bc" }}> / Design Consultation</span>
             </motion.p>
 
             {isMobile ? (
@@ -119,23 +119,23 @@ export default function DesignConsultationPage() {
         </section>
 
         {/* Hero image */}
-        <div style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
+        <div style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
-              <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/interiors/amir-study-nook.jpg" alt="Design consultation at Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
+              <div style={{ position: "relative", aspectRatio: "4 / 3", overflow: "hidden", borderRadius: "10px" }}>
+                <Image src="/gallery/priya-sketch-warmth.jpg" alt="Design concept sketch by Ranzospace" fill style={{ objectFit: "cover" }} sizes="100vw" />
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                <div style={{ position: "relative", height: "clamp(300px, 38vw, 540px)", overflow: "hidden", borderRadius: "10px" }}>
-                  <Image src="/interiors/amir-study-nook.jpg" alt="Design consultation at Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <div style={{ position: "relative", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/gallery/priya-sketch-warmth.jpg" alt="Living room concept sketch with annotated materials by Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
                 </div>
-                <div style={{ display: "grid", gap: "12px" }}>
-                  <div style={{ position: "relative", flex: 1, overflow: "hidden", borderRadius: "10px", minHeight: "clamp(140px, 18vw, 260px)" }}>
-                    <Image src="/architecture/in-process-01.jpg" alt="Design sketches and process at Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                <div style={{ display: "grid", gridTemplateRows: "auto auto", gap: "12px" }}>
+                  <div style={{ position: "relative", aspectRatio: "16 / 10", overflow: "hidden", borderRadius: "10px" }}>
+                    <Image src="/gallery/priya-sketch-textural.jpg" alt="Brainstorm sketch of textures and light by Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
                   </div>
-                  <div style={{ position: "relative", flex: 1, overflow: "hidden", borderRadius: "10px", minHeight: "clamp(140px, 18vw, 260px)" }}>
-                    <Image src="/architecture/in-process-02.jpg" alt="Architecture sketches at Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
+                  <div style={{ position: "relative", aspectRatio: "16 / 10", overflow: "hidden", borderRadius: "10px" }}>
+                    <Image src="/gallery/priya-sketch-concept.jpg" alt="Interior concept sketch with materials palette by Ranzospace" fill style={{ objectFit: "cover" }} sizes="50vw" />
                   </div>
                 </div>
               </div>
@@ -144,11 +144,11 @@ export default function DesignConsultationPage() {
         </div>
 
         {/* What to expect */}
-        <section ref={expectRef} style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section ref={expectRef} style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
-                <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "16px" }}>What to Expect</p>
+                <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "16px" }}>What to Expect</p>
                 <h2 style={{ fontSize: "clamp(28px, 8vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "32px" }}>
                   Clarity before<br />commitment.
                 </h2>
@@ -175,7 +175,7 @@ export default function DesignConsultationPage() {
                   transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                   style={{ paddingTop: "28px" }}
                 >
-                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>What to Expect</p>
+                  <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "20px" }}>What to Expect</p>
                   <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                     Clarity before<br />commitment.
                   </h2>
@@ -200,11 +200,11 @@ export default function DesignConsultationPage() {
         </section>
 
         {/* Process */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div ref={processRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
-                <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "28px" }}>How It Works</p>
+                <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "28px" }}>How It Works</p>
                 {process.map((p, i) => (
                   <motion.div key={i}
                     initial={{ opacity: 0, y: 16 }} animate={processInView ? { opacity: 1, y: 0 } : {}}
@@ -228,7 +228,7 @@ export default function DesignConsultationPage() {
                   transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                   style={{ paddingTop: "28px" }}
                 >
-                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>How It Works</p>
+                  <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "20px" }}>How It Works</p>
                   <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                     Four steps<br />to clarity.
                   </h2>
@@ -255,7 +255,7 @@ export default function DesignConsultationPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px`, textAlign: "center" }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)`, textAlign: "center" }}>
           <p style={{ fontSize: isMobile ? "clamp(24px, 7vw, 36px)" : "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "12px" }}>
             Ready to start the conversation?
           </p>

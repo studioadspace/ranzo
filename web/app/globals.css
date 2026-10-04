@@ -8,6 +8,11 @@
   --text-muted: #6b6860;
   --accent: #F8931E;
   --border: rgba(255,255,255,0.06);
+  /* spacing rhythm: one vertical gap between sections, one gap inside a section */
+  --section-y: clamp(72px, 10vw, 160px);
+  --hero-gap: clamp(48px, 6vw, 88px);
+  --stack-lg: clamp(32px, 4vw, 56px);
+  --stack-md: clamp(20px, 2.5vw, 32px);
 }
 
 * {
@@ -38,9 +43,25 @@ p, h1, h2, h3, h4, h5, h6, span, a, button, li, label {
   color: #0e0e0c;
 }
 
-::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar { width: 2px; height: 2px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+/* Tertiary text link: accent text only, the arrow slides on hover */
+.text-link-arrow { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.text-link:hover .text-link-arrow { transform: translateX(5px); }
+.text-link:focus-visible { outline: 2px solid #fefefe; outline-offset: 4px; border-radius: 2px; }
+
+/* Form fields: transparent underline fields that light up in the accent on focus */
+.ui-field:focus, .ui-field:focus-visible {
+  border-bottom-color: #F8931E !important;
+  box-shadow: 0 1px 0 0 #F8931E;
+  outline: none;
+}
+.ui-field:-webkit-autofill {
+  -webkit-text-fill-color: #fefefe;
+  transition: background-color 9999s ease-in-out 0s;
+}
 
 /* Mobile touch improvements */
 @media (max-width: 768px) {

@@ -1,11 +1,13 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import FooterSection from "@/components/FooterSection";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { submitLead } from "@/lib/lead";
 
 const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
@@ -31,52 +33,25 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const webhookUrl = "https://script.google.com/macros/s/AKfycby339jyqZrKJIsqCt9HCx2VdIAnTowiTLQSLeG2XO0LLQi5K50Tmt8UAKgAGMC8Ql3z/exec";
-    try {
-        await fetch(webhookUrl, {
-          method: "POST",
-          // no-cors: Apps Script redirects strip CORS headers; data still posts fine
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            message: formData.message,
-            source: selected.length > 0 ? selected.join(", ") : "Contact Form",
-          }),
-        });
-    } catch {
-      // no-cors fetch always resolves; catch is a safety net only
-    }
+    await submitLead({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      source: selected.length > 0 ? selected.join(", ") : "Contact Form",
+    });
     setLoading(false);
     setSubmitted(true);
   };
 
   const inputStyle: React.CSSProperties = {
-    width: "100%",
-    background: "rgba(255,255,255,0.04)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "6px",
-    padding: "14px 18px",
-    fontSize: "15px",
-    color: "#fefefe",
-    fontFamily: "inherit",
-    fontWeight: 300,
-    outline: "none",
-    boxSizing: "border-box",
-    transition: "border-color 0.2s ease",
-  };
+  width: "100%", background: "transparent", border: "none", borderBottom: "1px solid #8b877e",
+  borderRadius: 0, padding: "10px 0 14px", fontSize: "18px", color: "#fefefe",
+  fontFamily: "inherit", fontWeight: 400, outline: "none", boxSizing: "border-box",
+  transition: "border-color 0.25s ease, box-shadow 0.25s ease",
+};
 
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "11px",
-    fontWeight: 600,
-    color: "#c8c4bc",
-    letterSpacing: "0.16em",
-    textTransform: "uppercase",
-    marginBottom: "8px",
-  };
+  const labelStyle: React.CSSProperties = { display: "block", fontSize: "13px", fontWeight: 500, color: "#c8c4bc", letterSpacing: "0.04em", marginBottom: "2px" };
 
   return (
     <>
@@ -85,7 +60,7 @@ export default function ContactPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 48px` : `140px ${PAD} 80px` }}>
+        <section style={{ padding: isMobile ? `100px 20px var(--hero-gap)` : `140px ${PAD} var(--hero-gap)` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
@@ -105,7 +80,7 @@ export default function ContactPage() {
         </section>
 
         {/* Main content */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px` }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{
             maxWidth: MAX_W,
             margin: "0 auto",
@@ -144,7 +119,7 @@ export default function ContactPage() {
                   <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: "8px" }}>Studio</p>
                   <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.65 }}>
                     Mumbai, India<br />
-                    <span style={{ fontSize: "13px" }}>ranzospace.in</span>
+                    <span>ranzospace.in</span>
                   </p>
                 </div>
 
@@ -153,25 +128,17 @@ export default function ContactPage() {
                     href="https://wa.me/919699147145"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="whatsapp-btn"
+                    className="text-link"
                     style={{
-                      display: "inline-flex", alignItems: "center", gap: "10px",
-                      padding: "14px 28px",
-                      background: "transparent",
-                      border: "1.5px solid #fefefe",
-                      borderRadius: "6px",
-                      fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 16px)",
-                      color: "#fefefe",
-                      fontWeight: 700,
-                      textDecoration: "none",
-                      letterSpacing: "0.01em",
-                      transition: "background-color 0.25s ease, border-color 0.25s ease",
+                      display: "inline-flex", alignItems: "center", gap: "10px", minHeight: "44px",
+                      color: "#F8931E", fontSize: "15px", fontWeight: 600, textDecoration: "none", letterSpacing: "0.01em",
                     }}
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                     </svg>
                     Chat on WhatsApp
+                    <ArrowRight size={16} weight="bold" className="text-link-arrow" aria-hidden="true" />
                   </a>
                 </div>
 
@@ -212,7 +179,7 @@ export default function ContactPage() {
                     <div>
                       <label style={labelStyle}>Name</label>
                       <input
-                        style={inputStyle}
+                        className="ui-field" style={inputStyle}
                         placeholder="Priya Sharma"
                         value={formData.name}
                         onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
@@ -222,7 +189,7 @@ export default function ContactPage() {
                     <div>
                       <label style={labelStyle}>Phone</label>
                       <input
-                        style={inputStyle}
+                        className="ui-field" style={inputStyle}
                         placeholder="+91 98XXX XXXXX"
                         value={formData.phone}
                         onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
@@ -232,7 +199,7 @@ export default function ContactPage() {
                   <div>
                     <label style={labelStyle}>Email</label>
                     <input
-                      style={inputStyle}
+                      className="ui-field" style={inputStyle}
                       type="email"
                       placeholder="you@email.com"
                       value={formData.email}
@@ -252,9 +219,9 @@ export default function ContactPage() {
                           onClick={() => toggleInterest(item)}
                           style={{
                             padding: "8px 18px",
-                            border: `1px solid ${selected.includes(item) ? "#F8931E" : "rgba(255,255,255,0.12)"}`,
-                            background: selected.includes(item) ? "rgba(248,147,30,0.12)" : "transparent",
-                            color: selected.includes(item) ? "#F8931E" : "#c8c4bc",
+                            border: "none",
+                            background: selected.includes(item) ? "#F8931E" : "#1b1b17",
+                            color: selected.includes(item) ? "#0e0e0c" : "#c8c4bc",
                             borderRadius: "100px", fontSize: "13px", fontWeight: 500,
                             cursor: "pointer", transition: "all 0.2s ease", fontFamily: "inherit",
                           }}
@@ -268,7 +235,7 @@ export default function ContactPage() {
                   <div>
                     <label style={labelStyle}>Tell us about your project</label>
                     <textarea
-                      style={{ ...inputStyle, minHeight: "140px", resize: "vertical" }}
+                      className="ui-field" style={{ ...inputStyle, minHeight: "110px", resize: "none" }}
                       placeholder="Brief us on the space, your timeline, approximate budget..."
                       value={formData.message}
                       onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
@@ -291,6 +258,9 @@ export default function ContactPage() {
                   >
                     {loading ? "Sending..." : <>{`Send message`} <ArrowRight size={16} weight="bold" /></>}
                   </button>
+                  <p style={{ marginTop: "16px", fontSize: "13px", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.6 }}>
+                    We use your details only to reply to you and never sell them. <Link href="/privacy" style={{ color: "#F8931E", textDecoration: "none" }}>Privacy Policy</Link>
+                  </p>
                 </form>
               )}
             </motion.div>
@@ -300,10 +270,6 @@ export default function ContactPage() {
       </main>
       <FooterSection />
       <style>{`
-        .whatsapp-btn:hover {
-          background-color: #25d366 !important;
-          border-color: #25d366 !important;
-        }
       `}</style>
     </>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,13 @@ const links = ["About", "Work", "Services", "Contact"];
 export default function Navbar() {
   const isMobile = useBreakpoint(768);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -21,7 +28,10 @@ export default function Navbar() {
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: isMobile ? "16px 20px" : "18px clamp(16px, 5vw, 48px)",
-          background: "linear-gradient(to bottom, rgba(14,14,12,0.96) 0%, transparent 100%)",
+          background: scrolled ? "rgba(14,14,12,0.92)" : "linear-gradient(to bottom, rgba(14,14,12,0.96) 0%, transparent 100%)",
+          backdropFilter: scrolled ? "blur(10px)" : undefined,
+          WebkitBackdropFilter: scrolled ? "blur(10px)" : undefined,
+          transition: "background 0.3s ease",
         }}
       >
         <Link href="/" onClick={() => setMenuOpen(false)}>

@@ -19,7 +19,7 @@ const services = [
     slug: "interior-design",
     tagline: "Full-home & commercial interiors",
     body: "Every space thoughtfully planned in proportion, finish, and detail. Kitchens, bedrooms, living areas, workspaces, and storage. Designed as a unified whole.",
-    img: "/interiors/amir-living-cove.jpg",
+    img: "/gallery/amir-tv-console.jpg",
     Icon: House,
   },
   {
@@ -28,7 +28,7 @@ const services = [
     slug: "architecture",
     tagline: "Architecture & space planning",
     body: "From initial concept to construction documentation. We shape volumes, light, and circulation before a single material is chosen.",
-    img: "/architecture/arch-01.jpg",
+    img: "/gallery/arch-facade.jpg",
     Icon: Buildings,
   },
   {
@@ -37,7 +37,7 @@ const services = [
     slug: "furniture",
     tagline: "Modular furniture & curated decor",
     body: "Curated furniture selection and smart decor solutions. Sofas, ottomans, beds, and accent pieces sourced to suit your lifestyle and aesthetic.",
-    img: "/interiors/amir-tv-unit-01.jpg",
+    img: "/gallery/priya-oak-cabinetry.jpg",
     Icon: Armchair,
   },
   {
@@ -46,7 +46,7 @@ const services = [
     slug: "design-consultation",
     tagline: "Where your legacy begins",
     body: "Every space begins with a conversation. We listen to your lifestyle, your vision, your space's potential, before we draw a single line. Clarity on design direction, materials, and budget.",
-    img: "/interiors/amir-study-nook.jpg",
+    img: "/gallery/priya-sketch-textural.jpg",
     Icon: Chats,
   },
 ];
@@ -62,9 +62,9 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-        style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ paddingTop: "var(--stack-md)" }}
       >
-        <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden" }}>
+        <div style={{ position: "relative", aspectRatio: "4 / 3", overflow: "hidden", borderRadius: "10px" }}>
           <Image src={s.img} alt={s.title} fill style={{ objectFit: "cover" }} sizes="100vw" />
         </div>
         <div style={{ padding: "28px 0 40px" }}>
@@ -100,12 +100,12 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gap: "0",
-        borderTop: "1px solid rgba(255,255,255,0.07)",
+        marginTop: index === 0 ? 0 : "var(--stack-lg)",
         direction: isEven ? "ltr" : "rtl",
       }}
     >
       {/* Image */}
-      <div style={{ position: "relative", height: "clamp(300px, 36vw, 520px)", overflow: "hidden" }}>
+      <div style={{ position: "relative", aspectRatio: "4 / 3", overflow: "hidden", borderRadius: "10px" }}>
         <motion.div
           initial={{ scale: 1.08 }}
           animate={inView ? { scale: 1 } : {}}
@@ -120,7 +120,7 @@ function ServiceRow({ s, index, isMobile }: { s: typeof services[0]; index: numb
       <div style={{
         direction: "ltr",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "60px 64px",
+        padding: "clamp(32px, 4vw, 64px) clamp(32px, 5vw, 80px)",
         background: "#0e0e0c",
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 40px` : `140px ${PAD} 80px` }}>
+        <section style={{ padding: isMobile ? `100px 20px var(--hero-gap)` : `140px ${PAD} var(--hero-gap)` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, color: "#F8931E", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "20px" }}
@@ -210,32 +210,34 @@ export default function ServicesPage() {
         </section>
 
         {/* Service rows */}
-        <section style={{ padding: isMobile ? `0 20px` : undefined }}>
-          <div style={{ maxWidth: isMobile ? undefined : MAX_W, margin: isMobile ? undefined : "0 auto" }}>
+        <section style={{ padding: isMobile ? `0 20px` : `0 ${PAD}` }}>
+          <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {services.map((s, i) => <ServiceRow key={s.slug} s={s} index={i} isMobile={isMobile} />)}
           </div>
         </section>
 
         {/* On-site execution callout */}
-        <section style={{ padding: isMobile ? `40px 20px` : `80px ${PAD}` }}>
+        <section style={{ padding: isMobile ? "var(--section-y) 20px 0" : `var(--section-y) ${PAD} 0` }}>
           <div ref={calloutRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.div
-              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "14px", padding: isMobile ? "32px 24px" : "60px" }}
+              style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "minmax(0, 5fr) minmax(0, 6fr)", columnGap: "clamp(48px, 6vw, 112px)", rowGap: "var(--stack-lg)", alignItems: "start" }}
               initial={{ opacity: 0, y: 24 }} animate={calloutInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p style={{ fontSize: "11px", color: "#F8931E", letterSpacing: "0.18em", fontWeight: 600, marginBottom: "16px", textTransform: "uppercase" }}>Across All Services</p>
+              <div>
+              <p style={{ fontSize: "14px", color: "#c8c4bc", letterSpacing: "0.12em", fontWeight: 400, marginBottom: "20px", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif" }}>Across all services</p>
               <h3 style={{ fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", marginBottom: "16px", lineHeight: 1.2 }}>
                 Full on-site execution included.
               </h3>
-              <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, maxWidth: "600px", marginBottom: "36px" }}>
+              <p style={{ fontSize: isMobile ? "15px" : "clamp(14px, 1.1vw, 17px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85, maxWidth: "600px", marginBottom: 0 }}>
                 Civil work, tiling, carpentry, electrical, plumbing, false ceiling, flooring, and painting. All managed by our team. We hand over one project, not a coordination problem.
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr 1fr", gap: isMobile ? "24px" : "40px" }}>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: isMobile ? "28px 20px" : "48px 40px" }}>
                 {[["140+", "Quality checks per project"], ["100+", "Completed projects"], ["8+", "Years experience"], ["8+", "Team members retained"]].map(([num, label]) => (
                   <div key={label}>
-                    <p style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(32px, 3vw, 52px)", fontWeight: 800, color: "#F8931E", letterSpacing: "-0.03em", lineHeight: 1 }}>{num}</p>
-                    <p style={{ fontSize: "13px", color: "#c8c4bc", fontWeight: 300, marginTop: "8px" }}>{label}</p>
+                    <p style={{ fontSize: isMobile ? "clamp(36px, 11vw, 52px)" : "clamp(44px, 4.4vw, 72px)", fontWeight: 800, color: "#F8931E", letterSpacing: "-0.03em", lineHeight: 1 }}>{num}</p>
+                    <p style={{ fontSize: "15px", color: "#c8c4bc", fontWeight: 300, marginTop: "10px" }}>{label}</p>
                   </div>
                 ))}
               </div>
@@ -244,7 +246,7 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px`, textAlign: "center" }}>
+        <section style={{ padding: isMobile ? "var(--section-y) 20px var(--section-y)" : `var(--section-y) ${PAD} var(--section-y)`, textAlign: "center" }}>
           <p style={{ fontSize: isMobile ? "clamp(24px, 7vw, 36px)" : "clamp(26px, 2.8vw, 48px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
             Have a project in mind?
           </p>

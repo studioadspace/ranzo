@@ -64,7 +64,7 @@ export default function BeforeAfterSlider({
       <Image
         src={afterSrc} alt={afterAlt} fill
         style={{ objectFit: "cover", objectPosition: afterObjectPosition, pointerEvents: "none", transform: mirrorAfter ? "scaleX(-1)" : undefined }}
-        sizes="(max-width: 768px) 100vw, 900px"
+        sizes="(max-width: 768px) 100vw, 46vw"
       />
 
       {/* Before (clipped to the left of the handle) */}
@@ -72,7 +72,7 @@ export default function BeforeAfterSlider({
         <Image
           src={beforeSrc} alt={beforeAlt} fill
           style={{ objectFit: "cover", objectPosition: beforeObjectPosition, pointerEvents: "none", transform: mirrorBefore ? "scaleX(-1)" : undefined }}
-          sizes="(max-width: 768px) 100vw, 900px"
+          sizes="(max-width: 768px) 100vw, 46vw"
         />
       </div>
 

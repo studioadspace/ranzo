@@ -28,6 +28,12 @@ function Row({ item, index, isMobile }: { item: (typeof services)[0]; index: num
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
     >
+      <motion.div
+        aria-hidden="true"
+        style={{ height: "1px", background: "rgba(255,255,255,0.12)", transformOrigin: "left" }}
+        initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}}
+        transition={{ duration: 1.0, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      />
       <button
         onClick={() => setOpen(!open)}
         style={{
@@ -35,7 +41,6 @@ function Row({ item, index, isMobile }: { item: (typeof services)[0]; index: num
           justifyContent: "space-between",
           padding: isMobile ? "20px 0" : "22px 0",
           background: "none", border: "none",
-          borderTop: "1px solid rgba(255,255,255,0.07)",
           cursor: "pointer", textAlign: "left",
         }}
       >
@@ -76,15 +81,15 @@ export default function WhatWeDoSection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "40px 20px" : `56px ${PAD}` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "var(--section-y) 20px 0" : `var(--section-y) ${PAD} 0` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-        <motion.h2
-          style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "4px" : "8px" }}
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><motion.h2
+          style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "16px" : "24px" }}
+          initial={{ y: "108%" }} animate={inView ? { y: "0%" } : {}}
+          transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
         >
           What We Do
-        </motion.h2>
+        </motion.h2></div>
 
         <div ref={ref}>
           {services.map((s, i) => <Row key={i} item={s} index={i} isMobile={isMobile} />)}

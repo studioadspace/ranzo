@@ -22,7 +22,7 @@ export default function OurStorySection() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? "16px 20px 48px" : `16px ${PAD} 88px` }}>
+    <section style={{ background: "#0e0e0c", padding: isMobile ? "var(--section-y) 20px 0" : `var(--section-y) ${PAD} 0` }}>
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <div style={{
           display: "grid",
@@ -31,14 +31,14 @@ export default function OurStorySection() {
           alignItems: "start",
         }}>
 
-          <motion.h2
+          <div style={{ alignSelf: "stretch" }}><div style={{ position: isMobile ? "static" : "sticky", top: "140px" }}><div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><motion.h2
             style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", lineHeight: 1.12 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ y: "108%" }}
+            animate={inView ? { y: "0%" } : {}}
+            transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
           >
             Our<br />Story
-          </motion.h2>
+          </motion.h2></div></div></div>
 
           <div ref={ref} style={{ maxWidth: "640px", paddingTop: isMobile ? "0" : "14px" }}>
             {lines.map((line, i) => (

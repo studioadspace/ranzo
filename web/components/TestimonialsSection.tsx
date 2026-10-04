@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
     >
       <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
         <motion.p
-          style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "32px" : "48px" }}
+          style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: isMobile ? "32px" : "48px" }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
             fontSize: isMobile ? "56px" : "80px",
             lineHeight: 0.8,
             color: "#F8931E",
-            fontFamily: "Georgia, serif",
+            fontFamily: "var(--font-serif), Georgia, serif",
             marginBottom: isMobile ? "12px" : "20px",
             userSelect: "none",
           }}>&ldquo;</p>

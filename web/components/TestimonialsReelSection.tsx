@@ -43,6 +43,14 @@ const testimonials = [
 ];
 
 const n = testimonials.length;
+
+function ArrowGlyph({ flip = false }: { flip?: boolean }) {
+  return (
+    <svg className={flip ? "tm-arrow tm-flip" : "tm-arrow"} width="30" height="14" viewBox="0 0 30 14" fill="none" aria-hidden="true">
+      <path d="M1 7H28M22 1.5L28 7L22 12.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 const extended = [...testimonials.slice(-BUFFER), ...testimonials, ...testimonials.slice(0, BUFFER)];
 
 export default function TestimonialsReelSection() {
@@ -52,6 +60,8 @@ export default function TestimonialsReelSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [paused, setPaused] = useState(false);
+  const [userStopped, setUserStopped] = useState(false);
+  const touchX = useRef<number | null>(null);
 
   const [vi, setVi] = useState(BUFFER);
   const [trackX, setTrackX] = useState(0);
@@ -81,6 +91,9 @@ export default function TestimonialsReelSection() {
 
   const goNext = useCallback(() => setVi(i => i + 1), []);
   const goPrev = useCallback(() => setVi(i => i - 1), []);
+  const manualNext = () => { setUserStopped(true); setAnimated(true); goNext(); };
+  const manualPrev = () => { setUserStopped(true); setAnimated(true); goPrev(); };
+  const autoplay = inView && !paused && !userStopped;
 
   useEffect(() => { positionTrack(vi); }, [vi, positionTrack]);
 
@@ -112,10 +125,10 @@ export default function TestimonialsReelSection() {
   }, [animated]);
 
   useEffect(() => {
-    if (paused || !inView) return;
+    if (!autoplay) return;
     const t = setInterval(goNext, AUTO_ADVANCE_MS);
     return () => clearInterval(t);
-  }, [paused, inView, goNext]);
+  }, [autoplay, goNext]);
 
   const cardW = isMobile ? "calc(100vw - 32px)" : "clamp(380px, 34vw, 480px)";
   const gap = isMobile ? 16 : 18;
@@ -128,7 +141,7 @@ export default function TestimonialsReelSection() {
       onMouseLeave={() => setPaused(false)}
       style={{
         background: "#0e0e0c",
-        padding: isMobile ? "16px 20px 64px" : `16px ${PAD} 100px`,
+        padding: isMobile ? "var(--section-y) 20px var(--section-y)" : `var(--section-y) ${PAD} var(--section-y)`,
         overflow: "hidden",
       }}
     >
@@ -149,24 +162,26 @@ export default function TestimonialsReelSection() {
           Hear from<br />our Clients
         </h2>
 
-        {/* Dots — top right on desktop */}
-        {!isMobile && (
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", paddingBottom: "6px" }}>
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setAnimated(true); setVi(BUFFER + i); }}
-                aria-label={`Go to testimonial ${i + 1}`}
-                data-cursor="hover"
-                style={{
-                  width: realIdx === i ? "22px" : "7px", height: "7px", borderRadius: "100px",
-                  background: realIdx === i ? "#F8931E" : "rgba(255,255,255,0.18)",
-                  border: "none", cursor: "pointer", transition: "all 0.3s ease", padding: 0,
-                }}
-              />
-            ))}
+        {/* Controls: counter, previous, next (with autoplay progress ring) */}
+        <div style={{ display: "flex", alignItems: "center", gap: isMobile ? "12px" : "20px" }}>
+          <p aria-live="polite" style={{ fontFamily: "var(--font-serif-display), Georgia, serif", color: "#c8c4bc", fontSize: isMobile ? "18px" : "22px", letterSpacing: "0.04em", display: "flex", alignItems: "baseline", gap: "6px" }}>
+            <span style={{ color: "#fefefe", fontSize: isMobile ? "26px" : "36px", lineHeight: 1 }}>{String(realIdx + 1).padStart(2, "0")}</span>
+            <span>/ {String(n).padStart(2, "0")}</span>
+          </p>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button type="button" onClick={manualPrev} aria-label="Previous testimonial" data-cursor="hover" className="tm-btn tm-prev" style={{ width: isMobile ? "46px" : "60px", height: isMobile ? "46px" : "60px", background: "#1b1b17", color: "#fefefe" }}>
+              <ArrowGlyph flip />
+            </button>
+            <button type="button" onClick={manualNext} aria-label="Next testimonial" data-cursor="hover" className="tm-btn tm-next" style={{ width: isMobile ? "46px" : "60px", height: isMobile ? "46px" : "60px", background: "#F8931E", color: "#0e0e0c" }}>
+              {autoplay && (
+                <svg key={vi} viewBox="0 0 60 60" aria-hidden="true" style={{ position: "absolute", inset: "-5px", width: "calc(100% + 10px)", height: "calc(100% + 10px)", transform: "rotate(-90deg)", pointerEvents: "none" }}>
+                  <circle cx="30" cy="30" r="29" fill="none" stroke="#F8931E" strokeWidth="1.5" strokeDasharray="182.2" strokeDashoffset="182.2" style={{ animation: `tm-ring ${AUTO_ADVANCE_MS}ms linear forwards` }} />
+                </svg>
+              )}
+              <ArrowGlyph />
+            </button>
           </div>
-        )}
+        </div>
       </motion.div>
 
       {/* Carousel viewport — breaks out of section padding with negative margins */}
@@ -177,6 +192,8 @@ export default function TestimonialsReelSection() {
           marginLeft: isMobile ? "-20px" : NEG_PAD,
           marginRight: isMobile ? "-20px" : NEG_PAD,
         }}
+        onTouchStart={e => { touchX.current = e.touches[0].clientX; }}
+        onTouchEnd={e => { if (touchX.current === null) return; const dx = e.changedTouches[0].clientX - touchX.current; touchX.current = null; if (Math.abs(dx) > 45) (dx < 0 ? manualNext : manualPrev)(); }}
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.65, delay: 0.2 }}
@@ -207,8 +224,6 @@ export default function TestimonialsReelSection() {
                 ref={el => { cardRefs.current[i] = el; }}
                 animate={{
                   scale: (isMobile || isActive) ? 1 : 0.95,
-                  // All inactive cards share the same opacity — no progressive dimming
-                  opacity: isMobile ? 1 : (isActive ? 1 : 0.45),
                 }}
                 transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => {
@@ -217,8 +232,7 @@ export default function TestimonialsReelSection() {
                 style={{
                   flexShrink: 0,
                   width: cardW,
-                  background: isActive ? "#fefefe" : "rgba(255,255,255,0.05)",
-                  border: isActive ? "none" : "1px solid rgba(255,255,255,0.08)",
+                  background: isActive ? "#fefefe" : "#171713",
                   borderRadius: "20px",
                   padding: isMobile ? "28px 24px" : "44px 48px",
                   cursor: (!isMobile && !isActive && isAdjacent) ? "pointer" : "default",
@@ -250,15 +264,15 @@ export default function TestimonialsReelSection() {
                   <span style={{ width: "16px", height: "1px", background: "#F8931E", flexShrink: 0, display: "block" }} />
                   <div>
                     <p style={{
-                      fontSize: "13px", fontWeight: 600,
+                      fontSize: "14px", fontWeight: 600,
                       color: isActive ? "#0e0e0c" : "#fefefe",
                       letterSpacing: "0.03em",
                     }}>
                       {t.client}
                     </p>
                     <p style={{
-                      fontSize: "11px",
-                      color: isActive ? "#888882" : "#c8c4bc",
+                      fontSize: "12px",
+                      color: isActive ? "#55554f" : "#c8c4bc",
                       fontWeight: 300, marginTop: "2px",
                       letterSpacing: "0.08em", textTransform: "uppercase",
                     }}>
@@ -272,6 +286,19 @@ export default function TestimonialsReelSection() {
         </div>
       </motion.div>
 
+      <style>{`
+        .tm-btn { position: relative; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease; }
+        .tm-btn:hover { transform: scale(1.06); }
+        .tm-prev:hover { background: #26261f !important; }
+        .tm-next:hover { background: #ffa73d !important; }
+        .tm-btn:focus-visible { outline: 2px solid #fefefe; outline-offset: 4px; }
+        .tm-arrow { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+        .tm-next:hover .tm-arrow { transform: translateX(5px); }
+        .tm-flip { transform: scaleX(-1); }
+        .tm-prev:hover .tm-flip { transform: scaleX(-1) translateX(5px); }
+        @keyframes tm-ring { to { stroke-dashoffset: 0; } }
+        @media (prefers-reduced-motion: reduce) { .tm-btn, .tm-arrow { transition: none; } }
+      `}</style>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import HeroVideo from "@/components/HeroVideo";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const LINE1 = ["Where", "Mumbai's"];
@@ -30,10 +31,13 @@ export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0px", "-90px"]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
     <section ref={ref} style={{ background: "#0e0e0c", overflow: "hidden" }}>
       {/* Heading row */}
+      <motion.div style={{ y: isMobile ? 0 : textY }}>
       <div style={{
         display: "flex",
         alignItems: isMobile ? "flex-end" : "flex-start",
@@ -42,7 +46,7 @@ export default function HeroSection() {
         paddingBottom: isMobile ? "20px" : "clamp(24px, 3vw, 56px)",
         paddingLeft: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
         paddingRight: isMobile ? "20px" : "clamp(16px, 5vw, 48px)",
-        maxWidth: "1440px", margin: "0 auto",
+        maxWidth: "calc(1440px + 2 * clamp(16px, 5vw, 48px))", margin: "0 auto",
       }}>
         <div>
           <h1 style={{
@@ -60,7 +64,7 @@ export default function HeroSection() {
               fontSize: isMobile ? "18px" : "clamp(19px, 1.7vw, 26px)",
               fontWeight: 400,
               color: "#fefefe",
-              fontFamily: "'Instrument Serif', serif",
+              fontFamily: "var(--font-serif-display), Georgia, serif",
               fontStyle: "italic",
               letterSpacing: "0.01em",
               marginTop: isMobile ? "14px" : "20px",
@@ -80,9 +84,9 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.9 }}
           >
-            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "8px" }}>Since 2018</p>
-            <p style={{ fontSize: "28px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
-              Architecture.<br />Design.<br />Furnitures.
+            <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "8px" }}>Since 2018</p>
+            <p style={{ fontSize: "clamp(24px, 2vw, 30px)", fontWeight: 400, color: "#c8c4bc", lineHeight: 1.5, fontFamily: "var(--font-serif-display), Georgia, serif" }}>
+              Architecture.<br />Design.<br />Furniture.
             </p>
           </motion.div>
         )}
@@ -94,13 +98,15 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.55, delay: 0.9 }}
           >
-            <p style={{ fontSize: "9px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.16em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "6px" }}>Since 2018</p>
-            <p style={{ fontSize: "13px", fontWeight: 300, color: "#c8c4bc", lineHeight: 1.6, fontFamily: "'Instrument Serif', serif" }}>
-              Architecture.<br />Design.<br />Furnitures.
+            <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "6px" }}>Since 2018</p>
+            <p style={{ fontSize: "16px", fontWeight: 400, color: "#c8c4bc", lineHeight: 1.55, fontFamily: "var(--font-serif), Georgia, serif" }}>
+              Architecture.<br />Design.<br />Furniture.
             </p>
           </motion.div>
         )}
       </div>
+
+      </motion.div>
 
       {/* Full-width hero video */}
       <motion.div
@@ -113,15 +119,11 @@ export default function HeroSection() {
           position: "relative", width: "100%",
           height: isMobile ? "52vw" : "clamp(280px, 48vw, 640px)",
           minHeight: isMobile ? "220px" : undefined,
-          overflow: "hidden", background: "url(/interiors/amir-living-cove.jpg) center/cover",
+          overflow: "hidden", background: "url(/video/hero-poster.jpg) center/cover",
         }}>
-          <video
-            autoPlay muted loop playsInline
-            poster="/interiors/amir-living-cove.jpg"
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
+          <motion.div style={{ position: "absolute", inset: 0, scale: isMobile ? 1 : videoScale }}>
+          <HeroVideo />
+          </motion.div>
           <div style={{
             position: "absolute", inset: 0,
             background: "linear-gradient(to bottom, rgba(14,14,12,0.12) 0%, transparent 25%, transparent 70%, rgba(14,14,12,0.35) 100%)",

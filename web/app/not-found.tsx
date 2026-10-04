@@ -27,7 +27,7 @@ export default function NotFound() {
         <p style={{
           fontSize: "clamp(80px, 16vw, 140px)",
           fontWeight: 800,
-          color: "rgba(248,147,30,0.12)",
+          color: "#2a1d0c",
           letterSpacing: "-0.04em",
           lineHeight: 1,
           userSelect: "none",

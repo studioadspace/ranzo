@@ -1,1 +1,5 @@
 .DS_Store
+
+# raw source photography and video (large, unused by the site; curated copies live in web/public/gallery and web/public/video)
+/web/RANZOSPACE PROJECT PHOTSHOOTS/
+/New Assets/

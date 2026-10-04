@@ -89,7 +89,7 @@ export default function AboutPage() {
                   A studio built<br />on conviction.
                 </motion.h1>
                 <motion.p
-                  style={{ fontSize: "18px", fontWeight: 400, color: "#fefefe", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "16px" }}
+                  style={{ fontSize: "18px", fontWeight: 400, color: "#fefefe", fontFamily: "var(--font-serif), Georgia, serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "16px" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.15 }}
@@ -139,7 +139,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.7, delay: 0.25 }}
                   style={{ paddingBottom: "8px" }}
                 >
-                  <p style={{ fontSize: "20px", fontWeight: 400, color: "#fefefe", fontFamily: "'Instrument Serif', serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "24px" }}>
+                  <p style={{ fontSize: "20px", fontWeight: 400, color: "#fefefe", fontFamily: "var(--font-serif), Georgia, serif", fontStyle: "italic", letterSpacing: "0.02em", marginBottom: "24px" }}>
                     Where Space Becomes Legacy
                   </p>
                   <p style={{ fontSize: "clamp(15px, 1.2vw, 19px)", color: "#c8c4bc", fontWeight: 300, lineHeight: 1.85 }}>
@@ -156,16 +156,16 @@ export default function AboutPage() {
 
         {/* Full-width image - clickable lightbox */}
         <div
-          onClick={() => openLightbox("/interiors/amir-living-sofa.jpg", "Ranzospace designed living room")}
+          onClick={() => openLightbox("/gallery/amir-sofa-oak-alt.jpg", "Ranzospace designed living room")}
           data-cursor="hover"
           style={{ position: "relative", height: isMobile ? "56vw" : "clamp(260px, 36vw, 520px)", minHeight: isMobile ? "220px" : undefined, overflow: "hidden", cursor: "pointer" }}
         >
-          <Image src="/interiors/amir-living-sofa.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
+          <Image src="/gallery/amir-sofa-oak-alt.jpg" alt="Ranzospace designed living room" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} sizes="100vw" />
           <div style={{ position: "absolute", inset: 0, background: "rgba(14,14,12,0.35)" }} />
         </div>
 
         {/* Values */}
-        <section style={{ padding: isMobile ? `48px 20px` : `88px ${PAD}` }}>
+        <section style={{ padding: isMobile ? "var(--section-y) 20px" : `var(--section-y) ${PAD}` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
@@ -202,7 +202,7 @@ export default function AboutPage() {
         </section>
 
         {/* Timeline */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div ref={timelineRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
@@ -261,7 +261,7 @@ export default function AboutPage() {
         </section>
 
         {/* Founder */}
-        <section ref={founderRef} style={{ padding: isMobile ? `0 0 48px` : `0 ${PAD} 100px` }}>
+        <section ref={founderRef} style={{ padding: isMobile ? `0 0 48px` : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               /* Mobile: photo above, quote below */
@@ -275,7 +275,7 @@ export default function AboutPage() {
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, #0e0e0c 100%)" }} />
                 </div>
                 <div style={{ padding: "32px 20px 0" }}>
-                  <p style={{ fontSize: "64px", lineHeight: 0.75, color: "#F8931E", fontFamily: "Georgia, serif", marginBottom: "20px", userSelect: "none" }}>&ldquo;</p>
+                  <p style={{ fontSize: "64px", lineHeight: 0.75, color: "#F8931E", fontFamily: "var(--font-serif-display), Georgia, serif", marginBottom: "20px", userSelect: "none" }}>&ldquo;</p>
                   <p style={{ fontSize: "17px", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "16px" }}>
                     I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
                   </p>
@@ -297,19 +297,19 @@ export default function AboutPage() {
             ) : (
               /* Desktop: editorial split — photo left, quote right */
               <motion.div
-                style={{ display: "grid", gridTemplateColumns: "1fr 1fr", overflow: "hidden", borderRadius: "16px" }}
+                style={{ display: "grid", gridTemplateColumns: "min(530px, 46%) minmax(0, 1fr)", overflow: "hidden", borderRadius: "16px", minHeight: "795px" }}
                 initial={{ opacity: 0, y: 32 }}
                 animate={founderInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Photo */}
-                <div style={{ position: "relative", minHeight: "600px" }}>
+                <div style={{ position: "relative", minHeight: "795px" }}>
                   <Image
                     src="/ar-manas-makwana-ranzospace.jpeg"
                     alt="Ar. Manas Makwana, Founder of Ranzospace"
                     fill
-                    style={{ objectFit: "cover", objectPosition: "top center" }}
-                    sizes="420px"
+                    style={{ objectFit: "cover", objectPosition: "center 30%" }}
+                    sizes="530px"
                   />
                   {/* Subtle warm gradient on right edge to blend into quote area */}
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent 60%, rgba(14,14,12,0.5) 100%)" }} />
@@ -318,14 +318,14 @@ export default function AboutPage() {
                 {/* Quote */}
                 <div style={{
                   background: "#111110",
-                  padding: "72px 80px",
+                  padding: "72px clamp(56px, 6vw, 120px)",
                   display: "flex", flexDirection: "column", justifyContent: "center",
                 }}>
-                  <p style={{ fontSize: "96px", lineHeight: 0.75, color: "#F8931E", fontFamily: "Georgia, serif", marginBottom: "32px", userSelect: "none" }}>&ldquo;</p>
-                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "20px", maxWidth: "540px" }}>
+                  <p style={{ fontSize: "96px", lineHeight: 0.75, color: "#F8931E", fontFamily: "var(--font-serif-display), Georgia, serif", marginBottom: "32px", userSelect: "none" }}>&ldquo;</p>
+                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "20px", maxWidth: "620px" }}>
                     I started Ranzospace because I saw a gap between what people needed and what the industry was offering. Too much style, not enough substance. Too many promises, not enough accountability.
                   </p>
-                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "32px", maxWidth: "540px" }}>
+                  <p style={{ fontSize: "clamp(18px, 1.5vw, 22px)", fontWeight: 400, color: "#fefefe", lineHeight: 1.78, marginBottom: "32px", maxWidth: "620px" }}>
                     I wanted to build something different. A studio where design felt like life. Where vision matters more than agreement. Where the spaces we create feel right not just on day one, but become part of a family&apos;s legacy.
                   </p>
                   <p style={{ fontSize: "clamp(16px, 1.3vw, 19px)", fontWeight: 700, color: "#F8931E", letterSpacing: "-0.01em", marginBottom: "40px" }}>
@@ -345,7 +345,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px` }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontSize: isMobile ? "clamp(26px, 7vw, 36px)" : "clamp(28px, 3vw, 52px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
               Ready to start something?

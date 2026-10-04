@@ -1,7 +1,9 @@
 "use client";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useLightbox } from "@/components/LightboxProvider";
 
@@ -9,21 +11,18 @@ const MAX_W = "1440px";
 const PAD = "clamp(16px, 5vw, 48px)";
 
 const projects = [
-  { src: "/interiors/amir-living-tv-01.jpg",     alt: "Living room interior design by Ranzospace Mumbai - floating wood console and sculptural coffee table", label: "Living Room · Mumbai" },
-  { src: "/interiors/amir-bedroom-orange.jpg",    alt: "Master bedroom interior design Mumbai - upholstered bed frame by Ranzospace", label: "Master Bedroom · Mumbai" },
-  { src: "/interiors/amir-living-cove.jpg",       alt: "Living room TV nook by Ranzospace Mumbai - arched cove-lit alcove", label: "Living Room · Mumbai" },
-  { src: "/interiors/amir-study-nook.jpg",        alt: "Built-in study desk and shelving Mumbai by Ranzospace", label: "Study Nook · Mumbai" },
-  { src: "/interiors/amir-living-sofa.jpg",       alt: "Lounge corner interior design Mumbai - bouclé sofa and oak coffee table by Ranzospace", label: "Lounge Corner · Mumbai" },
-  { src: "/architecture/arch-01.jpg",             alt: "Contemporary residence facade by Ranzospace Mumbai - concrete and timber screen architecture", label: "Architecture · Mumbai" },
-  { src: "/interiors/amir-bedroom-wardrobe.jpg",  alt: "Custom wardrobe design Mumbai - two-tone built-in joinery by Ranzospace", label: "Custom Wardrobe · Mumbai" },
-  { src: "/interiors/amir-tv-unit-01.jpg",        alt: "Custom floating TV console design Mumbai by Ranzospace", label: "TV Console · Mumbai" },
-  { src: "/interiors/amir-dining-nook.jpg",       alt: "Dining nook interior design Mumbai - custom shelving by Ranzospace", label: "Dining Nook · Mumbai" },
-  { src: "/interiors/amir-modern-01.jpg",         alt: "Modern luxury interior design Mumbai by Ranzospace", label: "Interior Design · Mumbai" },
-  { src: "/architecture/arch-02.jpg",             alt: "Architectural elevation with folding wooden shutters by Ranzospace Mumbai", label: "Architecture · Mumbai" },
-  { src: "/interiors/amir-modern-02.jpg",         alt: "Contemporary interior design Mumbai - warm tones and considered proportions by Ranzospace", label: "Interior Design · Mumbai" },
-  { src: "/interiors/amir-living-wall.jpg",       alt: "Living room wall detail Mumbai by Ranzospace - textured finishes and layered greenery", label: "Living Room · Mumbai" },
-  { src: "/interiors/amir-tv-unit-02.jpg",        alt: "Custom TV unit and wall panelling design Mumbai by Ranzospace", label: "TV Unit · Mumbai" },
-  { src: "/interiors/amir-living-02.jpg",         alt: "Warm luxury living room interior design Mumbai by Ranzospace", label: "Living Room · Mumbai" },
+  { src: "/gallery/amir-sofa-oak.jpg", alt: "Living corner with a bouclé sofa and oak table by Ranzospace Mumbai", label: "Living Room · Mumbai" },
+  { src: "/gallery/maddy-bedroom-headboard.jpg", alt: "Bedroom by Ranzospace Mumbai with a timber headboard wall", label: "Master Bedroom · Mumbai" },
+  { src: "/gallery/priya-living-white.jpg", alt: "Living room by Ranzospace Mumbai with panelled TV wall and timber detail", label: "Living Room · Mumbai" },
+  { src: "/gallery/pramod-living-cove.jpg", alt: "Living room by Ranzospace Mumbai with cove lighting and a pooja niche", label: "Living Room · Mumbai" },
+  { src: "/gallery/amir-bedroom-orange.jpg", alt: "Bedroom by Ranzospace Mumbai with a terracotta upholstered bed", label: "Bedroom · Mumbai" },
+  { src: "/gallery/priya-kitchen-cream.jpg", alt: "Modular kitchen by Ranzospace Mumbai in cream and oak", label: "Modular Kitchen · Mumbai" },
+  { src: "/gallery/amir-cove-tv.jpg", alt: "Living room by Ranzospace Mumbai with a cove-lit TV wall", label: "TV Wall · Mumbai" },
+  { src: "/gallery/pramod-dining-mirrors.jpg", alt: "Dining room by Ranzospace Mumbai with a round mirror feature wall", label: "Dining Room · Mumbai" },
+  { src: "/gallery/arch-facade.jpg", alt: "Residence by Ranzospace Mumbai in concrete, timber and perforated metal", label: "Architecture · Mumbai" },
+  { src: "/gallery/priya-kids-bedroom.jpg", alt: "Children's bedroom by Ranzospace Mumbai with arched shelves", label: "Kids Bedroom · Mumbai" },
+  { src: "/gallery/amir-wardrobe-bedroom.jpg", alt: "Bedroom by Ranzospace Mumbai with a full-height wardrobe wall", label: "Wardrobe · Mumbai" },
+  { src: "/gallery/rishi-dining-chandelier.jpg", alt: "Dining room by Ranzospace Mumbai with an arched niche and chandelier", label: "Dining Room · Mumbai" },
 ];
 
 function Card({ p, isMobile }: { p: (typeof projects)[0]; isMobile: boolean }) {
@@ -35,8 +34,9 @@ function Card({ p, isMobile }: { p: (typeof projects)[0]; isMobile: boolean }) {
       data-cursor="hover"
       style={{
         position: "relative", cursor: "pointer", overflow: "hidden", flexShrink: 0,
-        width: isMobile ? "72vw" : "clamp(340px, 26vw, 460px)",
-        aspectRatio: "4 / 3",
+        borderRadius: "6px",
+        width: isMobile ? "58vw" : "clamp(240px, 19vw, 340px)",
+        aspectRatio: "3 / 4",
         marginRight: isMobile ? "10px" : "16px",
       }}
     >
@@ -60,40 +60,71 @@ export default function RecentWorksSection() {
   const isMobile = useBreakpoint(768);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const track = [...projects, ...projects];
+  const outerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [shift, setShift] = useState(0);
 
-  return (
-    <section style={{ background: "#0e0e0c", padding: isMobile ? `0 20px 32px` : `0 ${PAD} 48px` }}>
-      <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
+  useEffect(() => {
+    const measure = () => {
+      const t = trackRef.current;
+      if (t) setShift(Math.max(0, t.scrollWidth - window.innerWidth + 48));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [isMobile]);
+
+  const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start start", "end end"] });
+  const x = useTransform(scrollYProgress, [0, 1], [0, -shift]);
+
+  const heading = (
+    <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", marginBottom: isMobile ? "24px" : "clamp(28px, 3vw, 44px)" }}>
+      <div ref={ref} style={{ overflow: "hidden", paddingBottom: "0.12em" }}>
         <motion.h2
-          ref={ref}
-          style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe", marginBottom: isMobile ? "24px" : "36px" }}
-          initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe" }}
+          initial={{ y: "108%" }} animate={inView ? { y: "0%" } : {}}
+          transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
         >
           Recent Works
         </motion.h2>
       </div>
+      <motion.div initial={{ opacity: 0, x: 12 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} style={{ paddingBottom: "8px", flexShrink: 0 }}>
+        <Link href="/work" className="rw-ghost" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px", minHeight: "44px" }}>
+          View all work <ArrowRight size={16} weight="bold" className="rw-ghost-arrow" aria-hidden="true" />
+        </Link>
+      </motion.div>
+      <style>{`
+        .rw-ghost-arrow { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+        .rw-ghost:hover .rw-ghost-arrow { transform: translateX(5px); }
+        .rw-ghost:focus-visible { outline: 2px solid #fefefe; outline-offset: 4px; border-radius: 2px; }
+      `}</style>
+    </div>
+  );
 
-      {/* Negative margins break the marquee out of the section padding for full-bleed effect */}
-      <div className="rw-marquee-viewport" style={{ overflow: "hidden", marginLeft: isMobile ? "-20px" : "clamp(-48px, -5vw, -16px)", marginRight: isMobile ? "-20px" : "clamp(-48px, -5vw, -16px)" }}>
-        <div className="rw-marquee-track" style={{ display: "flex", width: "max-content" }}>
-          {track.map((p, i) => <Card key={i} p={p} isMobile={isMobile} />)}
+  if (isMobile) {
+    return (
+      <section style={{ background: "#0e0e0c", padding: "var(--section-y) 20px 0" }}>
+        {heading}
+        <div style={{ overflowX: "auto", marginRight: "-20px", paddingRight: "20px", scrollSnapType: "x proximity" }}>
+          <div style={{ display: "flex", width: "max-content" }}>
+            {projects.map((p, i) => <div key={i} style={{ scrollSnapAlign: "start" }}><Card p={p} isMobile /></div>)}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop: the section pins while vertical scroll drives the strip sideways.
+  return (
+    <section style={{ background: "#0e0e0c", paddingTop: "var(--section-y)" }}>
+      <div ref={outerRef} style={{ height: `calc(100vh + ${Math.round(shift * 0.85)}px)`, position: "relative" }}>
+        <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", overflow: "hidden" }}>
+          <div style={{ padding: `0 ${PAD}`, width: "100%", maxWidth: `calc(${MAX_W} + 2 * ${PAD})`, margin: "0 auto" }}>{heading}</div>
+          <motion.div ref={trackRef} style={{ x, display: "flex", width: "max-content", paddingLeft: `calc(${PAD} + max(0px, (100vw - 2 * ${PAD} - ${MAX_W}) / 2))`, willChange: "transform" }}>
+            {projects.map((p, i) => <Card key={i} p={p} isMobile={false} />)}
+          </motion.div>
         </div>
       </div>
-
-      <style>{`
-        .rw-marquee-track {
-          animation: rw-scroll ${isMobile ? 58 : 76}s linear infinite;
-        }
-        .rw-marquee-viewport:hover .rw-marquee-track {
-          animation-play-state: paused;
-        }
-        @keyframes rw-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }

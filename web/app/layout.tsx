@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Serif_Display, DM_Serif_Text } from "next/font/google";
 import "./globals.css";
 import ClientRoot from "@/components/ClientRoot";
 
@@ -11,15 +11,27 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const serifText = DM_Serif_Text({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-instrument",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const serifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-serif-display",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ranzospace.in"),
+  alternates: { canonical: "/", types: { "text/plain": [{ url: "/llms.txt", title: "LLMs.txt" }] } },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  category: "Interior design and architecture",
   title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
   description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living. Ranzospace.",
   icons: {
@@ -32,71 +44,88 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Residential, commercial, and hospitality spaces shaped for legacy, not just living.",
-    images: [{ url: "/favicon-og.png", width: 512, height: 512 }],
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Ranzospace, interior design and architecture studio in Mumbai" }],
+    url: "/",
+    siteName: "Ranzospace",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Interior Design & Architecture Studio in Mumbai - Ranzospace",
     description: "Mumbai's most considered architecture and interior design studio. Spaces shaped for legacy.",
-    images: ["/favicon-og.png"],
+    images: ["/og-default.jpg"],
   },
 };
+
+const SITE = "https://ranzospace.in";
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://ranzospace.in/#organization",
+      "@id": `${SITE}/#organization`,
       "name": "Ranzospace",
-      "url": "https://ranzospace.in",
-      "logo": "https://ranzospace.in/favicon.svg",
-      "description": "Mumbai-based interior design and architecture studio specialising in residential, commercial, and hospitality spaces.",
+      "url": SITE,
+      "logo": { "@type": "ImageObject", "url": `${SITE}/favicon-og.png`, "width": 512, "height": 512 },
+      "image": `${SITE}/og-default.jpg`,
+      "description": "Interior design and architecture studio in Mumbai. Residential, commercial and hospitality spaces designed and built end to end.",
       "foundingDate": "2018",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mumbai",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
-      },
+      "founder": { "@type": "Person", "name": "Manas Makwana", "jobTitle": "Architect and Founder" },
+      "email": "info@ranzospace.in",
+      "telephone": "+91 96991 47145",
+      "contactPoint": [{
+        "@type": "ContactPoint", "contactType": "customer service", "email": "info@ranzospace.in",
+        "telephone": "+91 96991 47145", "areaServed": "IN", "availableLanguage": ["English", "Hindi"]
+      }],
+      "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" },
       "areaServed": ["Mumbai", "Thane", "Navi Mumbai"],
-      "sameAs": ["https://ranzospace.in"]
+      "knowsAbout": ["Interior design", "Architecture", "Space planning", "Custom furniture", "Modular kitchens", "Material specification"],
+      "sameAs": ["https://instagram.com/ranzospace", "https://linkedin.com/company/ranzospace"]
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://ranzospace.in/#localbusiness",
+      "@id": `${SITE}/#localbusiness`,
       "name": "Ranzospace",
-      "url": "https://ranzospace.in",
-      "image": "https://ranzospace.in/interiors/amir-living-cove.jpg",
-      "description": "Interior design and architecture studio in Mumbai. Residential, commercial, and hospitality spaces designed for legacy.",
+      "url": SITE,
+      "image": `${SITE}/og-default.jpg`,
+      "description": "Interior design and architecture studio in Mumbai. Residential, commercial and hospitality spaces designed for legacy.",
+      "telephone": "+91 96991 47145",
+      "email": "info@ranzospace.in",
       "priceRange": "₹₹₹",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mumbai",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "19.0760",
-        "longitude": "72.8777"
+      "parentOrganization": { "@id": `${SITE}/#organization` },
+      "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+      "geo": { "@type": "GeoCoordinates", "latitude": "19.0760", "longitude": "72.8777" },
+      "areaServed": ["Mumbai", "Thane", "Navi Mumbai"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Ranzospace services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interior Design", "url": `${SITE}/services/interior-design`, "areaServed": "Mumbai" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Architecture", "url": `${SITE}/services/architecture`, "areaServed": "Mumbai" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Furniture and Decor", "url": `${SITE}/services/furniture`, "areaServed": "Mumbai" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Design Consultation", "url": `${SITE}/services/design-consultation`, "areaServed": "Mumbai" } }
+        ]
       }
     },
     {
       "@type": "WebSite",
-      "@id": "https://ranzospace.in/#website",
-      "url": "https://ranzospace.in",
+      "@id": `${SITE}/#website`,
+      "url": SITE,
       "name": "Ranzospace",
-      "publisher": { "@id": "https://ranzospace.in/#organization" }
+      "inLanguage": "en-IN",
+      "publisher": { "@id": `${SITE}/#organization` }
     }
   ]
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${serifText.variable} ${serifDisplay.variable}`}>
       <head>
+        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+        <link rel="alternate" type="text/markdown" title="Ranzospace full reference for LLMs" href="/llms-full.txt" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}

@@ -48,7 +48,7 @@ export default function ArchitecturePage() {
       <main style={{ background: "#0e0e0c", minHeight: "100vh" }}>
 
         {/* Hero */}
-        <section style={{ padding: isMobile ? `100px 20px 52px` : `140px ${PAD} 64px` }}>
+        <section style={{ padding: isMobile ? `100px 20px var(--hero-gap)` : `140px ${PAD} var(--hero-gap)` }}>
           <div ref={heroRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             <motion.p
               style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "16px" }}
@@ -56,7 +56,7 @@ export default function ArchitecturePage() {
               transition={{ duration: 0.5 }}
             >
               <Link href="/services" style={{ color: "#F8931E", textDecoration: "none" }}>Services</Link>
-              <span style={{ color: "rgba(248,147,30,0.5)" }}> / Architecture</span>
+              <span style={{ color: "#c8c4bc" }}> / Architecture</span>
             </motion.p>
             <motion.h1
               style={{ fontSize: isMobile ? "clamp(44px, 11vw, 64px)" : "clamp(44px, 5vw, 88px)", fontWeight: 800, color: "#fefefe", letterSpacing: "-0.03em", lineHeight: 1.05, marginBottom: "24px" }}
@@ -76,22 +76,22 @@ export default function ArchitecturePage() {
         </section>
 
         {/* Hero image */}
-        <div style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 80px` }}>
+        <div style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
-              <div style={{ position: "relative", height: "56vw", minHeight: "220px", overflow: "hidden", borderRadius: "10px" }}>
-                <Image src="/architecture/arch-01.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="100vw" />
+              <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", borderRadius: "10px" }}>
+                <Image src="/gallery/arch-facade.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="100vw" />
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px" }}>
-                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
-                  <Image src="/architecture/arch-02.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/gallery/arch-concrete.jpg" alt="Architecture and space planning by Ranzospace Mumbai - residential project" fill style={{ objectFit: "cover" }} sizes="33vw" />
                 </div>
-                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
-                  <Image src="/architecture/arch-03.jpg" alt="Interior architecture detail with bespoke joinery by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/gallery/arch-shutters-tr.jpg" alt="Folding timber shutters on a concrete residence by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
                 </div>
-                <div style={{ position: "relative", height: "clamp(220px, 28vw, 420px)", overflow: "hidden", borderRadius: "10px" }}>
-                  <Image src="/architecture/arch-04.jpg" alt="Residential architecture entrance design by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
+                <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", borderRadius: "10px" }}>
+                  <Image src="/gallery/arch-sketch-elevation.jpg" alt="Residential architecture entrance design by Ranzospace Mumbai" fill style={{ objectFit: "cover" }} sizes="33vw" />
                 </div>
               </div>
             )}
@@ -99,11 +99,11 @@ export default function ArchitecturePage() {
         </div>
 
         {/* Inclusions */}
-        <section ref={inclusionsRef} style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section ref={inclusionsRef} style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div style={{ maxWidth: MAX_W, margin: "0 auto" }}>
             {isMobile ? (
               <div>
-                <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "16px" }}>What's included</p>
+                <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "16px" }}>What's included</p>
                 <h2 style={{ fontSize: "clamp(28px, 8vw, 40px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "28px" }}>
                   Concept<br />to certificate.
                 </h2>
@@ -125,7 +125,7 @@ export default function ArchitecturePage() {
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: "80px" }}>
                 <div>
-                  <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: "20px" }}>What's included</p>
+                  <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: "20px" }}>What's included</p>
                   <h2 style={{ fontSize: "clamp(28px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                     Concept<br />to certificate.
                   </h2>
@@ -150,9 +150,9 @@ export default function ArchitecturePage() {
         </section>
 
         {/* Process */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 88px` }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)` }}>
           <div ref={processRef} style={{ maxWidth: MAX_W, margin: "0 auto" }}>
-            <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8c4bc", letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-instrument), serif", marginBottom: isMobile ? "28px" : "48px" }}>
+            <p style={{ fontSize: "14px", fontWeight: 400, color: "#c8c4bc", letterSpacing: "0.12em", textTransform: "uppercase", fontFamily: "var(--font-serif), Georgia, serif", marginBottom: isMobile ? "28px" : "48px" }}>
               Process
             </p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "0" }}>
@@ -174,7 +174,7 @@ export default function ArchitecturePage() {
         </section>
 
         {/* CTA */}
-        <section style={{ padding: isMobile ? `0 20px 48px` : `0 ${PAD} 100px`, textAlign: "center" }}>
+        <section style={{ padding: isMobile ? "0 20px var(--section-y)" : `0 ${PAD} var(--section-y)`, textAlign: "center" }}>
           <p style={{ fontSize: isMobile ? "clamp(24px, 7vw, 36px)" : "clamp(26px, 2.5vw, 44px)", fontWeight: 700, color: "#fefefe", letterSpacing: "-0.025em", marginBottom: "24px" }}>
             Building something new?
           </p>

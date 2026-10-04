@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/furniture" },
   title: "Modular Furniture & Décor in Mumbai - Curated Selection | Ranzospace",
   description: "Curated modular furniture and décor in Mumbai. Living room, bedroom, kitchen, and dining furniture sourced for proportion, function, and aesthetics. Coordinated installation included.",
   openGraph: {
+    url: "/services/furniture",
+    siteName: "Ranzospace",
+    locale: "en_IN",
+    type: "website",
     title: "Modular Furniture & Décor in Mumbai - Curated Selection | Ranzospace",
     description: "Curated modular furniture and décor in Mumbai. Sourced, coordinated, and installed by our team. A considered edit for your space.",
-    images: [{ url: "/interiors/amir-tv-unit-01.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og-furniture.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/interiors/amir-tv-unit-01.jpg"],
+    images: ["/og-furniture.jpg"],
   },
 };
 
