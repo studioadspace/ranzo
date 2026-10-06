@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, House, Buildings, Armchair, Chats } from "@phosphor-icons/react/dist/ssr";

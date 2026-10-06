@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
@@ -58,8 +58,6 @@ function Card({ p, isMobile }: { p: (typeof projects)[0]; isMobile: boolean }) {
 
 export default function RecentWorksSection() {
   const isMobile = useBreakpoint(768);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   const outerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [shift, setShift] = useState(0);
@@ -79,16 +77,16 @@ export default function RecentWorksSection() {
 
   const heading = (
     <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", marginBottom: isMobile ? "24px" : "clamp(28px, 3vw, 44px)" }}>
-      <div ref={ref} style={{ overflow: "hidden", paddingBottom: "0.12em" }}>
+      <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}>
         <motion.h2
           style={{ fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(28px, 2.6vw, 44px)", fontWeight: 700, letterSpacing: "-0.025em", color: "#fefefe" }}
-          initial={{ y: "108%" }} animate={inView ? { y: "0%" } : {}}
+          initial={{ y: "108%" }} whileInView={{ y: "0%" }} viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
         >
           Recent Works
         </motion.h2>
       </div>
-      <motion.div initial={{ opacity: 0, x: 12 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} style={{ paddingBottom: "8px", flexShrink: 0 }}>
+      <motion.div initial={{ opacity: 0, x: 12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} style={{ paddingBottom: "8px", flexShrink: 0 }}>
         <Link href="/work" className="rw-ghost" style={{ fontSize: "15px", fontWeight: 600, color: "#F8931E", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px", minHeight: "44px" }}>
           View all work <ArrowRight size={16} weight="bold" className="rw-ghost-arrow" aria-hidden="true" />
         </Link>

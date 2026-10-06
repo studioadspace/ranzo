@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const MAX_W = "1440px";

@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
@@ -28,10 +29,10 @@ function Tile({ src, alt, delay = 0, parallax }: { src: string; alt: string; del
     <motion.div
       ref={ref}
       style={{ aspectRatio: RATIO, overflow: "hidden", position: "relative", borderRadius: "6px", background: "#141410" }}
-      initial={parallax ? { clipPath: "inset(100% 0% 0% 0%)" } : { opacity: 0, y: 16 }}
-      whileInView={parallax ? { clipPath: "inset(0% 0% 0% 0%)" } : { opacity: 1, y: 0 }}
+      initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+      whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: parallax ? 0.95 : 0.75, delay, ease: parallax ? [0.76, 0, 0.24, 1] : [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.95, delay, ease: [0.76, 0, 0.24, 1] }}
     >
       {parallax ? (
         <motion.div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: "-10%", y }}>

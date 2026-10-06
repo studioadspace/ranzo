@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import AutoVideo from "@/components/AutoVideo";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 

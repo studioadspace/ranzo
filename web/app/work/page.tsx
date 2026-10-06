@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";

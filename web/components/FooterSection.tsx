@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import { usePathname } from "next/navigation";
 import LeadForm from "@/components/LeadForm";
 import Image from "next/image";

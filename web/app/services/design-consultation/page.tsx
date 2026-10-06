@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
 import Link from "next/link";
 import { ChatCircle, MapPin, PencilLine, FileText } from "@phosphor-icons/react/dist/ssr";
@@ -16,22 +17,22 @@ const whatToExpect = [
   {
     Icon: ChatCircle,
     title: "A genuine conversation",
-    body: "Not a sales pitch. We ask the right questions about how you live, what you value, and what your space needs to become.",
+    body: "Not a sales pitch. We ask how you live, what you value, and what your space needs.",
   },
   {
     Icon: MapPin,
     title: "Site walk-through",
-    body: "We visit your space and read its conditions. Light, proportions, structural reality, and hidden potential.",
+    body: "We read your space on site. Light, proportions, structure, and hidden potential.",
   },
   {
     Icon: PencilLine,
     title: "Direction, not guesswork",
-    body: "Clear design direction, material guidance, and an honest budget framework. So when work begins, it begins right.",
+    body: "Clear design direction, material guidance, and an honest budget. So work begins right.",
   },
   {
     Icon: FileText,
     title: "A written summary",
-    body: "Everything discussed, agreed, and documented. Your next steps are clear before you leave the room.",
+    body: "Everything discussed, agreed, and documented. Next steps are clear before you leave.",
   },
 ];
 
